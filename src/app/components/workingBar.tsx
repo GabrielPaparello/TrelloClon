@@ -2,15 +2,17 @@
 import { useState } from "react";
 import {
     ArrowDropDown,
+    ArrowDropUp,
+    ArrowUpward,
   
 } from "@mui/icons-material";
 const WorkingBar = () => {
-  const [toggleBar, setToggleBar] = useState(true);
+  const [toggleBar, setToggleBar] = useState(false);
 
   return (
       <div onMouseEnter={() => setToggleBar(!toggleBar)}
-        onMouseLeave={() => setToggleBar(!toggleBar)}>
-          <div className="flex justify-end text-3xl ">
+        onMouseLeave={() => setToggleBar(!toggleBar)} className="fixed  w-full ">
+          <div className="fixed top-0 right-0 z-index-10">
               
       <ArrowDropDown
         
@@ -28,6 +30,7 @@ const WorkingBar = () => {
           <button>Completed Projects</button>
           <button>Team chat</button>
           <button>My tasks</button>
+          <ArrowDropUp className="text-4xl absolute top-0 right-0" />
         </div>
 
         <div>

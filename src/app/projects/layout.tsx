@@ -5,7 +5,7 @@ import WorkingBar from "../components/workingBar";
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <div  className="fixed top-0  w-full  ">
+      <div  className="fixed  w-full  ">
 
       <WorkingBar />
       </div>
