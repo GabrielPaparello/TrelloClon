@@ -1,9 +1,10 @@
 "use client"
 import Link from "next/link";
-import ReLinkct, { useState } from "react";
+import ReLinkct, { useEffect, useState } from "react";
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import Image from "next/image";
 import { ChevronRight } from "@mui/icons-material";
+import { usePathname } from "next/navigation";
 const Nav = () => {
   const links = [{
     home: "/",
@@ -12,6 +13,11 @@ const Nav = () => {
     completedProjects: "/completed-projects",
   }];
   const [toggleNav, setToggleNav] = useState(false);
+  const path = usePathname();
+  useEffect(() => {
+    
+    if(path === "/projects/create-project") {setToggleNav(true)}
+  },[path])
   return (
     <nav className={`${!toggleNav ? "translate-x-0" : "-translate-x-[200px]"} flex flex-col duration-300 max-w-[230px] justify-center items-center left-0 h-full  shadow-xl `
 }>
