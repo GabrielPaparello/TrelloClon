@@ -11,10 +11,11 @@ import {
   setEdit,
   setList,
   task,
-  dragValue,
+  
 } from "../lib/ReducersSelector/selector";
 import { addTask } from "../lib/StatesReducers/ListSlice";
 import { setEditable, setProjectName  } from "../lib/StatesReducers/projectSlice";
+import Cards from "../components/Cards";
 const Project = () => {
   const projectName = useSelector(selectProjectValue);
   const tasks = useSelector(task);
@@ -69,11 +70,14 @@ const Project = () => {
         </div>
         </Draggable>
       <div>
+        <Cards />
+        
+      </div>
         {/* <h1>Create Project</h1>
           <button className="bg-blue-500 mt-10 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             <Link href="projects/create-project">Start Project</Link>
           </button> */}
-      </div>
+     
     </main>
   );
 };

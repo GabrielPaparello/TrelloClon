@@ -5,17 +5,21 @@ import { task } from "../lib/ReducersSelector/selector";
 import { deleteTask } from "../lib/StatesReducers/ListSlice";
 import { useSelector } from "react-redux";
 import { modifyTask } from "../lib/StatesReducers/ListSlice";
+import { modifyTaskfromCard, deleteTaskfromCard} from "../lib/StatesReducers/createCard";
+
 const ListsAdder = ({ list }) => {
   const dispatch = useAppDispatch();
   const tasks = useSelector(task);
 
-  const handleDelete = (TASK_ID: string) => {
-    dispatch(deleteTask(list.TASK_ID));
+  const handleDelete = (PARENT_ID: string, TASK_ID: string) => {
+    console.log(`Dispatching delete for task ${TASK_ID} from card ${PARENT_ID}`);
+    dispatch(deleteTaskfromCard({ PARENT_ID, TASK_ID }));
   };
 
   return (
+    <>
     <div
-      onClick={() => dispatch(modifyTask({ ...list, editable: true }))}
+      onClick={() => dispatch(modifyTaskfromCard({ ...list, editable: true }))}
       className="flex mb-2 align-middle content-center shadow-xl text-center p-4 pl-5 h-[70px]"
     >
       {list.editable ? (
@@ -24,16 +28,16 @@ const ListsAdder = ({ list }) => {
           draggable
           placeholder="Insert Task Name"
           required
-          className="placeholder:text-gray-400   bg-transparent focus:outline-none p-2  "
+          className="placeholder:text-gray-400  bg-transparent focus:outline-none p-2  "
           type="text"
           value={list.TASK_NAME}
           onChange={(e) =>
-            dispatch(modifyTask({ ...list, TASK_NAME: e.target.value }))
+            dispatch(modifyTaskfromCard({ ...list, TASK_NAME: e.target.value }))
           }
-          onBlur={() => dispatch(modifyTask({ ...list, editable: false }))}
+          onBlur={() => dispatch(modifyTaskfromCard({ ...list, editable: false }))}
           onKeyDown={(e) =>
             e.key === "Enter" &&
-            dispatch(modifyTask({ ...list, editable: false }))
+            dispatch(modifyTaskfromCard({ ...list, editable: false }))
           }
           autoFocus
         />
@@ -44,10 +48,11 @@ const ListsAdder = ({ list }) => {
         </div>
       )}
       <Delete
-        onClick={(list) => handleDelete(list.TASK_ID)}
-        className=" cursor-pointer  text-base  opacity-50 text-gray-400 relative right-2 top-3 "
+        onClick={() => handleDelete(list.PARENT_ID, list.TASK_ID)}
+        className=" cursor-pointer text-lg    opacity-50 text-gray-400 relative right-2 top-3 "
       />
     </div>
+    </>
   );
 };
 
