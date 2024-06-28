@@ -1,41 +1,44 @@
 "use client";
 
-import Link from "next/link";
-import React, { useState } from "react";
+import React from "react";
+import Draggable from "react-draggable";
 import ListsAdder from "../components/ListsAdder";
-import { v4 as uuidv4 } from "uuid";
-import {  Edit } from "@mui/icons-material";
-import {  useAppDispatch, useAppSelector } from "../lib/store";
-import {  } from "../lib/StatesReducers/reducers";
-import { setProjectName } from "../lib/StatesReducers/projectSlice";
+import { Edit } from "@mui/icons-material";
+import { useAppDispatch } from "../lib/store";
 import { useSelector } from "react-redux";
-import { selectProjectValue, setEdit, setList, task } from "../lib/ReducersSelector/selector";
+import {
+  selectProjectValue,
+  setEdit,
+  setList,
+  task,
+  dragValue,
+} from "../lib/ReducersSelector/selector";
 import { addTask } from "../lib/StatesReducers/ListSlice";
-import { deleteTask } from "../lib/StatesReducers/ListSlice";
-import { setEditable } from "../lib/StatesReducers/projectSlice";
+import { setEditable, setProjectName  } from "../lib/StatesReducers/projectSlice";
 const Project = () => {
-  // const [edittable, setEditable] = useState(true);
   const projectName = useSelector(selectProjectValue);
   const tasks = useSelector(task);
   const editVal = useSelector(setEdit);
-
+  const dispatch = useAppDispatch();
   
- const dispatch = useAppDispatch();
   return (
     <main>
-      <div className="flex flex-col bg-gray-100 w-fit ">
-        <div className="flex flex-col align-middle p-4 content-center text-center ">
+      <Draggable>
+      <div   className={` flex flex-col    shadow-xl  bg-gray-100 w-fit `}>
+        <div  className=" align-middle p-4 content-center text-center">
           <div onClick={() => dispatch(setEditable(true))}>
             {editVal ? (
               <input
                 placeholder="project name/list"
                 required
-                className="placeholder:text-black shadow-xl bg-white bg-transparent focus:outline-none p-2"
+                className="placeholder:text-black shadow-xl  bg-transparent focus:outline-none p-2"
                 type="text"
                 value={projectName}
                 onChange={(e) => dispatch(setProjectName(e.target.value))}
                 onBlur={() => dispatch(setEditable(false))}
-                onKeyDown={(e) => e.key === "Enter" && dispatch(setEditable(false))}
+                onKeyDown={(e) =>
+                  e.key === "Enter" && dispatch(setEditable(false))
+                }
                 autoFocus
               />
             ) : (
@@ -52,11 +55,7 @@ const Project = () => {
           {tasks.map((list) => (
             <>
               <div id={list.TASK_ID} key={list.TASK_ID} className="">
-                <ListsAdder
-                  key={list.TASK_ID}
-                  
-                  list={list}
-                />
+                <ListsAdder key={list.TASK_ID} list={list} />
               </div>
             </>
           ))}
@@ -67,7 +66,8 @@ const Project = () => {
         >
           + Add list
         </button>
-      </div>
+        </div>
+        </Draggable>
       <div>
         {/* <h1>Create Project</h1>
           <button className="bg-blue-500 mt-10 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">

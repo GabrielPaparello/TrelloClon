@@ -1,7 +1,7 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import projectSlice from "./projectSlice";
-import ListSlice from "./ListSlice";
-
+import projectSlice from "./StatesReducers/projectSlice";
+import ListSlice from "./StatesReducers/ListSlice";
+import dragableReducer from "./StatesReducers/dragable";
 
 
 
@@ -9,7 +9,7 @@ import ListSlice from "./ListSlice";
 const rootReducer = combineReducers({
   project: projectSlice,
   list: ListSlice,
-  // Add more slice reducers as needed
+  drag: dragableReducer
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

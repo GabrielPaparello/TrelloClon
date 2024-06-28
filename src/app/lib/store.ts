@@ -1,6 +1,6 @@
 import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import rootReducer from "./StatesReducers/reducers";
+import rootReducer from "./reducers";
 
 
 const store = configureStore({

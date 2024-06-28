@@ -16,14 +16,15 @@ const ListsAdder = ({ list }) => {
   return (
     <div
       onClick={() => dispatch(modifyTask({ ...list, editable: true }))}
-      className="flex align-middle content-center text-center p-2 pl-5"
+      className="flex mb-2 align-middle content-center shadow-xl text-center p-4 pl-5 h-[70px]"
     >
       {list.editable ? (
         <input
+          
           draggable
-          placeholder="project name/list"
+          placeholder="Insert Task Name"
           required
-          className="placeholder:text-black shadow-xl bg-white bg-transparent focus:outline-none p-2"
+          className="placeholder:text-gray-400   bg-transparent focus:outline-none p-2  "
           type="text"
           value={list.TASK_NAME}
           onChange={(e) =>
@@ -37,8 +38,8 @@ const ListsAdder = ({ list }) => {
           autoFocus
         />
       ) : (
-        <div className=" flex align-middle p-4 content-center text-center">
-          <span>{list.TASK_NAME ? list.TASK_NAME : "project name/list"}</span>
+        <div className=" flex align-middle p-4 space-x-2 content-center text-center">
+          <span className={`${list.TASK_NAME ? '' : "text-gray-400"}`}>{list.TASK_NAME ? list.TASK_NAME : "Insert card name"}</span>
           <Edit className="relative cursor-pointer ml-1  text-base  opacity-50 text-gray-400  " />
         </div>
       )}
