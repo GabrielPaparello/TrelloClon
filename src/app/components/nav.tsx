@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client"
 import Link from "next/link";
 import ReLinkct, { useEffect, useState } from "react";
@@ -5,6 +6,7 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import Image from "next/image";
 import { ChevronRight } from "@mui/icons-material";
 import { usePathname } from "next/navigation";
+import { useUser } from '@auth0/nextjs-auth0/client';
 const Nav = () => {
   const links = [{
     home: "/",
@@ -17,17 +19,27 @@ const Nav = () => {
   useEffect(() => {
     
     if(path === "/projects/create-project") {setToggleNav(true)}
-  },[path])
+  }, [path])
+  const { user, error, isLoading } = useUser();
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>{error.message}</div>;
+
   return (
     <nav className={`${!toggleNav ? "translate-x-0" : "-translate-x-[200px]"} flex flex-col duration-300 max-w-[230px] justify-center items-center left-0 h-full  shadow-xl `
 }>
       <div className="flex-grow mt-10">
 
-      <Image className=" border h-[105px] w-[105px] ml-[40px] border-gray-400 rounded-full" src="/next.svg" alt="logo" width={100} height={100} />
+        <img className=" border h-[105px] w-[105px] ml-[40px] border-gray-400 rounded-full" src={`${user?.picture}`} alt="logo" width={100} height={100} />
       
-      <h2 className="max-w-[190px] text-center">Welcome back! user_name</h2>
+        <h2 className="max-w-[190px] text-center">Welcome back! <br></br> {user?.name}</h2>
       </div>
-
+      <div className=" flex flex-col space-y-10 ">
+        {!user ?
+          <a className="bg-blue-500 mt-10 hover:bg-blue-700 text-white font-bold py-1 text-center px-4 rounded " href="/api/auth/login">Login</a>
+          :
+          <a className="bg-blue-500 mt-10 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded" href="/api/auth/logout">Logout</a>}
+      </div>
       <div>
         <button onClick={() => setToggleNav(!toggleNav)}>
 

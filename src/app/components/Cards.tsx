@@ -4,39 +4,40 @@ import {
   addCard,
   modifyCard,
   addTaskToCard,
+  saveData,
+  loadData,
 } from "../lib/StatesReducers/createCard";
 import { useAppDispatch } from "../lib/store";
 import { useSelector } from "react-redux";
 import {
   cardEdit,
-  selectProjectValue,
-  setEdit,
+  
+  
 } from "../lib/ReducersSelector/selector";
-import {
-  setEditable,
-  setProjectName,
-} from "../lib/StatesReducers/projectSlice";
 import { Edit } from "@mui/icons-material";
 import Draggable from "react-draggable";
 import ListsAdder from "./ListsAdder";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 const Cards = () => {
+  const { user, error, isLoading } = useUser();
+  const user_id = user?.sub.split("|")[1];
   const dispatch = useAppDispatch();
-  const editVal = useSelector(setEdit);
-  const projectName = useSelector(selectProjectValue);
   const cards = useSelector(cardEdit);
+  const handleSave = () => {
+    dispatch(saveData({user_id,cards}))
+    alert("saved")
+    
+  }
   return (
     <>
-      <button
-        onClick={() => dispatch(addCard())}
-        className="text-[#0079d3]  font-bold pb-2 px-6 rounded"
-      >
-        + Add Card
-      </button>
+      
+      <button className='absolute top-0 md:right-0 bg-blue-500 mt-10 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' onClick={() => dispatch(loadData(user_id))}>Load</button>
+      <button className="absolute md:top-15 md:right-0 bg-blue-500 mt-10 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={handleSave}>Save</button>
       {cards.map((card) => (
         <>
           <Draggable>
-            <div className={` flex flex-col    shadow-xl  bg-gray-100 w-fit `}>
+            <div className={` flex md:flex-col    shadow-xl  bg-gray-100 w-fit `}>
               <div className=" align-middle p-4 content-center text-center">
                 <div
                   onClick={() =>
@@ -77,25 +78,16 @@ const Cards = () => {
                 <div
                   className={`flex align-middle content-center text-center pl-5`}
                 ></div>
-                          {cards.map((list) => (
-                        <>
-                    {list.tasks && list.tasks.map((list) => {
-                      return (
-                        <>
-                          <div
-                            id={list.TASK_ID}
-                            key={list.TASK_ID}
-                            className=""
-                          >
-                            <ListsAdder key={list.TASK_ID} list={list} />
-                          </div>
-                        </>
-                      );
-                    })}
-            </>
-          ))}
+                {card.tasks && <ListsAdder key={card.PARENT_ID} card={card} />}
                 <button
-                  onClick={() => dispatch(addTaskToCard({ PARENT_ID: card.PARENT_ID, TASK_NAME: '' }))}
+                  onClick={() =>
+                    dispatch(
+                      addTaskToCard({
+                        PARENT_ID: card.PARENT_ID,
+                        TASK_NAME: "",
+                      })
+                    )
+                  }
                   className="text-[#0079d3]  font-bold pb-2 px-6 rounded"
                 >
                   + Add list
@@ -105,11 +97,12 @@ const Cards = () => {
           </Draggable>
         </>
       ))}
-          {/* // <>
-            //   <div  key={list.PARENT_ID} className="">
-            //     <ListsAdder key={list.PARENT_ID} list={list} />
-            //   </div>
-            // </> */}
+      <button
+        onClick={() => dispatch(addCard())}
+        className="text-[#0079d3]  font-bold pb-2 px-6 rounded"
+      >
+        + Add Card
+      </button>
     </>
   );
 };

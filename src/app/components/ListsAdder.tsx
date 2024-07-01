@@ -1,58 +1,84 @@
 import React from "react";
 import { Delete, Edit } from "@mui/icons-material";
 import { useAppDispatch } from "../lib/store";
-import { task } from "../lib/ReducersSelector/selector";
-import { deleteTask } from "../lib/StatesReducers/ListSlice";
-import { useSelector } from "react-redux";
-import { modifyTask } from "../lib/StatesReducers/ListSlice";
-import { modifyTaskfromCard, deleteTaskfromCard} from "../lib/StatesReducers/createCard";
+import {
+  modifyTaskfromCard,
+  deleteTaskfromCard,
+} from "../lib/StatesReducers/createCard";
 
-const ListsAdder = ({ list }) => {
+const ListsAdder = ({ card }) => {
   const dispatch = useAppDispatch();
-  const tasks = useSelector(task);
 
   const handleDelete = (PARENT_ID: string, TASK_ID: string) => {
-    console.log(`Dispatching delete for task ${TASK_ID} from card ${PARENT_ID}`);
+    console.log(
+      `Dispatching delete for task ${TASK_ID} from card ${PARENT_ID}`
+    );
     dispatch(deleteTaskfromCard({ PARENT_ID, TASK_ID }));
   };
 
   return (
     <>
-    <div
-      onClick={() => dispatch(modifyTaskfromCard({ ...list, editable: true }))}
-      className="flex mb-2 align-middle content-center shadow-xl text-center p-4 pl-5 h-[70px]"
-    >
-      {list.editable ? (
-        <input
-          
-          draggable
-          placeholder="Insert Task Name"
-          required
-          className="placeholder:text-gray-400  bg-transparent focus:outline-none p-2  "
-          type="text"
-          value={list.TASK_NAME}
-          onChange={(e) =>
-            dispatch(modifyTaskfromCard({ ...list, TASK_NAME: e.target.value }))
-          }
-          onBlur={() => dispatch(modifyTaskfromCard({ ...list, editable: false }))}
-          onKeyDown={(e) =>
-            e.key === "Enter" &&
-            dispatch(modifyTaskfromCard({ ...list, editable: false }))
-          }
-          autoFocus
-        />
-      ) : (
-        <div className=" flex align-middle p-4 space-x-2 content-center text-center">
-          <span className={`${list.TASK_NAME ? '' : "text-gray-400"}`}>{list.TASK_NAME ? list.TASK_NAME : "Insert card name"}</span>
-          <Edit className="relative cursor-pointer ml-1  text-base  opacity-50 text-gray-400  " />
-        </div>
-      )}
-      <Delete
-        onClick={() => handleDelete(list.PARENT_ID, list.TASK_ID)}
-        className=" cursor-pointer text-lg    opacity-50 text-gray-400 relative right-2 top-3 "
-      />
-    </div>
-    </>
+      {card.tasks &&
+        
+        card.tasks.map((list) => {
+              return (
+                <>
+                  <div
+                    onClick={() =>
+                      dispatch(modifyTaskfromCard({ ...list, editable: true }))
+                    }
+                    className="flex mb-2 align-middle content-center shadow-xl text-center p-4 pl-5 h-[70px]"
+                  >
+                    {list.editable ? (
+                      <input
+                        draggable
+                        placeholder="Insert Task Name"
+                        required
+                        className="placeholder:text-gray-400  bg-transparent focus:outline-none p-2  "
+                        type="text"
+                        value={list.TASK_NAME}
+                        onChange={(e) =>
+                          dispatch(
+                            modifyTaskfromCard({
+                              ...list,
+                              TASK_NAME: e.target.value,
+                            })
+                          )
+                        }
+                        onBlur={() =>
+                          dispatch(
+                            modifyTaskfromCard({ ...list, editable: false })
+                          )
+                        }
+                        onKeyDown={(e) =>
+                          e.key === "Enter" &&
+                          dispatch(
+                            modifyTaskfromCard({ ...list, editable: false })
+                          )
+                        }
+                        autoFocus
+                      />
+                    ) : (
+                      <div className=" flex align-middle p-4 space-x-2 content-center text-center">
+                        <span
+                          className={`${list.TASK_NAME ? "" : "text-gray-400"}`}
+                        >
+                          {list.TASK_NAME ? list.TASK_NAME : "Insert card name"}
+                        </span>
+                        <Edit className="relative cursor-pointer ml-1  text-base  opacity-50 text-gray-400  " />
+                      </div>
+                    )}
+                    <Delete
+                      onClick={() => handleDelete(list.PARENT_ID, list.TASK_ID)}
+                      className=" cursor-pointer text-lg    opacity-50 text-gray-400 relative right-2 top-3 "
+                    />
+                  </div>
+                </>
+              );
+            })}
+        </>
+     
+    
   );
 };
 
