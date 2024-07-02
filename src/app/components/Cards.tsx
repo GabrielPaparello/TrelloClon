@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import {
   addCard,
   modifyCard,
@@ -16,6 +16,7 @@ import { Delete, Edit } from "@mui/icons-material";
 import Draggable from "react-draggable";
 import ListsAdder from "./ListsAdder";
 import { useUser } from "@auth0/nextjs-auth0/client";
+import Details from "./Details";
 
 const Cards = () => {
   const { user, error, isLoading } = useUser();
@@ -26,6 +27,7 @@ const Cards = () => {
     dispatch(saveData({ user_id, cards }));
     alert("saved");
   };
+  const [open,setOpen] = useState(false)
   return (
     <>
       <button
@@ -53,9 +55,12 @@ const Cards = () => {
         <>
           <Draggable>
             <div
-              className={` flex md:flex-col    shadow-xl  bg-gray-100 w-fit `}
+              className={` flex md:flex-col   shadow-xl  bg-gray-100 w-fit `}
             >
               <div className=" align-middle p-4 content-center text-center">
+                 {open && (
+                          <Details />
+                        )}
                 <div>
                   {card.editable ? (
                     <input
@@ -79,10 +84,12 @@ const Cards = () => {
                       autoFocus
                     />
                   ) : (
-                    <div className=" flex align-middle p-4 content-center text-center">
+                      <div onClick={() => setOpen(true)} className=" flex align-middle p-4 content-center text-center">
+                       
                       <span>
                         {card.CARD_NAME ? card.CARD_NAME : "List Name"}
                       </span>
+                        
                       <Edit
                         className="relative cursor-pointer ml-1  p-0.5  opacity-50 text-gray-400  "
                         onClick={() =>
