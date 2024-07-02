@@ -10,7 +10,7 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 
 const Project = () => {
   const { user, error, isLoading } = useUser();
-const user_id = user?.sub.split("|")[1];
+const user_id = user?.sub?.split("|")[1];
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(loadData(user_id));
