@@ -18,7 +18,10 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 
 const Cards = () => {
   const { user, error, isLoading } = useUser();
-  const user_id = user?.sub.split("|")[1];
+  if (user) {
+    
+    const user_id = user?.sub.split("|")[1];
+  }
   const dispatch = useAppDispatch();
   const cards = useSelector(cardEdit);
   const handleSave = () => {
