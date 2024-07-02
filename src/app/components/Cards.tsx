@@ -18,9 +18,11 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 
 const Cards = () => {
   const { user, error, isLoading } = useUser();
-  if (user) {
-    
+  if (user && user.sub) {
     const user_id = user.sub.split("|")[1];
+    console.log('User ID:', user_id);
+  } else {
+    console.log('User is not authenticated');
   }
   const dispatch = useAppDispatch();
   const cards = useSelector(cardEdit);
