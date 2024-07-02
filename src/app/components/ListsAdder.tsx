@@ -24,9 +24,7 @@ const ListsAdder = ({ card }) => {
               return (
                 <>
                   <div
-                    onClick={() =>
-                      dispatch(modifyTaskfromCard({ ...list, editable: true }))
-                    }
+                    
                     className="flex mb-2 align-middle content-center shadow-xl text-center p-4 pl-5 h-[70px]"
                   >
                     {list.editable ? (
@@ -65,12 +63,14 @@ const ListsAdder = ({ card }) => {
                         >
                           {list.TASK_NAME ? list.TASK_NAME : "Insert card name"}
                         </span>
-                        <Edit className="relative cursor-pointer ml-1  text-base  opacity-50 text-gray-400  " />
+                        <Edit onClick={() =>
+                      dispatch(modifyTaskfromCard({ ...list, editable: true }))
+                    } className="relative cursor-pointer ml-1 p-0.5 text-base  opacity-50 text-gray-400  " />
                       </div>
                     )}
                     <Delete
                       onClick={() => handleDelete(list.PARENT_ID, list.TASK_ID)}
-                      className=" cursor-pointer text-lg    opacity-50 text-gray-400 relative right-2 top-3 "
+                      className=" cursor-pointer text-lg    opacity-50 text-gray-400 p-0.5 relative right-2 top-3 "
                     />
                   </div>
                 </>

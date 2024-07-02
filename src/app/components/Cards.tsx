@@ -6,15 +6,12 @@ import {
   addTaskToCard,
   saveData,
   loadData,
+  deleteCard,
 } from "../lib/StatesReducers/createCard";
 import { useAppDispatch } from "../lib/store";
 import { useSelector } from "react-redux";
-import {
-  cardEdit,
-  
-  
-} from "../lib/ReducersSelector/selector";
-import { Edit } from "@mui/icons-material";
+import { cardEdit } from "../lib/ReducersSelector/selector";
+import { Delete, Edit } from "@mui/icons-material";
 import Draggable from "react-draggable";
 import ListsAdder from "./ListsAdder";
 import { useUser } from "@auth0/nextjs-auth0/client";
@@ -25,25 +22,40 @@ const Cards = () => {
   const dispatch = useAppDispatch();
   const cards = useSelector(cardEdit);
   const handleSave = () => {
-    dispatch(saveData({user_id,cards}))
-    alert("saved")
-    
-  }
+    dispatch(saveData({ user_id, cards }));
+    alert("saved");
+  };
   return (
     <>
-      
-      <button className='absolute top-0 md:right-0 bg-blue-500 mt-10 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' onClick={() => dispatch(loadData(user_id))}>Load</button>
-      <button className="absolute md:top-15 md:right-0 bg-blue-500 mt-10 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={handleSave}>Save</button>
+      <button
+        onClick={() => dispatch(addCard())}
+        className="text-[#0079d3]  font-bold pb-2 px-6 rounded"
+      >
+        + Add Card
+      </button>
+      <div className="fixed top-0 border-[#0079d3]  border-b ">
+
+      <button
+        className="text-[#004f8c]  font-bold rounded"
+        onClick={() => dispatch(loadData(user_id))}
+      >
+        Load
+      </button>
+      <button
+        className="text-[#004f8c]  font-bold px-6 rounded"
+        onClick={handleSave}
+      >
+        Save
+      </button>
+      </div>
       {cards.map((card) => (
         <>
           <Draggable>
-            <div className={` flex md:flex-col    shadow-xl  bg-gray-100 w-fit `}>
+            <div
+              className={` flex md:flex-col    shadow-xl  bg-gray-100 w-fit `}
+            >
               <div className=" align-middle p-4 content-center text-center">
-                <div
-                  onClick={() =>
-                    dispatch(modifyCard({ ...card, editable: true }))
-                  }
-                >
+                <div>
                   {card.editable ? (
                     <input
                       placeholder="project name/list"
@@ -70,7 +82,17 @@ const Cards = () => {
                       <span>
                         {card.CARD_NAME ? card.CARD_NAME : "List Name"}
                       </span>
-                      <Edit className="relative cursor-pointer ml-1  text-base  opacity-50 text-gray-400  " />
+                      <Edit
+                        className="relative cursor-pointer ml-1  p-0.5  opacity-50 text-gray-400  "
+                        onClick={() =>
+                          dispatch(modifyCard({ ...card, editable: true }))
+                        }
+                      />
+                      <button
+                        onClick={() => dispatch(deleteCard(card.PARENT_ID))}
+                      >
+                        <Delete className="relative cursor-pointer ml-1 p-0.5 text-base  opacity-50 text-gray-400  " />
+                      </button>
                     </div>
                   )}
                 </div>
@@ -97,12 +119,6 @@ const Cards = () => {
           </Draggable>
         </>
       ))}
-      <button
-        onClick={() => dispatch(addCard())}
-        className="text-[#0079d3]  font-bold pb-2 px-6 rounded"
-      >
-        + Add Card
-      </button>
     </>
   );
 };

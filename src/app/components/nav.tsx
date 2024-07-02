@@ -26,7 +26,7 @@ const Nav = () => {
   if (error) return <div>{error.message}</div>;
 
   return (
-    <nav className={`${!toggleNav ? "translate-x-0" : "-translate-x-[200px]"} flex flex-col duration-300 max-w-[230px] justify-center items-center left-0 h-full  shadow-xl `
+    <nav className={`${!toggleNav ? "translate-x-0 " : "-translate-x-[200px] absolute "} flex flex-col duration-300 max-w-[230px] justify-center items-center left-0 h-[100vh] shadow-xl `
 }>
       <div className="flex-grow mt-10">
 
