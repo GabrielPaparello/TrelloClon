@@ -22,8 +22,8 @@ const Nav = () => {
   }, [path])
   const { user, error, isLoading } = useUser();
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>{error.message}</div>;
+  // if (isLoading) return <div>Loading...</div>;
+  // if (error) return <div>{error.message}</div>;
 
   return (
     <nav className={`${!toggleNav ? "translate-x-0 " : "-translate-x-[200px] absolute "} flex flex-col duration-300 max-w-[230px] justify-center items-center left-0 h-[100vh] shadow-xl `
