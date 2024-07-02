@@ -5,8 +5,8 @@ import {
   modifyTaskfromCard,
   deleteTaskfromCard,
 } from "../lib/StatesReducers/createCard";
-
-const ListsAdder = ({ card }) => {
+import { Card } from "../lib/StatesReducers/createCard";
+const ListsAdder = ({ card }: { card: Card }) => {
   const dispatch = useAppDispatch();
 
   const handleDelete = (PARENT_ID: string, TASK_ID: string) => {
