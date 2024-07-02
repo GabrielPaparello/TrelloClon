@@ -15,7 +15,7 @@ const user_id = user?.sub?.split("|")[1];
   useEffect(() => {
     dispatch(loadData(user_id));
     
-  }, [dispatch]);
+  }, [user_id, dispatch]);
   const cards = useSelector(cardEdit);
 
   return (
