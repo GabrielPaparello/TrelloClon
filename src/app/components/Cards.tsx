@@ -21,7 +21,7 @@ const Cards = () => {
   const user_id = user?.sub?.split("|")[1];
   const dispatch = useAppDispatch();
   const cards = useSelector(cardEdit);
-  const handleSave = () => {
+  const handleSave = (user_id, cards) => {
     dispatch(saveData({ user_id, cards }));
     alert("saved");
   };
@@ -43,7 +43,7 @@ const Cards = () => {
       </button>
       <button
         className="text-[#004f8c]  font-bold px-6 rounded"
-        onClick={handleSave}
+        onClick={() => handleSave(user_id, cards)}
       >
         Save
       </button>
