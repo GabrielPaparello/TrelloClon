@@ -20,7 +20,7 @@ const Cards = () => {
   const { user, error, isLoading } = useUser();
   if (user) {
     
-    const user_id = user?.sub.split("|")[1];
+    const user_id = user.sub.split("|")[1];
   }
   const dispatch = useAppDispatch();
   const cards = useSelector(cardEdit);
