@@ -7,6 +7,7 @@ import {
   saveData,
   loadData,
   deleteCard,
+  Card,
 } from "../lib/StatesReducers/createCard";
 import { useAppDispatch } from "../lib/store";
 import { useSelector } from "react-redux";
@@ -21,7 +22,7 @@ const Cards = () => {
   const user_id = user?.sub?.split("|")[1];
   const dispatch = useAppDispatch();
   const cards = useSelector(cardEdit);
-  const handleSave = (user_id, cards) => {
+  const handleSave = (user_id: string | undefined, cards: Card[]) => {
     dispatch(saveData({ user_id, cards }));
     alert("saved");
   };

@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
 
-interface Card {
+export interface Card {
   PARENT_ID: string;
   editable: boolean;
   CARD_NAME: string;
@@ -36,7 +36,7 @@ const initialState: CardState = {
 //     throw new Error('Failed to save data');
 //   }
 // });
-export const saveData = createAsyncThunk('app/saveData', async ({ user_id, cards }: { user_id: string; cards: Card[] }) => {
+export const saveData = createAsyncThunk('app/saveData', async ({ user_id, cards }: { user_id: string | undefined; cards: Card[] }) => {
   const response = await fetch('/api/save', {
     method: 'POST',
     headers: {
@@ -62,11 +62,11 @@ export const saveData = createAsyncThunk('app/saveData', async ({ user_id, cards
 //   return data;
 // });
 
-export const loadData = createAsyncThunk('app/loadData', async (user_id: string) => {
+export const loadData = createAsyncThunk('app/loadData', async (user_id: string | undefined) => {
   const response = await fetch('/api/load', {
     method: 'GET',
     headers: {
-      'user_id': user_id,
+      'user_id': user_id || '',
     },
   });
   if (!response.ok) {
@@ -167,3 +167,4 @@ export const {
   deleteTaskfromCard,
 } = createCardSlice.actions;
 export default createCardSlice.reducer;
+
