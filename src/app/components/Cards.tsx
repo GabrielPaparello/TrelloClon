@@ -17,6 +17,7 @@ import Draggable from "react-draggable";
 import ListsAdder from "./ListsAdder";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import Details from "./Details";
+import { v4 as uuid } from "uuid";
 
 const Cards = () => {
   const { user, error, isLoading } = useUser();
@@ -27,11 +28,11 @@ const Cards = () => {
     dispatch(saveData({ user_id, cards }));
     alert("saved");
   };
-  const [open, setOpen] = useState(false)
+  // const [open, setOpen] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   useEffect(() => {
     window.innerWidth < 768 ? setIsMobile(true) : setIsMobile(false)
-  },[isMobile])
+  },[])
   return (
     <>
       <button
@@ -57,7 +58,7 @@ const Cards = () => {
       </div>
       {cards.map((card) => (
         <>
-          {isMobile ?
+          {!isMobile ?
             
             <Draggable>
               <div
@@ -114,7 +115,7 @@ const Cards = () => {
                   <div
                     className={`flex align-middle content-center text-center pl-5`}
                   ></div>
-                  {card.tasks && <ListsAdder key={card.PARENT_ID} card={card} />}
+                  {card.tasks && <ListsAdder key={uuid()} card={card} />}
                   <button
                     onClick={() =>
                       dispatch(
@@ -186,7 +187,7 @@ const Cards = () => {
                 <div
                   className={`flex align-middle content-center text-center pl-5`}
                 ></div>
-                {card.tasks && <ListsAdder key={card.PARENT_ID} card={card} />}
+                {card.tasks && <ListsAdder key={uuid()} card={card} />}
                 <button
                   onClick={() =>
                     dispatch(
