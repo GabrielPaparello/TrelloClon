@@ -28,7 +28,7 @@ const Cards = () => {
     dispatch(saveData({ user_id, cards }));
     alert("saved");
   };
-  // const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   useEffect(() => {
     window.innerWidth < 768 ? setIsMobile(true) : setIsMobile(false)
