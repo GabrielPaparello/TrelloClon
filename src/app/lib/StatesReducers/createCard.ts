@@ -14,6 +14,12 @@ export interface Task {
   PARENT_ID: string;
   editable: boolean;
   detailOpen: boolean;
+  Details: {
+    description: string;
+    DueDate: string;
+    Priority: string;
+    status: string;
+  }
 }
 interface CardState {
   cards: Card[];
@@ -96,6 +102,12 @@ const createCardSlice = createSlice({
           PARENT_ID: card.PARENT_ID,
           editable: false,
           detailOpen: false,
+          Details: {
+            description: "",
+            DueDate: "",
+            Priority: "",
+            status: "",
+          },
          
         });
       }
