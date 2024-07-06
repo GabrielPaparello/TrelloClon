@@ -17,7 +17,7 @@ const Details = ({ list }: { list: Task }) => {
   });
 
   const handleDetailClick = () => {
-    dispatch(modifyTaskfromCard({ ...list, detailOpen: !list.detailOpen }));
+    dispatch(modifyTaskfromCard({ ...list, detailOpen: !list.detailOpen , Details: { ...details } }));
     dispatch(toggle());
   };
 
