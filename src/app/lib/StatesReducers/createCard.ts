@@ -65,6 +65,7 @@ const createCardSlice = createSlice({
   name: "createCard",
   initialState,
   reducers: {
+    
     addCard: (state) => {
       const newCard: Card = {
         PARENT_ID: uuidv4(),

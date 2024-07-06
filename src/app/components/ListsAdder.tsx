@@ -31,7 +31,7 @@ const ListsAdder = ({ card }: { card: Card }) => {
         card.tasks.map((list) => (
           <div
             key={list.TASK_ID}
-            className="flex mb-2 align-middle content-center shadow-xl text-center p-4 pl-5 h-[70px]"
+            className="flex mb-2 align-middle content-center shadow-xl mx-2 my-2 border-t-2 border-[#0079d3] text-center p-4 pl-5 h-[70px]"
           >
             {list.editable ? (
               <input
@@ -58,7 +58,7 @@ const ListsAdder = ({ card }: { card: Card }) => {
                 autoFocus
               />
             ) : (
-              <div className="flex align-middle space-x-2 content-center text-center">
+              <div className="flex align-middle space-x-12 content-center text-center">
                 <span
                   className={`${
                     list.TASK_NAME ? "" : "text-gray-400"

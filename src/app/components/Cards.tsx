@@ -51,7 +51,7 @@ const Cards = ({ card }: { card: Card }) => {
                   autoFocus
                 />
               ) : (
-                <div className="flex justify-between items-center">
+                <div className="flex justify-between  items-center">
                   <span>{card.CARD_NAME ? card.CARD_NAME : "List Name"}</span>
                   <div className="flex items-center">
                     <Edit
@@ -106,7 +106,7 @@ const Cards = ({ card }: { card: Card }) => {
                 autoFocus
               />
             ) : (
-              <div className="flex justify-between items-center">
+              <div className="flex justify-between  items-center">
                 <span>{card.CARD_NAME ? card.CARD_NAME : "List Name"}</span>
                 <div className="flex items-center">
                   <Edit
