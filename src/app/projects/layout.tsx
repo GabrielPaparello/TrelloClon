@@ -2,22 +2,23 @@
 import React from "react";
 import Nav from "@/app/components/nav";
 import WorkingBar from "../components/workingBar";
-import { Provider} from "react-redux";
-import store from "@/app/lib/store";
+import {  useSelector} from "react-redux";
+import { openDetail } from "../lib/ReducersSelector/selector";
 export default function Layout({ children }: { children: React.ReactNode }) {
+  const toggle = useSelector(openDetail)
      
   return (
-    <Provider store={store}>
      
-      <div className="flex h-[100vh]">
-      
+      <div className={`flex h-[100vh] `}>
+      <div className={`${toggle ? "blur-sm bg-black/65" : ""}`}>
+
       <Nav />
+      </div>
       
-      <div className=" p-6  md:p-12">{children}</div>
+      <div className={` p-6  md:p-12 `}>{children}</div>
       </div> 
       
     
     
-      </Provider>
   );
 }

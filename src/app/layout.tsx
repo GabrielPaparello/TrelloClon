@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { UserProvider } from '@auth0/nextjs-auth0/client';
+import ReduxProvider from "./lib/ReduxProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -14,12 +15,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  
   return (
     <html lang="en">
       <UserProvider >
 
-      <body className={inter.className}>{children}</body>
-      </UserProvider>
+        <body className={inter.className}>
+          <ReduxProvider>{children}</ReduxProvider>
+      </body>
+        </UserProvider>
     </html>
   );
 }

@@ -8,11 +8,12 @@ export interface Card {
   tasks?: Task[];
 }
 
-interface Task {
+export interface Task {
   TASK_ID: string;
   TASK_NAME: string;
   PARENT_ID: string;
   editable: boolean;
+  detailOpen: boolean;
 }
 interface CardState {
   cards: Card[];
@@ -22,20 +23,6 @@ const initialState: CardState = {
   cards: [],
 };
 
-
-
-// export const saveData = createAsyncThunk('app/saveData', async (cards: Card[]) => {
-//   const response = await fetch('/api/save', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify(cards),
-//   });
-//   if (!response.ok) {
-//     throw new Error('Failed to save data');
-//   }
-// });
 export const saveData = createAsyncThunk('app/saveData', async ({ user_id, cards }: { user_id: string | undefined; cards: Card[] }) => {
   const response = await fetch('/api/save', {
     method: 'POST',
@@ -49,18 +36,6 @@ export const saveData = createAsyncThunk('app/saveData', async ({ user_id, cards
   }
 });
 
-
-
-// export const loadData = createAsyncThunk('app/loadData', async () => {
-//   const response = await fetch('/api/load');
-//   console.log(response);
-  
-//   if (!response.ok) {
-//     throw new Error('Failed to load data');
-//   }
-//   const data = await response.json();
-//   return data;
-// });
 
 export const loadData = createAsyncThunk('app/loadData', async (user_id: string | undefined) => {
   const response = await fetch('/api/load', {
@@ -120,6 +95,8 @@ const createCardSlice = createSlice({
           TASK_NAME: action.payload.TASK_NAME,
           PARENT_ID: card.PARENT_ID,
           editable: false,
+          detailOpen: false,
+         
         });
       }
     },
@@ -150,6 +127,22 @@ const createCardSlice = createSlice({
         );
       }
     },
+    openDetails: (state, action: PayloadAction<{ TASK_ID: String }>) => {
+      const card = state.cards.find(
+        (card) => card.tasks && card.tasks.find((task) => task.TASK_ID === action.payload.TASK_ID)
+      );
+      if (card && card.tasks) {
+        card.tasks = card.tasks.map((task) => {
+          if (task.TASK_ID === action.payload.TASK_ID) {
+            return {
+              ...task,
+              detailOpen: !task.detailOpen,
+            };
+          }
+          return task;
+        });
+      }
+    },    
   },
    extraReducers: (builder) => {
     builder.addCase(loadData.fulfilled, (state, action) => {
@@ -165,6 +158,8 @@ export const {
   addTaskToCard,
   modifyTaskfromCard,
   deleteTaskfromCard,
+  openDetails,
+  
 } = createCardSlice.actions;
 export default createCardSlice.reducer;
 
