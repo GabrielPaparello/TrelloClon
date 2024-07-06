@@ -31,7 +31,8 @@ const Details = ({ list }: { list: Task }) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(modifyTaskfromCard({ ...list, Details: { ...details } }));
+      dispatch(modifyTaskfromCard({ ...list, Details: { ...details } }));
+      handleDetailClick()
   };
 
   return (
@@ -66,7 +67,7 @@ const Details = ({ list }: { list: Task }) => {
           value={details.status}
           onChange={handleChange}
         />
-        <button onClick={handleDetailClick} type="submit">Save</button>
+        <button  type="submit">Save</button>
       </form>
       <Close
         className="absolute top-0 right-0 cursor-pointer"
