@@ -9,9 +9,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const toggle = useSelector(openDetail)
      
   return (
-     
-      <div className={`flex h-[100vh] `}>
+     <>
         <Homenav />
+      <div className={`flex h-[100vh] `}>
       <div className={`${toggle ? "blur-sm bg-black/65" : ""} bg-white `}>
 
       <Nav />
@@ -19,7 +19,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       
       <div className={` p-6  md:p-12 bg-white  `}>{children}</div>
       </div> 
-      
+      </>
     
     
   );
