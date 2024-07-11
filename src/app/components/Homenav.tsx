@@ -5,16 +5,15 @@ import "../globals.css";
 const Homenav = () => {
   return (
         <nav className="flex justify-between bg-[#191552]">
-          <aside className='flex'>
+          <aside className='flex justify-center'>
             <Image src='/assets/logo.png' alt='logoBrand' width={59} height={59}/>
-            <h2 className={`raleway text-center text-[
-#6ee2f5]`}>BoardStack</h2>
+            <h2 className={`raleway text-center text-[#6ee2f5]`}>BoardStack</h2>
           </aside>
           <ul>
           <li>
-            <h4>Link 1</h4>
+            <h4 className='fira text-white'>Link 1</h4>
           </li>
-          <li>Link 2</li>
+          <li className='fira text-white'>Link 2</li>
           </ul>
         </nav>
 
