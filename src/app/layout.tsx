@@ -5,7 +5,7 @@ import { UserProvider } from '@auth0/nextjs-auth0/client';
 import ReduxProvider from "./lib/ReduxProvider";
 import { Roboto , Raleway, Fira_Sans_Extra_Condensed } from 'next/font/google'
 const inter = Inter({ subsets: ["latin"] });
-const raleway = Raleway ({subsets: ["latin"]});
+const raleway = Raleway ({subsets: ["latin"],weight:['400','700']});
 const fira = Fira_Sans_Extra_Condensed({
   subsets: ['latin'],          
   weight: ['400', '700'],     
