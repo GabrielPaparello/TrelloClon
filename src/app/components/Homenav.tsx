@@ -7,7 +7,7 @@ const Homenav = () => {
         <nav className="flex justify-between bg-[#191552]">
           <aside className='flex items-center'>
             <Image src='/assets/logo.png' alt='logoBrand' width={59} height={59}/>
-            <h2 className={`raleway text-center text-[#6ee2f5]`}>BoardStack</h2>
+            <h2 className={`raleway text-center text-[24px] text-[#6ee2f5]`}>BoardStack</h2>
           </aside>
           <ul>
           <li>
