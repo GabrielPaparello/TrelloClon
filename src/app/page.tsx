@@ -1,8 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
-
+import Homenav from "./components/Homenav"
 export default function Home() {
   return (
+    <>
+    <header>
+      <nav>
+        <Homenav />
+      </nav>
+    </header>
     <main className="flex min-h-screen  items-center justify-center   p-24">
       <div className="flex flex-col justify-center content-center align-middle text-center items-center">
         <h1 className="text-7xl">Trello Clone</h1>
@@ -10,5 +16,6 @@ export default function Home() {
         <button className="w-[200px] bg-blue-500 mt-10 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><Link href="projects">Get Started</Link></button>
       </div>
     </main>
+    </>
   );
 }
