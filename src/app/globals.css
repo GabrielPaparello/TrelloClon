@@ -25,6 +25,12 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+.raleway {
+  font-family: 'Raleway', sans-serif;
+}
+.fira {
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
+}
 
 @layer utilities {
   .text-balance {
