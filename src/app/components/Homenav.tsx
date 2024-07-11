@@ -4,10 +4,10 @@ import "../globals.css";
 
 const Homenav = () => {
   return (
-        <nav className="flex ">
+        <nav className="flex justify-between bg-[#191552]">
           <aside className='flex'>
             <Image src='/assets/logo.png' alt='logoBrand' width={59} height={59}/>
-            <h2 className={`raleway`}>BoardStack</h2>
+            <h2 className={`raleway text-baseline`}>BoardStack</h2>
           </aside>
           <ul>
           <li>
