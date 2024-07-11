@@ -6,7 +6,11 @@ import ReduxProvider from "./lib/ReduxProvider";
 import { Roboto , Raleway, Fira_Sans_Extra_Condensed } from 'next/font/google'
 const inter = Inter({ subsets: ["latin"] });
 const raleway = Raleway ({subsets: ["latin"]});
-const fira = Fira_Sans_Extra_Condensed ({subsets: ["latin"]});
+const fira = Fira_Sans_Extra_Condensed({
+  subsets: ['latin'],          
+  weight: ['400', '700'],     
+  display: 'swap',            
+});
 const roboto = Roboto({ subsets: ['latin'], weight: ['400', '700'] })
 export const metadata: Metadata = {
   title: "Create Next App",
