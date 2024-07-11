@@ -27,7 +27,7 @@ export default function RootLayout({
     <html lang="en">
       <UserProvider >
 
-        <body className={`${roboto.className} ${fira.className} ${raleway.className} raleway`}>
+        <body className={`${roboto.className} ${fira.className} ${raleway.className} `}>
           <ReduxProvider>{children}</ReduxProvider>
       </body>
         </UserProvider>
