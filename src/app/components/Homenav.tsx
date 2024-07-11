@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import "./globals.css";
+import "../globals.css";
 
 const Homenav = () => {
   return (
