@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import Homenav from "./components/Homenav"
+import Image from 'next/image'
+
 export default function Home() {
   return (
     <>
@@ -15,6 +17,9 @@ export default function Home() {
         <h3>Start managing the work flow of your team</h3>
         <button className="w-[200px] bg-blue-500 mt-10 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><Link href="projects">Get Started</Link></button>
       </div>
+      <aside>
+        <Image src='/assets/headerLogo.png' alt='headerImg' width={368} height={490}/>
+      </aside>
     </main>
     </>
   );
