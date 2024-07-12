@@ -33,6 +33,7 @@ const Project = () => {
   };
 
   return (
+    <>
     <nav>
       <Homenav />
     </nav>
@@ -67,6 +68,7 @@ const Project = () => {
         </div>
       </div>
     </main>
+    </>
   );
 };
 
