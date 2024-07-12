@@ -6,7 +6,7 @@ interface Features {
     id: string
 }
 
- const features:Features = [
+ const features:Features[] = [
     {
         imgPath: '/assets/feature/f1.jpeg',
         h2: 'Real-Time Updates',
