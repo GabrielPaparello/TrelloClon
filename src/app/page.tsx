@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Homenav from "./components/Homenav";
 import features from "./lib/assets/features";
+import { useState , useEffect} from 'react'
 
 export default function Home() {
   const [slideIndex, setSlideIndex] = useState(0);
