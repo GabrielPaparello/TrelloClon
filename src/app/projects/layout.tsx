@@ -19,7 +19,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <Nav />
         </div>
 
-        <div className={` p-6  md:p-12 bg-white  `}>{children}</div>
+        <div className={` p-6  md:p-12 bg-white  flex-1`}>{children}</div>
       </div>
     </>
   );
