@@ -10,7 +10,12 @@ import { useUser } from '@auth0/nextjs-auth0/client';
 import { useAppDispatch } from "../lib/store";
 import { useSelector } from "react-redux";
 import { cardEdit } from "../lib/ReducersSelector/selector";
-
+import {
+  addCard,
+  loadData,
+  saveData,
+  Card,
+} from "../lib/StatesReducers/createCard";
 const Nav = () => {
   const links = [{
     home: "/",
