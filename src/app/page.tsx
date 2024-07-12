@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Homenav from "./components/Homenav"
-
+import { featuresImg } from './lib/assets/feature'
 
 export default function Home() {
   return (
@@ -26,6 +26,21 @@ export default function Home() {
         <Image src='/assets/headerLogo.png' alt='headerImg' width={490} height={368}/>
       </aside>
     </main>
+    {/* Feature Section */}
+      <section className='flex'>
+        {featuresImg.map((element) =>(
+
+        <article>
+        <Image src='' alt='' width={191} height={191} />
+        </article>
+        <article>
+          <h2></h2>
+          <h3></h3>
+        </article>
+        ))}
+
+      </section>
+
     </>
   );
 }
