@@ -9,7 +9,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
      
   return (
      <>
-      <div className={`flex h-[100vh] `}>
+      <div className={`flex h-[100vh] w-[100vw] `}>
         
       <div className={`${toggle ? "blur-sm bg-black/65" : ""} bg-white `}>
 
