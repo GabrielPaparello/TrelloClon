@@ -22,7 +22,7 @@ export default function Home() {
           </div>
           
       </div>
-      <aside>
+      <aside className='lg:ml-20'>
         <Image src='/assets/headerLogo.png' alt='headerImg' width={490} height={368}/>
       </aside>
     </main>
