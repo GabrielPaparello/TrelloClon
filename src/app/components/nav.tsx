@@ -17,6 +17,10 @@ import {
   Card,
 } from "../lib/StatesReducers/createCard";
 const Nav = () => {
+  const user_id = user?.sub?.split("|")[1];
+ useEffect(() => {
+    dispatch(loadData(user_id));
+  }, [user_id, dispatch]);
   const links = [{
     home: "/",
     newProject: "/create-project",
@@ -26,7 +30,10 @@ const Nav = () => {
   const [toggleNav, setToggleNav] = useState(false);
     const dispatch = useAppDispatch();
   const cards = useSelector(cardEdit);
-
+const handleSave = (user_id: string | undefined, cards: Card[]) => {
+    dispatch(saveData({ user_id, cards }));
+    alert("saved");
+  };
   const path = usePathname();
   useEffect(() => {
     
