@@ -6,7 +6,7 @@ interface Features {
     id: string
 }
 
-export const featuresImg:Features = [
+ const features:Features = [
     {
         imgPath: '/assets/feature/f1.jpeg',
         h2: 'Real-Time Updates',
@@ -43,3 +43,4 @@ export const featuresImg:Features = [
         id:'feature5'
     },
 ]
+export default  features
