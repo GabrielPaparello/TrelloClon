@@ -1,9 +1,18 @@
+"use client"
 import Image from "next/image";
 import Link from "next/link";
 import Homenav from "./components/Homenav";
 import features from "./lib/assets/features";
 
 export default function Home() {
+  const [slideIndex, setSlideIndex] = useState(0);
+   useEffect(() => {
+        const interval = setInterval(() => {
+            setSlideIndex(prevIndex => (prevIndex + 1) % features.length);
+        }, 3000); // Adjust slide duration (milliseconds)
+
+        return () => clearInterval(interval);
+    }, [features.length]);
   return (
     <>
       <header>
@@ -41,10 +50,11 @@ export default function Home() {
         </aside>
       </main>
       {/* Feature Section */}
-      <section className="flex">
-        {features.map((feature) => (
+      <div className='slider-container'>
+      <section className="slider">
+        {features.map((feature,index) => (
           <>
-            <article key={feature.id}>
+            <article key={feature.id} className={`slide ${index === slideIndex ? 'active' : ''}`}>
               <Image
                 src={feature.imgPath}
                 alt={feature.imgAlt}
@@ -59,6 +69,7 @@ export default function Home() {
           </>
         ))}
       </section>
+      </div>
     </>
   );
 }

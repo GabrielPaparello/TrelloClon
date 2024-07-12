@@ -38,3 +38,27 @@ body {
     text-wrap: balance;
   }
 }
+/* DELETE ON HOME */
+/* styles/slider.module.css */
+
+.slider-container {
+    overflow: hidden;
+    width: 100%; /* Adjust width as needed */
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.slide {
+    flex: 0 0 50%; /* Show 2 slides at a time */
+    padding: 20px;
+    box-sizing: border-box;
+    opacity: 0.5; /* Adjust initial opacity or other styles */
+    transition: opacity 0.3s ease; /* Smooth transition */
+}
+
+.slide.active {
+    opacity: 1; /* Show active slide */
+}
