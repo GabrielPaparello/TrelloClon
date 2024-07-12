@@ -13,9 +13,13 @@ import { useSelector } from "react-redux";
 import { cardEdit } from "../lib/ReducersSelector/selector";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { v4 as uuid } from "uuid";
+<<<<<<< HEAD
+import Homenav from "../components/Homenav"
+=======
 import Homenav from "../components/Homenav"
 
 
+>>>>>>> 35b820caf205ae7c9df5b333ff5072230be5e612
 const Project = () => {
   const { user } = useUser();
   const user_id = user?.sub?.split("|")[1];
@@ -37,6 +41,7 @@ const Project = () => {
       <Homenav />
     </nav>
     <main>
+     
       <div className="flex flex-wrap gap-4 p-4">
         <button
           onClick={() => dispatch(addCard())}
