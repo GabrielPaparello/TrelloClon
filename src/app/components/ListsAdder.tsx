@@ -37,7 +37,7 @@ const ListsAdder = ({ card }: { card: Card }) => {
               <input
                 placeholder="Insert Task Name"
                 required
-                className="placeholder:text-gray-400 bg-transparent focus:outline-none p-2"
+                className="placeholder:text-gray-400 bg-transparent focus:outline-none p-2 text-black"
                 type="text"
                 value={list.TASK_NAME}
                 onChange={(e) =>
@@ -61,7 +61,7 @@ const ListsAdder = ({ card }: { card: Card }) => {
               <div className="flex align-middle space-x-12 content-center text-center">
                 <span
                   className={`${
-                    list.TASK_NAME ? "" : "text-gray-400"
+                    list.TASK_NAME ? "text-black" : "text-gray-400"
                   }`}
                 >
                   {list.TASK_NAME ? list.TASK_NAME : "Insert card name"}

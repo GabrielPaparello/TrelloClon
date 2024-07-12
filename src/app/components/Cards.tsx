@@ -35,7 +35,7 @@ const Cards = ({ card }: { card: Card }) => {
                 <input
                   placeholder="project name/list"
                   required
-                  className="shadow-xl bg-transparent focus:outline-none p-2"
+                  className="shadow-xl bg-transparent focus:outline-none p-2 text-black"
                   type="text"
                   value={card.CARD_NAME}
                   onChange={(e) =>
@@ -52,7 +52,7 @@ const Cards = ({ card }: { card: Card }) => {
                 />
               ) : (
                 <div className="flex justify-between  items-center">
-                  <span>{card.CARD_NAME ? card.CARD_NAME : "List Name"}</span>
+                  <span className='text-black'>{card.CARD_NAME ? card.CARD_NAME : "List Name"}</span>
                   <div className="flex items-center">
                     <Edit
                       className="cursor-pointer ml-1 opacity-50 text-gray-400"
@@ -90,7 +90,7 @@ const Cards = ({ card }: { card: Card }) => {
               <input
                 placeholder="project name/list"
                 required
-                className="shadow-xl bg-transparent focus:outline-none p-2"
+                className="shadow-xl bg-transparent focus:outline-none p-2 text-black"
                 type="text"
                 value={card.CARD_NAME}
                 onChange={(e) =>
@@ -107,7 +107,7 @@ const Cards = ({ card }: { card: Card }) => {
               />
             ) : (
               <div className="flex justify-between  items-center">
-                <span>{card.CARD_NAME ? card.CARD_NAME : "List Name"}</span>
+                <span className='text-black'>{card.CARD_NAME ? card.CARD_NAME : "List Name"}</span>
                 <div className="flex items-center">
                   <Edit
                     className="cursor-pointer ml-1 opacity-50 text-gray-400"
