@@ -52,10 +52,10 @@ export default function Home() {
       </main>
       {/* Feature Section */}
       <div className='slider-container'>
-      <section className="slider">
+      <section className="slider" style={{ transform: `translateX(-${slideIndex * 50}%)` }}>
         {features.map((feature,index) => (
           <>
-            <article key={feature.id} className={`slide ${index === slideIndex ? 'active' : ''}`}>
+            <article key={feature.id} className={`slide `}>
               <Image
                 src={feature.imgPath}
                 alt={feature.imgAlt}
