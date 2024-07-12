@@ -11,12 +11,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <>
+      <nav>
+        <Homenav />
+      </nav>
       <div className={`flex h-[100vh]`}>
         <div className={`${toggle ? "blur-sm bg-black/65" : ""} bg-white `}>
-          <nav>
-            <Homenav />
-            <Nav />
-          </nav>
+          <Nav />
         </div>
 
         <div className={` p-6  md:p-12 bg-white  `}>{children}</div>
