@@ -17,6 +17,7 @@ import {
   Card,
 } from "../lib/StatesReducers/createCard";
 const Nav = () => {
+  const { user, error, isLoading } = useUser();
   const user_id = user?.sub?.split("|")[1];
  useEffect(() => {
     dispatch(loadData(user_id));
@@ -39,7 +40,6 @@ const handleSave = (user_id: string | undefined, cards: Card[]) => {
     
     if(path === "/projects/create-project") {setToggleNav(true)}
   }, [path])
-  const { user, error, isLoading } = useUser();
 
   // if (isLoading) return <div>Loading...</div>;
   // if (error) return <div>{error.message}</div>;
