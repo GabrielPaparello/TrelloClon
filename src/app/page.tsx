@@ -63,9 +63,9 @@ export default function Home() {
                 height={191}
               />
             </article>
-            <article>
-              <h2>{feature.h2}</h2>
-              <h3>{feature.h3}</h3>
+            <article className='flex flex-col fira m-4'>
+              <h2 className='text-[24px]'>{feature.h2}</h2>
+              <h3 className='text-[18px]'>{feature.h3}</h3>
             </article>
           </>
         ))}
