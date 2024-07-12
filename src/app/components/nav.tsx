@@ -7,6 +7,10 @@ import Image from "next/image";
 import { ChevronRight } from "@mui/icons-material";
 import { usePathname } from "next/navigation";
 import { useUser } from '@auth0/nextjs-auth0/client';
+import { useAppDispatch } from "../lib/store";
+import { useSelector } from "react-redux";
+import { cardEdit } from "../lib/ReducersSelector/selector";
+
 const Nav = () => {
   const links = [{
     home: "/",
@@ -15,6 +19,9 @@ const Nav = () => {
     completedProjects: "/completed-projects",
   }];
   const [toggleNav, setToggleNav] = useState(false);
+    const dispatch = useAppDispatch();
+  const cards = useSelector(cardEdit);
+
   const path = usePathname();
   useEffect(() => {
     
