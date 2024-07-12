@@ -11,7 +11,7 @@ export default function Home() {
         <Homenav />
       </nav>
     </header>
-    <main className="flex min-h-screen  space-x-5    p-24">
+    <main className="flex min-h-screen items-center  space-x-5    p-24">
       <div className="flex flex-col  text-center ">
         <h1 className="text-[44px] text-[#F4F3F0] max-w-[576px] text-start mb-4 fira font-bold">Empower Your Team with BoardStack</h1>
           <h3 className="text-[24px] text-[#F4F3F0] max-w-[466px] text-start">Streamline your projects and collaborate seamlessly with our intuitive task management platform.</h3>
