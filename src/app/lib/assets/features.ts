@@ -1,4 +1,12 @@
-export const featuresImg = [
+interface Features {
+    imgPath: string
+    h2: string
+    h3: string
+    imgAlt: string
+    id: string
+}
+
+export const featuresImg:Features = [
     {
         imgPath: '/assets/feature/f1.jpeg',
         h2: 'Real-Time Updates',
