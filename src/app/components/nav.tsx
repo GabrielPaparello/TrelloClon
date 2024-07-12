@@ -34,6 +34,22 @@ const Nav = () => {
       
         <h2 className="max-w-[190px] text-center">Welcome back! <br></br> {user?.name}</h2>
       </div>
+      {user ? 
+      <div className=" border-[#0079d3] border-b p-4">
+          <button
+            className="text-[#004f8c] font-bold rounded"
+            onClick={() => dispatch(loadData(user_id))}
+          >
+            Load
+          </button>
+          <button
+            className="text-[#004f8c] font-bold px-6 rounded"
+            onClick={() => handleSave(user_id, cards)}
+          >
+            Save
+          </button>
+        </div>
+        :null}
       <div className=" flex flex-col space-y-10 ">
         {!user ?
           <a className="bg-blue-500 mt-10 hover:bg-blue-700 text-white font-bold py-1 text-center px-4 rounded " href="/api/auth/login">Login</a>

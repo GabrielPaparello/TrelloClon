@@ -17,7 +17,7 @@ export default function Home() {
           <h3 className="text-[24px] text-[#F4F3F0] max-w-[466px] text-start">Streamline your projects and collaborate seamlessly with our intuitive task management platform.</h3>
           <div>
             <button className="w-[200px] bg-[#6ee2f5] mt-10 hover:bg-[#6ee3f5ac] text-[#21232B] font-bold py-2 px-4 rounded"><Link href="projects">Get Started</Link></button>
-            <button className="w-[200px]  text-[#21232B] font-bold py-2 px-4 rounded"><Link href="projects" className="text-[#6ee2f5] underline ">Get Started</Link></button>
+            <button className="w-[200px]  text-[#21232B] font-bold py-2 px-4 rounded"><Link href="projects" className="text-[#6ee2f5] underline pb-4 ">Learn More</Link></button>
 
           </div>
           

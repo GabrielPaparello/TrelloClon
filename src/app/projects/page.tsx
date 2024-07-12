@@ -43,7 +43,7 @@ const Project = () => {
         >
           + Add Card
         </button>
-        <div className="fixed top-0 border-[#0079d3] border-b p-4">
+        {/* <div className="fixed top-0 border-[#0079d3] border-b p-4">
           <button
             className="text-[#004f8c] font-bold rounded"
             onClick={() => dispatch(loadData(user_id))}
@@ -56,7 +56,7 @@ const Project = () => {
           >
             Save
           </button>
-        </div>
+        </div> */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
           {cards &&
             cards.map((card) => {
