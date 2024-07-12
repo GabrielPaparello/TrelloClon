@@ -1,8 +1,8 @@
 interface Features {
-    imgPath: string
-    h2: string
-    h3: string
-    imgAlt: string
+    imgPath: string,
+    h2: string,
+    h3: string,
+    imgAlt: string,
     id: string
 }
 
