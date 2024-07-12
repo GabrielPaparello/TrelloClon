@@ -29,7 +29,7 @@ export default function Home() {
     {/* Feature Section */}
       <section className='flex'>
         {features.map((feature) =>(
-
+            <>
         <article key={feature.id}>
         <Image src={feature.imgPath} alt={feature.imgAlt} width={191} height={191} />
         </article>
@@ -37,6 +37,7 @@ export default function Home() {
           <h2>{feature.h2}</h2>
           <h3>{feature.h3}</h3>
         </article>
+        </>
         ))}
 
       </section>
