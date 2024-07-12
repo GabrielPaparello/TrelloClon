@@ -11,7 +11,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <>
-      <div className={``}>
+      <div className={`flex h-[100vh]`}>
         <div className={`${toggle ? "blur-sm bg-black/65" : ""} bg-white `}>
           <nav>
             <Homenav />
