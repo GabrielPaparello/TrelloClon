@@ -13,7 +13,6 @@ import { useSelector } from "react-redux";
 import { cardEdit } from "../lib/ReducersSelector/selector";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { v4 as uuid } from "uuid";
-import Homenav from "../components/Homenav"
 
 
 const Project = () => {
@@ -34,9 +33,7 @@ const Project = () => {
 
   return (
     <>
-    <nav>
-      <Homenav />
-    </nav>
+    
     <main>
      
       <div className="flex flex-wrap gap-4 p-4">
