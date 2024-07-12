@@ -27,7 +27,7 @@ export default function Home() {
       </aside>
     </main>
     {/* Feature Section */}
-      <section className='flex'>
+      {/* <section className='flex'>
         {featuresImg.map((element) =>(
 
         <article>
@@ -39,7 +39,7 @@ export default function Home() {
         </article>
         ))}
 
-      </section>
+      </section> */}
 
     </>
   );
