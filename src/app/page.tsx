@@ -1,18 +1,16 @@
-"use client"
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import Homenav from "./components/Homenav";
 import features from "./lib/assets/features";
-import { useState , useEffect} from 'react'
+import { useState, useEffect } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import * as CarouselTypes from './lib/types/carousel';
-
+import * as CarouselTypes from "./lib/types/carousel";
 
 export default function Home() {
   const [slideIndex, setSlideIndex] = useState(0);
-  
-    
+
   return (
     <>
       <header>
@@ -50,80 +48,81 @@ export default function Home() {
         </aside>
       </main>
       {/* Feature Section */}
-      <div className=''>
-      {/* <section className="" > */}
+      <div className="">
+        {/* <section className="" > */}
         <Carousel
-  additionalTransfrom={0}
-  arrows
-  autoPlay
-  autoPlaySpeed={1000}
-  centerMode={false}
-  className=""
-  containerClass="container-with-dots"
-  dotListClass=""
-  draggable
-  focusOnSelect={false}
-  infinite
-  itemClass=""
-  keyBoardControl
-  minimumTouchDrag={80}
-  pauseOnHover
-  renderArrowsWhenDisabled={false}
-  renderButtonGroupOutside={false}
-  renderDotsOutside={false}
-  responsive={{
-    desktop: {
-      breakpoint: {
-        max: 3000,
-        min: 1024
-      },
-      items: 3,
-      partialVisibilityGutter: 40
-    },
-    mobile: {
-      breakpoint: {
-        max: 464,
-        min: 0
-      },
-      items: 1,
-      partialVisibilityGutter: 30
-    },
-    tablet: {
-      breakpoint: {
-        max: 1024,
-        min: 464
-      },
-      items: 2,
-      partialVisibilityGutter: 30
-    }
-  }}
-  rewind={false}
-  rewindWithAnimation={false}
-  rtl={false}
-  shouldResetAutoplay
-  showDots={false}
-  sliderClass=""
-  slidesToSlide={2}
-  swipeable
->
-        {features.map((feature,index) => (
-          <>
-            <article key={feature.id} >
-              <Image
-                src={feature.imgPath}
-                alt={feature.imgAlt}
-                width={191}
-                height={191}
-              />
-            </article>
-            <article className='flex flex-col fira m-4'>
-              <h2 className='text-[24px]'>{feature.h2}</h2>
-              <h3 className='text-[18px]'>{feature.h3}</h3>
-            </article>
-          </>
-        ))}
+          additionalTransfrom={0}
+          arrows={false}
+          autoPlay
+          autoPlaySpeed={3000}
+          transitionDuration={1000}
+          centerMode={false}
+          className="bg-[#F4F3F0]"
+          containerClass="container-with-dots"
+          dotListClass=""
+          draggable
+          focusOnSelect={false}
+          infinite
+          itemClass=""
+          keyBoardControl
+          minimumTouchDrag={80}
+          pauseOnHover
+          renderArrowsWhenDisabled={false}
+          renderButtonGroupOutside={false}
+          renderDotsOutside={false}
+          responsive={{
+            desktop: {
+              breakpoint: {
+                max: 3000,
+                min: 1024,
+              },
+              items: 3,
+              partialVisibilityGutter: 40,
+            },
+            mobile: {
+              breakpoint: {
+                max: 464,
+                min: 0,
+              },
+              items: 1,
+              partialVisibilityGutter: 30,
+            },
+            tablet: {
+              breakpoint: {
+                max: 1024,
+                min: 464,
+              },
+              items: 2,
+              partialVisibilityGutter: 30,
+            },
+          }}
+          rewind={false}
+          rewindWithAnimation={false}
+          rtl={false}
+          shouldResetAutoplay
+          showDots={false}
+          sliderClass=""
+          slidesToSlide={2}
+          swipeable
+        >
+          {features.map((feature, index) => (
+            <>
+              <article key={feature.id}>
+                <Image
+                  src={feature.imgPath}
+                  alt={feature.imgAlt}
+                  width={191}
+                  height={191}
+                />
+              </article>
+              <article className="flex flex-col fira m-4">
+                <h2 className="text-[24px]">{feature.h2}</h2>
+                <h3 className="text-[18px]">{feature.h3}</h3>
+              </article>
+            </>
+          ))}
         </Carousel>
-      {/* </section> */}
+        {/* </section> */}
       </div>
     </>
   );
