@@ -38,39 +38,5 @@ body {
     text-wrap: balance;
   }
 }
-/* DELETE ON HOME */
-/* styles/slider.module.css */
 
-/* components/Slider.module.css */
 
-.sliderContainer {
-  overflow: hidden;
-  width: 100%;
-  /* Adjust width as needed */
-  max-width: 100vw;
-  /* Ensure slider doesn't stretch beyond viewport */
-}
-
-.slider {
-  display: flex;
-  transition: transform 0.5s ease;
-  overflow-x: auto;
-  /* Enable horizontal scrolling */
-  scroll-snap-type: x mandatory;
-  /* Enable snap-to behavior */
-  -webkit-overflow-scrolling: touch;
-  /* Enable smooth scrolling on iOS */
-}
-
-.slide {
-  flex: 0 0 50%;
-  /* Show 2 slides at a time */
-  min-width: 50%;
-  /* Minimum width to prevent stretching */
-  padding: 20px;
-  box-sizing: border-box;
-  text-align: center;
-  /* Center content */
-  scroll-snap-align: center;
-  /* Snap to center of slide */
-}

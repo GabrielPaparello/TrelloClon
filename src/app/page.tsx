@@ -4,6 +4,8 @@ import Link from "next/link";
 import Homenav from "./components/Homenav";
 import features from "./lib/assets/features";
 import { useState , useEffect} from 'react'
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 export default function Home() {
   const [slideIndex, setSlideIndex] = useState(0);
@@ -51,11 +53,29 @@ export default function Home() {
         </aside>
       </main>
       {/* Feature Section */}
-      <div className='slider-container'>
-      <section className="slider" style={{ transform: `translateX(-${slideIndex * 50}%)` }}>
+      <div className=''>
+      {/* <section className="" > */}
+        <Carousel
+  swipeable={false}
+  draggable={false}
+  showDots={true}
+  // responsive={responsive}
+  ssr={true} // means to render carousel on server-side.
+  infinite={true}
+  autoPlay
+  autoPlaySpeed={1000}
+  keyBoardControl={true}
+  customTransition="all .5"
+  transitionDuration={500}
+  containerClass="carousel-container"
+  removeArrowOnDeviceType={["tablet", "mobile"]}
+  deviceType={this.props.deviceType}
+  dotListClass="custom-dot-list-style"
+  itemClass="carousel-item-padding-40-px"
+>
         {features.map((feature,index) => (
           <>
-            <article key={feature.id} className={`slide `}>
+            <article key={feature.id} >
               <Image
                 src={feature.imgPath}
                 alt={feature.imgAlt}
@@ -69,7 +89,8 @@ export default function Home() {
             </article>
           </>
         ))}
-      </section>
+        </Carousel>
+      {/* </section> */}
       </div>
     </>
   );
