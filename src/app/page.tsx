@@ -51,7 +51,7 @@ export default function Home() {
       <div className="">
         {/* <section className="" > */}
         <Carousel
-        className="bg-[#21232B] flex items-center p-7"
+        className="bg-[#21232B]  p-7"
           additionalTransfrom={0}
           arrows={false}
           autoPlay
