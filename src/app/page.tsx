@@ -54,10 +54,10 @@ export default function Home() {
           additionalTransfrom={0}
           arrows={false}
           autoPlay
-          autoPlaySpeed={3000}
-          transitionDuration={1000}
+          autoPlaySpeed={1500}
+          transitionDuration={1500}
           centerMode={false}
-          className="bg-[#F4F3F0]"
+          className="bg-[#21232B] flex items-center p-4"
           containerClass="container-with-dots"
           dotListClass=""
           draggable
@@ -109,6 +109,7 @@ export default function Home() {
             <>
               <article key={feature.id}>
                 <Image
+                className='shado'
                   src={feature.imgPath}
                   alt={feature.imgAlt}
                   width={191}
