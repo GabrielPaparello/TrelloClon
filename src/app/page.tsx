@@ -127,7 +127,7 @@ export default function Home() {
           ))}
           </section> 
         </Carousel>
-        </section>
+        
       </div>
     </>
   );
