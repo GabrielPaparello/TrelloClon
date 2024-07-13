@@ -51,7 +51,7 @@ export default function Home() {
       <div className="">
         {/* <section className="" > */}
         <Carousel
-          className="bg-white bg-opacity-10 p-7"
+        className="bg-white bg-opacity-10 p-7"
           additionalTransfrom={0}
           arrows={false}
           autoPlay
@@ -96,36 +96,37 @@ export default function Home() {
               partialVisibilityGutter: 30,
             },
           }}
-          rewind={true} // Ensure rewind is set to true
-          rewindWithAnimation={true} // Ensure rewindWithAnimation is set to true
+          rewind={true}
+          rewindWithAnimation={true}
           rtl={false}
           shouldResetAutoplay
           showDots={false}
           sliderClass=""
           slidesToSlide={2}
-          swipeable={true}
+          swipeable={false}
           transitionDuration={1000}
         >
-          <section className="flex items-center m-4">
-            {features.map((feature, index) => (
-              <>
-                <article key={feature.id}>
-                  <Image
-                    className=""
-                    src={feature.imgPath}
-                    alt={feature.imgAlt}
-                    width={191}
-                    height={191}
-                  />
-                </article>
-                <article className="flex flex-col fira m-4">
-                  <h2 className="text-[24px] text-[#6ee2f5]">{feature.h2}</h2>
-                  <h3 className="text-[18px] text-white">{feature.h3}</h3>
-                </article>
-              </>
-            ))}
-          </section>
+          <section className='flex items-center m-4'>
+          {features.map((feature, index) => (
+            <>
+              <article key={feature.id}>
+                <Image
+                  className=""
+                  src={feature.imgPath}
+                  alt={feature.imgAlt}
+                  width={191}
+                  height={191}
+                />
+              </article>
+              <article className="flex flex-col fira m-4">
+                <h2 className="text-[24px] text-[#6ee2f5]">{feature.h2}</h2>
+                <h3 className="text-[18px] text-white">{feature.h3}</h3>
+              </article>
+            </>
+          ))}
+          </section> 
         </Carousel>
+        
       </div>
     </>
   );
