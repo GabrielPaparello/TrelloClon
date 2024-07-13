@@ -58,7 +58,7 @@ export default function Home() {
           autoPlaySpeed={1}
           centerMode={false}
           containerClass="container-with-dots"
-          customTransition="all 2s linear"
+          customTransition="all 5s linear"
           dotListClass=""
           draggable
           focusOnSelect={false}
