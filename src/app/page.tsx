@@ -6,10 +6,11 @@ import features from "./lib/assets/features";
 import { useState , useEffect} from 'react'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import * from "./lib/types/carousel.ts"
 
 export default function Home() {
   const [slideIndex, setSlideIndex] = useState(0);
-  const responsive = {
+  const responsive:ResponsiveType  = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
     items: 3,
