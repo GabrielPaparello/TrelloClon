@@ -106,9 +106,9 @@ export default function Home() {
           swipeable={false}
           transitionDuration={1000}
         >
-          <section className='flex items-center m-4'>
           {features.map((feature, index) => (
             <>
+          <section className='flex items-center'>
               <article key={feature.id}>
                 <Image
                   className=""
@@ -122,9 +122,9 @@ export default function Home() {
                 <h2 className="text-[24px] text-[#6ee2f5]">{feature.h2}</h2>
                 <h3 className="text-[18px] text-white">{feature.h3}</h3>
               </article>
+          </section> 
             </>
           ))}
-          </section> 
         </Carousel>
         
       </div>
