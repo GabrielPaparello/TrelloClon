@@ -51,7 +51,7 @@ export default function Home() {
       <div className="">
         {/* <section className="" > */}
         <Carousel
-        className="bg-[#21232B]  p-7"
+        className="bg-[FFFFFF1A]  p-7"
           additionalTransfrom={0}
           arrows={false}
           autoPlay
@@ -107,7 +107,7 @@ export default function Home() {
           swipeable
           transitionDuration={1000}
         >
-          <section className='flex items-center '>
+          <section className=''>
           {features.map((feature, index) => (
             <>
               <article key={feature.id}>
