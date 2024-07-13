@@ -103,14 +103,33 @@ export default class Carousel extends React.Component<CarouselProps> {
   next: (slidesHavePassed: number) => void;
   goToSlide: (slide: number, skipCallbacks?: SkipCallbackOptions) => void;
   state: CarouselInternalState;
-  setClones: (
-    slidesToShow: number,
-    itemWidth?: number,
-    forResizing?: boolean
-  ) => void; // reset carousel in infinite mode.
-  setItemsToShow: (shouldCorrectItemPosition?: boolean) => void; // reset carousel in non-infinite mode.
+  setClones: (slidesToShow: number, itemWidth?: number, forResizing?: boolean) => void;
+  setItemsToShow: (shouldCorrectItemPosition?: boolean) => void;
   correctClonesPosition: ({ domLoaded }: { domLoaded: boolean }) => void;
   onMove: boolean;
   direction: Direction;
   containerRef: React.RefObject<HTMLDivElement>;
+
+  constructor(props: CarouselProps) {
+    super(props);
+
+    this.previous = (slidesHavePassed: number) => {};
+    this.next = (slidesHavePassed: number) => {};
+    this.goToSlide = (slide: number, skipCallbacks?: SkipCallbackOptions) => {};
+    this.state = {
+      itemWidth: 0,
+      containerWidth: 0,
+      slidesToShow: 0,
+      currentSlide: 0,
+      totalItems: 0,
+      domLoaded: false,
+      transform: 0,
+    };
+    this.setClones = (slidesToShow: number, itemWidth?: number, forResizing?: boolean) => {};
+    this.setItemsToShow = (shouldCorrectItemPosition?: boolean) => {};
+    this.correctClonesPosition = ({ domLoaded }: { domLoaded: boolean }) => {};
+    this.onMove = false;
+    this.direction = undefined;
+    this.containerRef = React.createRef();
+  }
 }
