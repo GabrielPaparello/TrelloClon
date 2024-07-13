@@ -51,60 +51,63 @@ export default function Home() {
       <div className="">
         {/* <section className="" > */}
         <Carousel
-          additionalTransfrom={0}
-          arrows={false}
-          autoPlay
-          autoPlaySpeed={1500}
-          transitionDuration={1500}
-          centerMode={false}
-          className="bg-[#21232B] flex items-center p-4"
-          containerClass="container-with-dots"
-          dotListClass=""
-          draggable
-          focusOnSelect={false}
-          infinite
-          itemClass=""
-          keyBoardControl
-          minimumTouchDrag={80}
-          pauseOnHover
-          renderArrowsWhenDisabled={false}
-          renderButtonGroupOutside={false}
-          renderDotsOutside={false}
-          responsive={{
-            desktop: {
-              breakpoint: {
-                max: 3000,
-                min: 1024,
-              },
-              items: 3,
-              partialVisibilityGutter: 40,
-            },
-            mobile: {
-              breakpoint: {
-                max: 464,
-                min: 0,
-              },
-              items: 1,
-              partialVisibilityGutter: 30,
-            },
-            tablet: {
-              breakpoint: {
-                max: 1024,
-                min: 464,
-              },
-              items: 2,
-              partialVisibilityGutter: 30,
-            },
-          }}
-          rewind={false}
-          rewindWithAnimation={false}
-          rtl={false}
-          shouldResetAutoplay
-          showDots={false}
-          sliderClass=""
-          slidesToSlide={2}
-          swipeable
-        >
+        className="bg-[#21232B]  p-7"
+  additionalTransfrom={0}
+  arrows
+  autoPlay
+  autoPlaySpeed={1}
+  centerMode={false}
+  className=""
+  containerClass="container-with-dots"
+  customTransition="all 1s linear"
+  dotListClass=""
+  draggable
+  focusOnSelect={false}
+  infinite
+  itemClass=""
+  keyBoardControl
+  minimumTouchDrag={80}
+  pauseOnHover
+  renderArrowsWhenDisabled={false}
+  renderButtonGroupOutside={false}
+  renderDotsOutside={false}
+  responsive={{
+    desktop: {
+      breakpoint: {
+        max: 3000,
+        min: 1024
+      },
+      items: 3,
+      partialVisibilityGutter: 40
+    },
+    mobile: {
+      breakpoint: {
+        max: 464,
+        min: 0
+      },
+      items: 1,
+      partialVisibilityGutter: 30
+    },
+    tablet: {
+      breakpoint: {
+        max: 1024,
+        min: 464
+      },
+      items: 2,
+      partialVisibilityGutter: 30
+    }
+  }}
+  rewind={false}
+  rewindWithAnimation={false}
+  rtl={false}
+  shouldResetAutoplay
+  showDots={false}
+  sliderClass=""
+  slidesToSlide={2}
+  swipeable
+  transitionDuration={1000}
+>
+  <section className='flex items-center justify-center content-center'>
           {features.map((feature, index) => (
             <>
               <article key={feature.id}>
@@ -117,13 +120,13 @@ export default function Home() {
                 />
               </article>
               <article className="flex flex-col fira m-4">
-                <h2 className="text-[24px]">{feature.h2}</h2>
-                <h3 className="text-[18px]">{feature.h3}</h3>
+                <h2 className="text-[24px] text-[#6ee2f5]">{feature.h2}</h2>
+                <h3 className="text-[18px] text-white">{feature.h3}</h3>
               </article>
             </>
           ))}
+          </section> 
         </Carousel>
-        {/* </section> */}
       </div>
     </>
   );
