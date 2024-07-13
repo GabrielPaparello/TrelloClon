@@ -51,13 +51,12 @@ export default function Home() {
       <div className="">
         {/* <section className="" > */}
         <Carousel
-        className="bg-[FFFFFF1A]  p-7"
+        className="bg-[FFFFFF1A] p-7"
           additionalTransfrom={0}
           arrows={false}
           autoPlay
           autoPlaySpeed={1}
           centerMode={false}
-          
           containerClass="container-with-dots"
           customTransition="all 2s linear"
           dotListClass=""
@@ -107,12 +106,12 @@ export default function Home() {
           swipeable
           transitionDuration={1000}
         >
-          <section className=''>
           {features.map((feature, index) => (
             <>
+          <section className='flex items-center'>
               <article key={feature.id}>
                 <Image
-                  className="shadow-lg"
+                  className=""
                   src={feature.imgPath}
                   alt={feature.imgAlt}
                   width={191}
@@ -123,9 +122,9 @@ export default function Home() {
                 <h2 className="text-[24px] text-[#6ee2f5]">{feature.h2}</h2>
                 <h3 className="text-[18px] text-white">{feature.h3}</h3>
               </article>
+          </section> 
             </>
           ))}
-          </section> 
         </Carousel>
         
       </div>
