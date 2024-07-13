@@ -51,68 +51,68 @@ export default function Home() {
       <div className="">
         {/* <section className="" > */}
         <Carousel
-        className="bg-[#21232B]  p-7"
-  additionalTransfrom={0}
-  arrows
-  autoPlay
-  autoPlaySpeed={1}
-  centerMode={false}
-  className=""
-  containerClass="container-with-dots"
-  customTransition="all 1s linear"
-  dotListClass=""
-  draggable
-  focusOnSelect={false}
-  infinite
-  itemClass=""
-  keyBoardControl
-  minimumTouchDrag={80}
-  pauseOnHover
-  renderArrowsWhenDisabled={false}
-  renderButtonGroupOutside={false}
-  renderDotsOutside={false}
-  responsive={{
-    desktop: {
-      breakpoint: {
-        max: 3000,
-        min: 1024
-      },
-      items: 3,
-      partialVisibilityGutter: 40
-    },
-    mobile: {
-      breakpoint: {
-        max: 464,
-        min: 0
-      },
-      items: 1,
-      partialVisibilityGutter: 30
-    },
-    tablet: {
-      breakpoint: {
-        max: 1024,
-        min: 464
-      },
-      items: 2,
-      partialVisibilityGutter: 30
-    }
-  }}
-  rewind={false}
-  rewindWithAnimation={false}
-  rtl={false}
-  shouldResetAutoplay
-  showDots={false}
-  sliderClass=""
-  slidesToSlide={2}
-  swipeable
-  transitionDuration={1000}
->
-  <section className='flex items-center justify-center content-center'>
+        className="bg-[#21232B] flex items-center p-7"
+          additionalTransfrom={0}
+          arrows={false}
+          autoPlay
+          autoPlaySpeed={1}
+          centerMode={false}
+          
+          containerClass="container-with-dots"
+          customTransition="all 2s linear"
+          dotListClass=""
+          draggable
+          focusOnSelect={false}
+          infinite
+          itemClass=""
+          keyBoardControl
+          minimumTouchDrag={80}
+          pauseOnHover
+          renderArrowsWhenDisabled={false}
+          renderButtonGroupOutside={false}
+          renderDotsOutside={false}
+          responsive={{
+            desktop: {
+              breakpoint: {
+                max: 3000,
+                min: 1024,
+              },
+              items: 3,
+              partialVisibilityGutter: 40,
+            },
+            mobile: {
+              breakpoint: {
+                max: 464,
+                min: 0,
+              },
+              items: 1,
+              partialVisibilityGutter: 30,
+            },
+            tablet: {
+              breakpoint: {
+                max: 1024,
+                min: 464,
+              },
+              items: 2,
+              partialVisibilityGutter: 30,
+            },
+          }}
+          rewind={false}
+          rewindWithAnimation={false}
+          rtl={false}
+          shouldResetAutoplay
+          showDots={false}
+          sliderClass=""
+          slidesToSlide={2}
+          swipeable
+          transitionDuration={1000}
+        >
+          <section className='flex items-center '>
           {features.map((feature, index) => (
             <>
               <article key={feature.id}>
                 <Image
-                className='shado'
+                  className="shadow-lg"
                   src={feature.imgPath}
                   alt={feature.imgAlt}
                   width={191}
@@ -127,6 +127,7 @@ export default function Home() {
           ))}
           </section> 
         </Carousel>
+        </section>
       </div>
     </>
   );
