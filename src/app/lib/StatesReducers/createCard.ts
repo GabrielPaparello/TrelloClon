@@ -19,7 +19,7 @@ export interface Task {
     DueDate: string;
     Priority: string;
     status: string;
-  }
+  };
 }
 interface CardState {
   cards: Card[];
@@ -29,43 +29,49 @@ const initialState: CardState = {
   cards: [],
 };
 
-export const saveData = createAsyncThunk('app/saveData', async ({ user_id, cards }: { user_id: string | undefined; cards: Card[] }) => {
-  const response = await fetch('/api/save', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ user_id, data: cards }),
-  });
-  if (!response.ok) {
-    throw new Error('Failed to save data');
+export const saveData = createAsyncThunk(
+  "app/saveData",
+  async ({
+    user_id,
+    cards,
+  }: {
+    user_id: string | undefined;
+    cards: Card[];
+  }) => {
+    const response = await fetch("/api/save", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ user_id, data: cards }),
+    });
+    if (!response.ok) {
+      throw new Error("Failed to save data");
+    }
   }
-});
+);
 
-
-export const loadData = createAsyncThunk('app/loadData', async (user_id: string | undefined) => {
-  const response = await fetch('/api/load', {
-    method: 'GET',
-    headers: {
-      'user_id': user_id || '',
-    },
-  });
-  if (!response.ok) {
-    throw new Error('Failed to load data');
+export const loadData = createAsyncThunk(
+  "app/loadData",
+  async (user_id: string | undefined) => {
+    const response = await fetch("/api/load", {
+      method: "GET",
+      headers: {
+        user_id: user_id || "",
+      },
+    });
+    if (!response.ok) {
+      throw new Error("Failed to load data");
+    }
+    const data = await response.json();
+    return data;
   }
-  const data = await response.json();
-  return data;
-});
-
-
-
-
+);
 
 const createCardSlice = createSlice({
   name: "createCard",
   initialState,
   reducers: {
-    
     addCard: (state) => {
       const newCard: Card = {
         PARENT_ID: uuidv4(),
@@ -109,7 +115,6 @@ const createCardSlice = createSlice({
             Priority: "",
             status: "",
           },
-         
         });
       }
     },
@@ -142,7 +147,9 @@ const createCardSlice = createSlice({
     },
     openDetails: (state, action: PayloadAction<{ TASK_ID: String }>) => {
       const card = state.cards.find(
-        (card) => card.tasks && card.tasks.find((task) => task.TASK_ID === action.payload.TASK_ID)
+        (card) =>
+          card.tasks &&
+          card.tasks.find((task) => task.TASK_ID === action.payload.TASK_ID)
       );
       if (card && card.tasks) {
         card.tasks = card.tasks.map((task) => {
@@ -155,9 +162,9 @@ const createCardSlice = createSlice({
           return task;
         });
       }
-    },    
+    },
   },
-   extraReducers: (builder) => {
+  extraReducers: (builder) => {
     builder.addCase(loadData.fulfilled, (state, action) => {
       state.cards = action.payload;
     });
@@ -172,7 +179,5 @@ export const {
   modifyTaskfromCard,
   deleteTaskfromCard,
   openDetails,
-  
 } = createCardSlice.actions;
 export default createCardSlice.reducer;
-

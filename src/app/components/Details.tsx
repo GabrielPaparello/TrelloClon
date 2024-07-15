@@ -1,10 +1,7 @@
 import { Close } from "@mui/icons-material";
 import React, { useState } from "react";
 import { useAppDispatch } from "../lib/store";
-import {
-  Task,
-  modifyTaskfromCard,
-} from "../lib/StatesReducers/createCard";
+import { Task, modifyTaskfromCard } from "../lib/StatesReducers/createCard";
 import { toggle } from "../lib/StatesReducers/openDetails";
 
 const Details = ({ list }: { list: Task }) => {
@@ -17,22 +14,28 @@ const Details = ({ list }: { list: Task }) => {
   });
 
   const handleDetailClick = () => {
-    dispatch(modifyTaskfromCard({ ...list, detailOpen: !list.detailOpen , Details: { ...details } }));
+    dispatch(
+      modifyTaskfromCard({
+        ...list,
+        detailOpen: !list.detailOpen,
+        Details: { ...details },
+      })
+    );
     dispatch(toggle());
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setDetails(prevState => ({
+    setDetails((prevState) => ({
       ...prevState,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-      dispatch(modifyTaskfromCard({ ...list, Details: { ...details } }));
-      handleDetailClick()
+    dispatch(modifyTaskfromCard({ ...list, Details: { ...details } }));
+    handleDetailClick();
   };
 
   return (
@@ -67,7 +70,7 @@ const Details = ({ list }: { list: Task }) => {
           value={details.status}
           onChange={handleChange}
         />
-        <button  type="submit">Save</button>
+        <button type="submit">Save</button>
       </form>
       <Close
         className="absolute top-0 right-0 cursor-pointer"

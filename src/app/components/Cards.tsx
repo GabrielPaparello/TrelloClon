@@ -52,7 +52,9 @@ const Cards = ({ card }: { card: Card }) => {
                 />
               ) : (
                 <div className="flex justify-between  items-center">
-                  <span className='text-black'>{card.CARD_NAME ? card.CARD_NAME : "List Name"}</span>
+                  <span className="text-black">
+                    {card.CARD_NAME ? card.CARD_NAME : "List Name"}
+                  </span>
                   <div className="flex items-center">
                     <Edit
                       className="cursor-pointer ml-1 opacity-50 text-gray-400"
@@ -60,7 +62,9 @@ const Cards = ({ card }: { card: Card }) => {
                         dispatch(modifyCard({ ...card, editable: true }))
                       }
                     />
-                    <button onClick={() => dispatch(deleteCard(card.PARENT_ID))}>
+                    <button
+                      onClick={() => dispatch(deleteCard(card.PARENT_ID))}
+                    >
                       <Delete className="cursor-pointer ml-1 opacity-50 text-gray-400" />
                     </button>
                   </div>
@@ -107,7 +111,9 @@ const Cards = ({ card }: { card: Card }) => {
               />
             ) : (
               <div className="flex justify-between  items-center">
-                <span className='text-black'>{card.CARD_NAME ? card.CARD_NAME : "List Name"}</span>
+                <span className="text-black">
+                  {card.CARD_NAME ? card.CARD_NAME : "List Name"}
+                </span>
                 <div className="flex items-center">
                   <Edit
                     className="cursor-pointer ml-1 opacity-50 text-gray-400"

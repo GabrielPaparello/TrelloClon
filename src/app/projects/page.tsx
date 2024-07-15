@@ -14,7 +14,6 @@ import { cardEdit } from "../lib/ReducersSelector/selector";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { v4 as uuid } from "uuid";
 
-
 const Project = () => {
   const { user } = useUser();
   const user_id = user?.sub?.split("|")[1];
@@ -33,38 +32,23 @@ const Project = () => {
 
   return (
     <>
-    
-    <main>
-     
-      <div className="flex flex-wrap gap-4 p-4">
-        <button
-          onClick={() => dispatch(addCard())}
-          className="text-[#0079d3] font-bold pb-2 px-6 rounded"
-        >
-          + Add Card
-        </button>
-        {/* <div className="fixed top-0 border-[#0079d3] border-b p-4">
+      <main>
+        <div className="flex flex-wrap gap-4 p-4">
           <button
-            className="text-[#004f8c] font-bold rounded"
-            onClick={() => dispatch(loadData(user_id))}
+            onClick={() => dispatch(addCard())}
+            className="text-[#0079d3] font-bold pb-2 px-6 rounded"
           >
-            Load
+            + Add Card
           </button>
-          <button
-            className="text-[#004f8c] font-bold px-6 rounded"
-            onClick={() => handleSave(user_id, cards)}
-          >
-            Save
-          </button>
-        </div> */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
-          {cards &&
-            cards.map((card) => {
-              return <Cards key={uuid()} card={card} />;
-            })}
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 w-full">
+            {cards &&
+              cards.map((card) => {
+                return <Cards key={uuid()} card={card} />;
+              })}
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
     </>
   );
 };
