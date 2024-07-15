@@ -1,7 +1,11 @@
+"use client";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 const Blog = () => {
-  let width = window.innerWidth;
+  const [width, setWidth] = React.useState(0);
+  useEffect(() => {
+    setWidth(window.innerWidth);
+  }, []);
   return (
     <section className="flex flex-col md:flex-row md:gap-10 md:items-start mt-20 p-5 bg-gradient-to-t from-[#bab9cb] to-[#191552]  ">
       <article className="">
