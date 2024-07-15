@@ -1,9 +1,9 @@
 "use client";
 import Homenav from "./components/Homenav";
-import Feature from "./components/Feature";
+import Feature from "./components/Sections/Feature";
+import Blog from "./components/Sections/Blog";
 import Hero from "./components/Sections/Hero";
 export default function Home() {
-
   return (
     <>
       <header>
@@ -12,10 +12,13 @@ export default function Home() {
         </nav>
       </header>
       <main>
-      <Hero />
+        <Hero />
       </main>
-      <article >
+      <article>
         <Feature />
+      </article>
+      <article>
+        <Blog />
       </article>
     </>
   );
