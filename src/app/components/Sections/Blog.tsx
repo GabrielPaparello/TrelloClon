@@ -1,12 +1,13 @@
 import Image from "next/image";
 import React from "react";
 const Blog = () => {
+  let width = window.innerWidth;
   return (
     <section className="flex flex-col md:flex-row md:gap-10 md:items-start mt-20 p-5 bg-gradient-to-t from-[#bab9cb] to-[#191552]  ">
       <article className="">
         <Image
           src="/assets/blog/blog1.jpeg"
-          width={window.innerWidth > 500 ? 800 : 300}
+          width={width > 500 ? 800 : 300}
           height={311}
           alt="blog-Img"
         />
