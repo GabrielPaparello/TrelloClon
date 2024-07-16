@@ -4,13 +4,13 @@ import React from "react";
 
 const Hero = () => {
   return (
-    <main className="flex flex-col md:flex-row items-center gap-10 p-10 md:space-x-28 md:mb-40 mb-30 md:pt-52 pt-20 md:order-1 pb-40 justify-center">
+    <main className="flex flex-col md:flex-row items-start gap-10 p-10 md:space-x-28 md:mb-40 mb-30 md:pt-52 pt-20 md:order-1 pb-40 justify-center">
       {/* Left Section */}
-      <section className="order-2 flex flex-col items-center md:text-start">
-        <h1 className="text-4xl md:text-6xl text-white font-bold mb-4 leading-tight max-w-prose text-center md:text-left">
+      <section className="order-2 flex flex-col text-center md:text-start">
+        <h1 className="text-4xl md:text-6xl text-white max-w-prose font-bold mb-4 leading-tight">
           Empower Your Team with BoardStack
         </h1>
-        <h3 className="text-lg md:text-xl text-white max-w-prose mb-6 text-center md:text-left">
+        <h3 className="text-lg md:text-xl text-white max-w-prose mb-6">
           Streamline your projects and collaborate seamlessly with our intuitive
           task management platform.
         </h3>
@@ -29,16 +29,14 @@ const Hero = () => {
       </section>
 
       {/* Right Section */}
-      <section className="order-1 md:order-2 bg-blue-200 bg-opacity-25 p-8 md:p-10 rounded-xl flex justify-center items-center">
-        <div className="relative w-80 h-60 md:w-96 md:h-72">
-          <Image
-            src="/assets/headerLogo.png"
-            alt="headerImg"
-            layout="fill"
-            objectFit="cover"
-            className="rounded-xl"
-          />
-        </div>
+      <section className="order-1 md:order-2 bg-blue-200 bg-opacity-25 p-8 md:p-10 rounded-xl">
+        <Image
+          src="/assets/headerLogo.png"
+          alt="headerImg"
+          width={490}
+          height={368}
+          className="rounded-xl"
+        />
       </section>
     </main>
   );
