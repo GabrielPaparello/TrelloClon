@@ -78,11 +78,11 @@ const Details = React.memo(({ list }: { list: Task }) => {
   // Handle form submission
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Update the task's details and checklist
+    // Update the task's details and checklist, including completedChecklist
     dispatch(
       modifyTaskfromCard({
         ...list,
-        Details: { ...details, checklist }, // Include checklist in Details
+        Details: { ...details, checklist, completedChecklist }, // Include checklist and completedChecklist in Details
       })
     );
     // Close the details view
@@ -96,7 +96,7 @@ const Details = React.memo(({ list }: { list: Task }) => {
       modifyTaskfromCard({
         ...list,
         detailOpen: !list.detailOpen,
-        Details: { ...details, checklist }, // Include checklist in Details
+        Details: { ...details, checklist, completedChecklist }, // Include checklist and completedChecklist in Details
       })
     );
     // Toggle the details view
