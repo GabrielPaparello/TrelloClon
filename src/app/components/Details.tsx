@@ -131,29 +131,24 @@ const Details = React.memo(({ list }: { list: Task }) => {
           {checklist.map((item, index) => (
             <div key={index} className="flex items-center space-x-2 gap-5">
               <input
-                className="border-black border bg-gray-200 rounded-lg min-w-[350px] text-black"
-                type="text"
-                value={item.startsWith("~") ? item.substr(1) : item}
-                onChange={(e) =>
-                  handleChecklistChange(
-                    index,
-                    (item.startsWith("~") ? "~" : "") + e.target.value
-                  )
-                }
+                className="hidden"
+                type="checkbox"
+                checked={item.startsWith("~")}
+                onChange={() => toggleChecklistItem(index)}
               />
+              <label
+                className={`border-black border bg-gray-200 rounded-lg min-w-[350px] text-black cursor-pointer ${
+                  item.startsWith("~") ? "line-through" : ""
+                }`}
+              >
+                {item.startsWith("~") ? item.substr(1) : item}
+              </label>
               <button
                 className="text-[#0079d3]"
                 type="button"
                 onClick={() => handleRemoveChecklistItem(index)}
               >
                 Remove
-              </button>
-              <button
-                className="text-[#0079d3]"
-                type="button"
-                onClick={() => toggleChecklistItem(index)}
-              >
-                {item.startsWith("~") ? "Unstrike" : "Strike"}
               </button>
             </div>
           ))}
