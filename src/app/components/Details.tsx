@@ -134,13 +134,13 @@ const Details = React.memo(({ list }: { list: Task }) => {
                 type="checkbox"
                 checked={item.startsWith("~")}
                 onChange={() => toggleChecklistItem(index)}
-                className="hidden"
+                className="border-gray-300 rounded text-[#0079d3] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                 id={`checkbox-${index}`}
               />
               <label
                 htmlFor={`checkbox-${index}`}
-                className={`border-black border bg-gray-200 rounded-lg min-w-[350px] text-black cursor-pointer ${
-                  item.startsWith("~") ? "line-through" : ""
+                className={`ml-2 ${
+                  item.startsWith("~") ? "line-through text-gray-400" : ""
                 }`}
               >
                 {item.startsWith("~") ? item.substr(1) : item}
