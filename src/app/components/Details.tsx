@@ -131,12 +131,14 @@ const Details = React.memo(({ list }: { list: Task }) => {
           {checklist.map((item, index) => (
             <div key={index} className="flex items-center space-x-2 gap-5">
               <input
-                className="hidden"
                 type="checkbox"
                 checked={item.startsWith("~")}
                 onChange={() => toggleChecklistItem(index)}
+                className="hidden"
+                id={`checkbox-${index}`}
               />
               <label
+                htmlFor={`checkbox-${index}`}
                 className={`border-black border bg-gray-200 rounded-lg min-w-[350px] text-black cursor-pointer ${
                   item.startsWith("~") ? "line-through" : ""
                 }`}
