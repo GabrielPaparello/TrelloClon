@@ -141,4 +141,6 @@ const Details = React.memo(({ list }: { list: Task }) => {
   );
 });
 
+Details.displayName = "Details";
+
 export default Details;
