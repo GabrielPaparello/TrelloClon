@@ -20,7 +20,7 @@ const Hero = () => {
               Get Started
             </a>
           </Link>
-          <Link href="projects">
+          <Link href="projects/learnBoardStack">
             <a className="w-52 text-blue-500 font-bold py-2 px-4 rounded inline-block border border-blue-500 hover:bg-blue-100">
               Learn More...
             </a>
