@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useAppDispatch } from "../lib/store";
 import { Task, modifyTaskfromCard } from "../lib/StatesReducers/createCard";
 import { toggle } from "../lib/StatesReducers/openDetails";
@@ -15,12 +15,19 @@ const Details = React.memo(({ list }: { list: Task }) => {
     status: list.Details?.status || "",
   });
 
-  // Local state for managing checklist items
-  const initialChecklist = list.Details?.checklist || []; // Ensure checklist exists
+  // Local state for managing checklist items and their completion status
+  const initialChecklist = list.Details?.checklist || [];
   const [checklist, setChecklist] = useState<string[]>(initialChecklist);
   const [completedChecklist, setCompletedChecklist] = useState<boolean[]>(
     initialChecklist.map(() => false)
   );
+
+  // Ensure completedChecklist state matches the initial checklist
+  useEffect(() => {
+    setCompletedChecklist(
+      initialChecklist.map((_, index) => completedChecklist[index] || false)
+    );
+  }, [initialChecklist]);
 
   // Handle input change for details
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -84,7 +91,7 @@ const Details = React.memo(({ list }: { list: Task }) => {
 
   // Handle click to close details
   const handleDetailClick = () => {
-    // Update the task's details and checklist
+    // Update the task's details and checklist, including completedChecklist
     dispatch(
       modifyTaskfromCard({
         ...list,
