@@ -115,6 +115,7 @@ const createCardSlice = createSlice({
             DueDate: "",
             Priority: "",
             status: "",
+            checklist: [],
           },
         });
       }
