@@ -37,7 +37,8 @@ const Blog = () => {
         </h2>
         <h3 className="text-[#bab9cb] text-lg md:text-2xl mb-6">
           Experience BoardStack on the go with our fully-featured mobile app
-          available soon for iOS and Android.
+          available soon for iOS and Android.{" "}
+          <span className="text-gray-200 pl-5">Coming Soon</span>
         </h3>
         <button className="w-[200px] bg-[#191552] hover:bg-[#6ee3f5ac] text-[#f4f3f0] font-bold py-2 px-4 rounded">
           Read More...

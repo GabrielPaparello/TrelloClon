@@ -47,7 +47,7 @@ const Feature = () => {
               </h2>
               <h3 className="text-lg md:text-2xl text-white">
                 {feature.h3}
-                <span className="text-gray-400">Coming soon...</span>
+                <span className="text-gray-400 pl-5">Coming soon...</span>
               </h3>
             </div>
           </div>
