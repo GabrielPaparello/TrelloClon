@@ -134,17 +134,20 @@ const Details = React.memo(({ list }: { list: Task }) => {
                 type="checkbox"
                 checked={item.startsWith("~")}
                 onChange={() => toggleChecklistItem(index)}
-                className="border-gray-300 rounded text-[#0079d3] shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                className="border-gray-300 rounded shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                 id={`checkbox-${index}`}
               />
-              <label
-                htmlFor={`checkbox-${index}`}
-                className={`ml-2 ${
-                  item.startsWith("~") ? "line-through text-gray-400" : ""
-                }`}
-              >
-                {item.startsWith("~") ? item.substr(1) : item}
-              </label>
+              <input
+                type="text"
+                value={item.startsWith("~") ? item.substr(1) : item}
+                onChange={(e) =>
+                  handleChecklistChange(
+                    index,
+                    (item.startsWith("~") ? "~" : "") + e.target.value
+                  )
+                }
+                className="border-black border bg-gray-200 rounded-lg min-w-[350px] text-black"
+              />
               <button
                 className="text-[#0079d3]"
                 type="button"
