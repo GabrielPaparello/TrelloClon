@@ -80,11 +80,12 @@ const Details = React.memo(({ list }: { list: Task }) => {
   };
 
   return (
-    <div className="fixed bg-white top-60 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 p-4">
+    <div className="fixed bg-white border-[#0079d3] border-2 shadow-lg shadow-gray-400 w-[450px]  top-60 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 p-4">
       <form onSubmit={handleSubmit}>
-        <h2>Details</h2>
-        <h3>Description</h3>
+        <h2 className="fira text-[20px] mb-10">Details</h2>
+        <h3 className="fira text-[17px]">Description</h3>
         <input
+          className="border-black border bg-gray-200"
           type="text"
           name="description"
           value={details.description}
@@ -92,6 +93,7 @@ const Details = React.memo(({ list }: { list: Task }) => {
         />
         <h3>Due Date</h3>
         <input
+          className="border-black border bg-gray-200"
           type="text"
           name="DueDate"
           value={details.DueDate}
@@ -99,6 +101,7 @@ const Details = React.memo(({ list }: { list: Task }) => {
         />
         <h3>Priority</h3>
         <input
+          className="border-black border bg-gray-200"
           type="text"
           name="Priority"
           value={details.Priority}
@@ -106,6 +109,7 @@ const Details = React.memo(({ list }: { list: Task }) => {
         />
         <h3>Status</h3>
         <input
+          className="border-black border bg-gray-200"
           type="text"
           name="status"
           value={details.status}
@@ -115,11 +119,13 @@ const Details = React.memo(({ list }: { list: Task }) => {
         {checklist.map((item, index) => (
           <div key={index} className="flex items-center space-x-2">
             <input
+              className="border-black border bg-gray-200"
               type="text"
               value={item}
               onChange={(e) => handleChecklistChange(index, e.target.value)}
             />
             <button
+              className="text-[#0079d3]"
               type="button"
               onClick={() => handleRemoveChecklistItem(index)}
             >
@@ -127,11 +133,17 @@ const Details = React.memo(({ list }: { list: Task }) => {
             </button>
           </div>
         ))}
-        <button type="button" onClick={handleAddChecklistItem}>
+        <button
+          className="text-[#0079d3]"
+          type="button"
+          onClick={handleAddChecklistItem}
+        >
           Add Item
         </button>
         <br />
-        <button type="submit">Save</button>
+        <button className="text-[#0079d3]" type="submit">
+          Save
+        </button>
       </form>
       <Close
         className="absolute top-0 right-0 cursor-pointer"
