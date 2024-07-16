@@ -14,7 +14,7 @@ const Hero = () => {
           Streamline your projects and collaborate seamlessly with our intuitive
           task management platform.
         </h3>
-        <div className="space-y-4">
+        <div className="space-y-4 space-x-4 mt-[50px]">
           <Link href="projects">
             <a className="w-52 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded inline-block">
               Get Started
