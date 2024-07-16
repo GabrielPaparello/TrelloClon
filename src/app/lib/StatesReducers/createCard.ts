@@ -1,6 +1,30 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
-import { Card, Task, CardState } from "./lib/types/createCardTypes";
+
+export interface Card {
+  PARENT_ID: string;
+  editable: boolean;
+  CARD_NAME: string;
+  tasks?: Task[];
+}
+
+export interface Task {
+  TASK_ID: string;
+  TASK_NAME: string;
+  PARENT_ID: string;
+  editable: boolean;
+  detailOpen: boolean;
+  Details: {
+    description: string;
+    DueDate: string;
+    Priority: string;
+    status: string;
+    checklist?: string[];
+  };
+}
+interface CardState {
+  cards: Card[];
+}
 
 const initialState: CardState = {
   cards: [],
