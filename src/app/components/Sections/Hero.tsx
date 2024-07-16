@@ -37,6 +37,8 @@ const Hero = () => {
             layout="fill"
             objectFit="cover"
             className="rounded-xl"
+            width={490}
+            height={368}
           />
         </div>
       </section>
