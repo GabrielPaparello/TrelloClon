@@ -60,7 +60,7 @@ const ListsAdder = ({ card }: { card: Card }) => {
             ) : (
               <div className="flex items-center space-x-4">
                 <span
-                  className={`flex-grow truncate ${
+                  className={`flex-grow  ${
                     list.TASK_NAME ? "text-black" : "text-gray-400"
                   }`}
                 >
