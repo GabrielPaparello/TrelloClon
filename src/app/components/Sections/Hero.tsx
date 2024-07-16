@@ -4,32 +4,38 @@ import React from "react";
 
 const Hero = () => {
   return (
-    <main className="flex flex-col md:flex-row md:order-1 pb-40 items-start md:pt-40 pt-20 gap-10 md:gap-0 p-10 justify-center md:space-x-28 md:mb-40 mb-30 ">
-      <section className="flex flex-col  text-center order-2 ">
-        <h1 className="md:text-[44px] text-[25px] text-[#F4F3F0] max-w-[576px] text-start mb-4 fira font-bold">
+    <main className="flex flex-col md:flex-row items-start gap-10 p-10 md:space-x-28 md:mb-40 mb-30 md:pt-40 pt-20 md:order-1 pb-40 justify-center">
+      {/* Left Section */}
+      <section className="order-2 flex flex-col text-center md:text-start">
+        <h1 className="text-3xl md:text-5xl text-white max-w-prose font-bold mb-4">
           Empower Your Team with BoardStack
         </h1>
-        <h3 className="md:text-[24px] text-[15px] text-[#F4F3F0] max-w-[466px] text-start fira ">
+        <h3 className="text-lg md:text-xl text-white max-w-prose mb-6">
           Streamline your projects and collaborate seamlessly with our intuitive
           task management platform.
         </h3>
-        <div>
-          <button className="w-[200px] bg-[#6ee2f5] mt-10 hover:bg-[#6ee3f5ac] text-[#21232B] font-bold py-2 px-4 rounded">
-            <Link href="projects">Get Started</Link>
-          </button>
-          <button className="w-[200px]  text-[#21232B] font-bold py-2 px-4 rounded">
-            <Link href="projects" className="text-[#6ee2f5] underline pb-4 ">
+        <div className="space-y-4">
+          <Link href="projects">
+            <a className="w-52 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded inline-block">
+              Get Started
+            </a>
+          </Link>
+          <Link href="projects">
+            <a className="w-52 text-blue-500 font-bold py-2 px-4 rounded inline-block border border-blue-500 hover:bg-blue-100">
               Learn More...
-            </Link>
-          </button>
+            </a>
+          </Link>
         </div>
       </section>
-      <section className="md:ml-20  order-1 md:order-2 bg-[#6ee2f5] bg-opacity-[1%] p-10 rounded-3xl">
+
+      {/* Right Section */}
+      <section className="order-1 md:order-2 bg-blue-200 bg-opacity-25 p-8 md:p-10 rounded-xl">
         <Image
           src="/assets/headerLogo.png"
           alt="headerImg"
           width={490}
           height={368}
+          className="rounded-xl"
         />
       </section>
     </main>

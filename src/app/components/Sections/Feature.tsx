@@ -12,9 +12,8 @@ const Feature = () => {
     slidesToShow: 2,
     slidesToScroll: 2,
     autoplay: true,
-    speed: 4000,
-    autoplaySpeed: 2,
-    cssEase: "linear",
+    autoplaySpeed: 4000,
+    speed: 1000, // Adjusted for smoother transition
     pauseOnHover: false,
     centerMode: true,
     responsive: [
@@ -27,31 +26,28 @@ const Feature = () => {
       },
     ],
   };
+
   return (
-    <div className="slider-container bg-[#21232B] p-2 md:p-5 bg-opacity-[30%]">
+    <div className="slider-container bg-opacity-30 p-2 md:p-5 bg-gray-900">
       <Slider {...settings}>
-        {features.map((feature, index) => (
-          <>
-            <section className="flex flex-col md:flex-row px-5  ">
-              <article key={feature.id}>
-                <Image
-                  className="shadow-sm shadow-[#191552] rounded-3xl"
-                  src={feature.imgPath}
-                  alt={feature.imgAlt}
-                  width={250}
-                  height={250}
-                />
-              </article>
-              <article className="flex flex-col fira m-2 md:max-w-[400px] min-w-[200px]">
-                <h2 className="md:text-[30px] text-[20px] text-[#6ee2f5]">
-                  {feature.h2}
-                </h2>
-                <h3 className="md:text-[25px] text-[15px] text-white">
-                  {feature.h3}
-                </h3>
-              </article>
-            </section>
-          </>
+        {features.map((feature) => (
+          <div key={feature.id} className="flex flex-col md:flex-row px-5">
+            <div className="w-full md:max-w-[250px] md:w-[250px] m-auto md:m-0">
+              <Image
+                className="object-cover rounded-3xl"
+                src={feature.imgPath}
+                alt={feature.imgAlt}
+                width={250}
+                height={250}
+              />
+            </div>
+            <div className="flex flex-col justify-center ml-0 md:ml-5 mt-3 md:mt-0">
+              <h2 className="text-2xl md:text-4xl text-[#6ee2f5] font-bold mb-2">
+                {feature.h2}
+              </h2>
+              <h3 className="text-lg md:text-2xl text-white">{feature.h3}</h3>
+            </div>
+          </div>
         ))}
       </Slider>
     </div>

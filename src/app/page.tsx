@@ -10,16 +10,16 @@ export default function Home() {
         <nav>
           <Homenav />
         </nav>
+        <Hero />
       </header>
       <main>
-        <Hero />
+        <article>
+          <Feature />
+        </article>
+        <article>
+          <Blog />
+        </article>
       </main>
-      <article>
-        <Feature />
-      </article>
-      <article>
-        <Blog />
-      </article>
     </>
   );
 }

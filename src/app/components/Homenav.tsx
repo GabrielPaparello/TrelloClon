@@ -1,64 +1,84 @@
-"use client";
+/* eslint-disable @next/next/no-img-element */
 import React, { useState } from "react";
 import Image from "next/image";
-import "../globals.css";
 import { Menu } from "@mui/icons-material";
 
 const Homenav = () => {
   const [open, setOpen] = useState(false);
+
   return (
     <>
-      <nav className=" justify-between bg-[#191552] md:flex hidden">
-        <aside className="flex items-center ">
+      {/* Desktop Navigation */}
+      <nav className="justify-between bg-[#191552] md:flex hidden">
+        <div className="flex items-center space-x-2">
           <Image
             src="/assets/logo.png"
             alt="logoBrand"
             width={59}
             height={59}
+            className="rounded-full"
           />
-          <h2 className={`raleway text-center text-[24px] text-[#6ee2f5]`}>
-            BoardStack
-          </h2>
-        </aside>
-        <ul className="flex">
+          <h2 className="text-[#6ee2f5] text-2xl font-bold">BoardStack</h2>
+        </div>
+        <ul className="flex space-x-6">
           <li>
-            <h4 className="fira text-white">Link 1</h4>
+            <a
+              href="#"
+              className="text-white hover:text-[#6ee2f5] transition duration-300"
+            >
+              Link 1
+            </a>
           </li>
-          <li className="fira text-white">Link 2</li>
+          <li>
+            <a
+              href="#"
+              className="text-white hover:text-[#6ee2f5] transition duration-300"
+            >
+              Link 2
+            </a>
+          </li>
         </ul>
       </nav>
-      {/* FOR MOBILE */}
-      <nav className="  p-2 bg-[#191552] md:hidden flex">
+
+      {/* Mobile Navigation */}
+      <nav className="p-2 bg-[#191552] md:hidden flex items-center justify-between">
         <Menu
-          className="text-[#F4F3F0]  "
+          className="text-[#F4F3F0] cursor-pointer"
           fontSize="large"
           onClick={() => setOpen(!open)}
         />
-        <aside className="flex flex-col items-start   ">
-          <div
-            className={`bg-[#21232B] rounded-lg shadow-sm shadow-[#F4F3F0] p-5 absolute transition-all duration-700 ${
-              open ? "left-5 top-14" : "-left-[400px] top-10"
-            }`}
-          >
-            <div className="flex items-center  ">
+        {open && (
+          <aside className="absolute left-0 top-14 bg-[#21232B] rounded-lg shadow-md p-5 w-60">
+            <div className="flex items-center space-x-2 mb-4">
               <Image
                 src="/assets/logo.png"
                 alt="logoBrand"
                 width={59}
                 height={59}
+                className="rounded-full"
               />
-              <h2 className={`raleway text-center text-[24px] text-[#6ee2f5]`}>
-                BoardStack
-              </h2>
+              <h2 className="text-[#6ee2f5] text-2xl font-bold">BoardStack</h2>
             </div>
-            <ul className="flex flex-col gap-2 pt-5 text-center">
+            <ul className="flex flex-col gap-2 text-white">
               <li>
-                <h4 className="fira text-white">Link 1</h4>
+                <a
+                  href="#"
+                  className="hover:text-[#6ee2f5] transition duration-300"
+                >
+                  Link 1
+                </a>
               </li>
-              <li className="fira text-white">Link 2</li>
+              <li>
+                <a
+                  href="#"
+                  className="hover:text-[#6ee2f5] transition duration-300"
+                >
+                  Link 2
+                </a>
+              </li>
             </ul>
-          </div>
-        </aside>
+          </aside>
+        )}
       </nav>
     </>
   );
