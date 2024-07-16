@@ -30,7 +30,7 @@ const Hero = () => {
 
       {/* Right Section */}
       <section className="order-1 md:order-2 bg-blue-200 bg-opacity-25 p-8 md:p-10 rounded-xl flex justify-center items-center">
-        <div className="w-80 h-80 md:w-96 md:h-96 relative">
+        <div className="relative w-80 h-60 md:w-96 md:h-72">
           <Image
             src="/assets/headerLogo.png"
             alt="headerImg"
