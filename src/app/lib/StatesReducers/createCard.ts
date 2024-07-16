@@ -1,3 +1,4 @@
+// src/lib/StatesReducers/createCard.ts
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
 
@@ -21,7 +22,9 @@ export interface Task {
     status: string;
     checklist?: string[];
   };
+  completedChecklist: boolean[]; // Add completedChecklist here
 }
+
 interface CardState {
   cards: Card[];
 }
@@ -117,6 +120,7 @@ const createCardSlice = createSlice({
             status: "",
             checklist: [],
           },
+          completedChecklist: [], // Initialize completedChecklist
         });
       }
     },
@@ -128,7 +132,9 @@ const createCardSlice = createSlice({
       if (card && card.tasks) {
         card.tasks = card.tasks.map((task) => {
           if (task.TASK_ID === action.payload.TASK_ID) {
-            return action.payload;
+            return {
+              ...action.payload,
+            };
           }
           return task;
         });
