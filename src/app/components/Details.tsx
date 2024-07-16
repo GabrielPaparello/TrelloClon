@@ -97,5 +97,5 @@ const Details = React.memo(({ list }: { list: Task }) => {
     </div>
   );
 });
-
+Details.displayName = "Details";
 export default Details;
