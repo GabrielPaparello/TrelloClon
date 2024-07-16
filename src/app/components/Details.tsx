@@ -16,7 +16,7 @@ const Details = React.memo(({ list }: { list: Task }) => {
   });
 
   // Local state for managing checklist items
-  const [checklist, setChecklist] = useState<string[]>(list.Checklist || []);
+  const [checklist, setChecklist] = useState<string[]>(list.checklist || []);
 
   // Handle input change for details
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
