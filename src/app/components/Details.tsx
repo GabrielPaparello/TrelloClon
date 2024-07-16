@@ -16,7 +16,8 @@ const Details = React.memo(({ list }: { list: Task }) => {
   });
 
   // Local state for managing checklist items
-  const [checklist, setChecklist] = useState<string[]>(list.checklist || []);
+  const initialChecklist = list.Details?.checklist || []; // Ensure checklist exists
+  const [checklist, setChecklist] = useState<string[]>(initialChecklist);
 
   // Handle input change for details
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -57,8 +58,7 @@ const Details = React.memo(({ list }: { list: Task }) => {
     dispatch(
       modifyTaskfromCard({
         ...list,
-        Details: { ...details },
-        Checklist: checklist,
+        Details: { ...details, checklist }, // Include checklist in Details
       })
     );
     // Close the details view
@@ -72,8 +72,7 @@ const Details = React.memo(({ list }: { list: Task }) => {
       modifyTaskfromCard({
         ...list,
         detailOpen: !list.detailOpen,
-        Details: { ...details },
-        Checklist: checklist,
+        Details: { ...details, checklist }, // Include checklist in Details
       })
     );
     // Toggle the details view
@@ -141,8 +140,5 @@ const Details = React.memo(({ list }: { list: Task }) => {
     </div>
   );
 });
-
-// Add displayName to the Details component
-Details.displayName = "Details";
 
 export default Details;
