@@ -18,6 +18,9 @@ const Details = React.memo(({ list }: { list: Task }) => {
   // Local state for managing checklist items
   const initialChecklist = list.Details?.checklist || []; // Ensure checklist exists
   const [checklist, setChecklist] = useState<string[]>(initialChecklist);
+  const [completedChecklist, setCompletedChecklist] = useState<boolean[]>(
+    initialChecklist.map(() => false)
+  );
 
   // Handle input change for details
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,16 +33,25 @@ const Details = React.memo(({ list }: { list: Task }) => {
 
   // Handle input change for checklist items
   const handleChecklistChange = (index: number, value: string) => {
-    setChecklist((prevChecklist) => {
-      const newChecklist = [...prevChecklist];
-      newChecklist[index] = value;
-      return newChecklist;
-    });
+    const newChecklist = [...checklist];
+    newChecklist[index] = value;
+    setChecklist(newChecklist);
+  };
+
+  // Toggle checklist item completion
+  const toggleChecklistItem = (index: number) => {
+    const newCompletedChecklist = [...completedChecklist];
+    newCompletedChecklist[index] = !newCompletedChecklist[index];
+    setCompletedChecklist(newCompletedChecklist);
   };
 
   // Add a new checklist item
   const handleAddChecklistItem = () => {
     setChecklist((prevChecklist) => [...prevChecklist, ""]);
+    setCompletedChecklist((prevCompletedChecklist) => [
+      ...prevCompletedChecklist,
+      false,
+    ]);
   };
 
   // Remove a checklist item
@@ -49,16 +61,10 @@ const Details = React.memo(({ list }: { list: Task }) => {
       newChecklist.splice(index, 1);
       return newChecklist;
     });
-  };
-
-  // Toggle checklist item completion
-  const toggleChecklistItem = (index: number) => {
-    setChecklist((prevChecklist) => {
-      const newChecklist = [...prevChecklist];
-      newChecklist[index] = newChecklist[index].startsWith("~")
-        ? newChecklist[index].substr(1)
-        : "~" + newChecklist[index];
-      return newChecklist;
+    setCompletedChecklist((prevCompletedChecklist) => {
+      const newCompletedChecklist = [...prevCompletedChecklist];
+      newCompletedChecklist.splice(index, 1);
+      return newCompletedChecklist;
     });
   };
 
@@ -132,21 +138,18 @@ const Details = React.memo(({ list }: { list: Task }) => {
             <div key={index} className="flex items-center space-x-2 gap-5">
               <input
                 type="checkbox"
-                checked={item.startsWith("~")}
+                checked={completedChecklist[index]}
                 onChange={() => toggleChecklistItem(index)}
                 className="border-gray-300 rounded shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                 id={`checkbox-${index}`}
               />
               <input
                 type="text"
-                value={item.startsWith("~") ? item.substr(1) : item}
-                onChange={(e) =>
-                  handleChecklistChange(
-                    index,
-                    (item.startsWith("~") ? "~" : "") + e.target.value
-                  )
-                }
-                className="border-black border bg-gray-200 rounded-lg min-w-[350px] text-black"
+                value={item}
+                onChange={(e) => handleChecklistChange(index, e.target.value)}
+                className={`border-black border bg-gray-200 rounded-lg min-w-[350px] text-black ${
+                  completedChecklist[index] ? "line-through" : ""
+                }`}
               />
               <button
                 className="text-[#0079d3]"
