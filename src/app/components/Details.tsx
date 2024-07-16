@@ -1,5 +1,5 @@
 // src/components/Details.tsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useAppDispatch } from "../lib/store";
 import { Task, modifyTaskfromCard } from "../lib/StatesReducers/createCard";
 import { toggle } from "../lib/StatesReducers/openDetails";
