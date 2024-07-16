@@ -1,26 +1,22 @@
-"use client";
 import React, { useEffect, useState } from "react";
+import { Delete, Edit } from "@mui/icons-material";
+import { useAppDispatch } from "../lib/store";
 import {
-  addCard,
   modifyCard,
-  addTaskToCard,
   deleteCard,
+  addTaskToCard,
   Card,
 } from "../lib/StatesReducers/createCard";
-import { useAppDispatch } from "../lib/store";
-import { useSelector } from "react-redux";
-import { cardEdit } from "../lib/ReducersSelector/selector";
-import { Delete, Edit } from "@mui/icons-material";
-import Draggable from "react-draggable";
 import ListsAdder from "./ListsAdder";
+import Draggable from "react-draggable";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { v4 as uuid } from "uuid";
 
 const Cards = ({ card }: { card: Card }) => {
   const { user } = useUser();
   const dispatch = useAppDispatch();
-
   const [isMobile, setIsMobile] = useState(false);
+
   useEffect(() => {
     window.innerWidth < 768 ? setIsMobile(true) : setIsMobile(false);
   }, []);
@@ -33,7 +29,7 @@ const Cards = ({ card }: { card: Card }) => {
             <div className="p-4 text-center">
               {card.editable ? (
                 <input
-                  placeholder="project name/list"
+                  placeholder="Project Name/List"
                   required
                   className="shadow-xl bg-transparent focus:outline-none p-2 text-black"
                   type="text"
@@ -51,7 +47,7 @@ const Cards = ({ card }: { card: Card }) => {
                   autoFocus
                 />
               ) : (
-                <div className="flex justify-between  items-center">
+                <div className="flex justify-between items-center">
                   <span className="text-black">
                     {card.CARD_NAME ? card.CARD_NAME : "List Name"}
                   </span>
@@ -83,7 +79,7 @@ const Cards = ({ card }: { card: Card }) => {
               }
               className="text-[#0079d3] font-bold pb-2 px-6 rounded"
             >
-              + Add list
+              + Add List
             </button>
           </div>
         </Draggable>
@@ -92,7 +88,7 @@ const Cards = ({ card }: { card: Card }) => {
           <div className="p-4 text-center">
             {card.editable ? (
               <input
-                placeholder="project name/list"
+                placeholder="Project Name/List"
                 required
                 className="shadow-xl bg-transparent focus:outline-none p-2 text-black"
                 type="text"
@@ -110,7 +106,7 @@ const Cards = ({ card }: { card: Card }) => {
                 autoFocus
               />
             ) : (
-              <div className="flex justify-between  items-center">
+              <div className="flex justify-between items-center">
                 <span className="text-black">
                   {card.CARD_NAME ? card.CARD_NAME : "List Name"}
                 </span>
@@ -140,7 +136,7 @@ const Cards = ({ card }: { card: Card }) => {
             }
             className="text-[#0079d3] font-bold pb-2 px-6 rounded"
           >
-            + Add list
+            + Add List
           </button>
         </div>
       )}

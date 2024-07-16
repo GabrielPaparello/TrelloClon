@@ -31,13 +31,13 @@ const ListsAdder = ({ card }: { card: Card }) => {
         card.tasks.map((list) => (
           <div
             key={list.TASK_ID}
-            className="flex mb-2 align-middle content-center shadow-xl mx-2 my-2 border-t-2 border-[#0079d3] text-center p-4 pl-5 h-[70px]"
+            className="flex items-center justify-between mb-4 px-4 py-2 rounded-lg shadow-md bg-white border border-gray-200"
           >
             {list.editable ? (
               <input
                 placeholder="Insert Task Name"
                 required
-                className="placeholder:text-gray-400 bg-transparent focus:outline-none p-2 text-black"
+                className="flex-grow bg-transparent focus:outline-none p-2 text-black"
                 type="text"
                 value={list.TASK_NAME}
                 onChange={(e) =>
@@ -58,9 +58,9 @@ const ListsAdder = ({ card }: { card: Card }) => {
                 autoFocus
               />
             ) : (
-              <div className="flex align-middle space-x-12 content-center text-center">
+              <div className="flex items-center space-x-4">
                 <span
-                  className={`${
+                  className={`flex-grow truncate ${
                     list.TASK_NAME ? "text-black" : "text-gray-400"
                   }`}
                 >
@@ -70,18 +70,20 @@ const ListsAdder = ({ card }: { card: Card }) => {
                   onClick={() =>
                     dispatch(modifyTaskfromCard({ ...list, editable: true }))
                   }
-                  className="cursor-pointer ml-1 opacity-50 text-gray-400"
+                  className="cursor-pointer text-gray-400 hover:text-gray-600"
                 />
               </div>
             )}
-            <Delete
-              onClick={() => handleDelete(list.PARENT_ID, list.TASK_ID)}
-              className="cursor-pointer text-lg opacity-50 text-gray-400"
-            />
-            <MoreVert
-              onClick={() => handleDetailClick({ list })}
-              className="cursor-pointer text-lg opacity-50 text-gray-400"
-            />
+            <div className="flex items-center space-x-2">
+              <Delete
+                onClick={() => handleDelete(list.PARENT_ID, list.TASK_ID)}
+                className="cursor-pointer text-gray-400 hover:text-red-500"
+              />
+              <MoreVert
+                onClick={() => handleDetailClick({ list })}
+                className="cursor-pointer text-gray-400 hover:text-blue-500"
+              />
+            </div>
             {list.detailOpen && <Details list={list} />}
           </div>
         ))}
