@@ -29,8 +29,8 @@ const Hero = () => {
       </section>
 
       {/* Right Section */}
-      <section className="order-1 md:order-2 bg-blue-200 bg-opacity-25 p-8 md:p-10 rounded-xl flex justify-center items-center">
-        <div className="relative w-full h-full">
+      <section className="order-1 md:order-2 bg-blue-200 bg-opacity-25 p-8 md:p-10 rounded-xl">
+        <div className="relative h-full w-full">
           <Image
             src="/assets/headerLogo.png"
             alt="headerImg"
