@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
-import { Card, Task, CardState } from "./types/createCardTypes";
+import { Card, Task, CardState } from "./lib/types/createCardTypes";
 
 const initialState: CardState = {
   cards: [],
