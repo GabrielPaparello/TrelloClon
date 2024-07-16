@@ -102,7 +102,7 @@ const Details = React.memo(({ list }: { list: Task }) => {
           value={details.description}
           onChange={handleChange}
         />
-        <h3>Due Date</h3>
+        <h3 className="fira text-[17px] text-black">Due Date</h3>
         <input
           className="border-black border bg-gray-200 rounded-lg min-w-[350px] text-black"
           type="text"
@@ -110,7 +110,7 @@ const Details = React.memo(({ list }: { list: Task }) => {
           value={details.DueDate}
           onChange={handleChange}
         />
-        <h3>Priority</h3>
+        <h3 className="fira text-[17px] text-black">Priority</h3>
         <input
           className="border-black border bg-gray-200 rounded-lg min-w-[350px] text-black"
           type="text"
