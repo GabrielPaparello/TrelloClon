@@ -7,7 +7,7 @@ const Hero = () => {
     <main className="flex flex-col md:flex-row items-start gap-10 p-10 md:space-x-28 md:mb-40 mb-30 md:pt-52 pt-20 md:order-1 pb-40 justify-center">
       {/* Left Section */}
       <section className="order-2 flex flex-col text-center md:text-start">
-        <h1 className="text-4xl md:text-6xl text-white max-w-prose font-bold mb-4 leading-tight">
+        <h1 className="text-4xl md:text-6xl text-white font-bold max-w-[500px] leading-tight mb-4">
           Empower Your Team with BoardStack
         </h1>
         <h3 className="text-lg md:text-xl text-white max-w-prose mb-6">
