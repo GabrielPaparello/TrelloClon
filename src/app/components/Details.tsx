@@ -81,11 +81,11 @@ const Details = React.memo(({ list }: { list: Task }) => {
 
   return (
     <div className="fixed bg-white border-[#0079d3] border-2 shadow-lg shadow-gray-400 w-[450px]  top-60 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 p-4">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="gap-5">
         <h2 className="fira text-[20px] mb-10">Details</h2>
         <h3 className="fira text-[17px]">Description</h3>
         <input
-          className="border-black border bg-gray-200"
+          className="border-black border bg-gray-200 rounded-lg min-w-[350px]"
           type="text"
           name="description"
           value={details.description}
@@ -93,7 +93,7 @@ const Details = React.memo(({ list }: { list: Task }) => {
         />
         <h3>Due Date</h3>
         <input
-          className="border-black border bg-gray-200"
+          className="border-black border bg-gray-200 rounded-lg min-w-[350px]"
           type="text"
           name="DueDate"
           value={details.DueDate}
@@ -101,7 +101,7 @@ const Details = React.memo(({ list }: { list: Task }) => {
         />
         <h3>Priority</h3>
         <input
-          className="border-black border bg-gray-200"
+          className="border-black border bg-gray-200 rounded-lg min-w-[350px]"
           type="text"
           name="Priority"
           value={details.Priority}
@@ -109,30 +109,32 @@ const Details = React.memo(({ list }: { list: Task }) => {
         />
         <h3>Status</h3>
         <input
-          className="border-black border bg-gray-200"
+          className="border-black border bg-gray-200 rounded-lg min-w-[350px]"
           type="text"
           name="status"
           value={details.status}
           onChange={handleChange}
         />
         <h3>Checklist</h3>
-        {checklist.map((item, index) => (
-          <div key={index} className="flex items-center space-x-2">
-            <input
-              className="border-black border bg-gray-200"
-              type="text"
-              value={item}
-              onChange={(e) => handleChecklistChange(index, e.target.value)}
-            />
-            <button
-              className="text-[#0079d3]"
-              type="button"
-              onClick={() => handleRemoveChecklistItem(index)}
-            >
-              Remove
-            </button>
-          </div>
-        ))}
+        <div>
+          {checklist.map((item, index) => (
+            <div key={index} className="flex items-center space-x-2 gap-5">
+              <input
+                className="border-black border bg-gray-200 rounded-lg min-w-[350px]"
+                type="text"
+                value={item}
+                onChange={(e) => handleChecklistChange(index, e.target.value)}
+              />
+              <button
+                className="text-[#0079d3]"
+                type="button"
+                onClick={() => handleRemoveChecklistItem(index)}
+              >
+                Remove
+              </button>
+            </div>
+          ))}
+        </div>
         <button
           className="text-[#0079d3]"
           type="button"
