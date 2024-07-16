@@ -1,4 +1,3 @@
-// src/components/Details.tsx
 import React, { useState, useEffect } from "react";
 import { useAppDispatch } from "../lib/store";
 import { Task, modifyTaskfromCard } from "../lib/StatesReducers/createCard";
@@ -20,15 +19,15 @@ const Details = React.memo(({ list }: { list: Task }) => {
   const initialChecklist = list.Details?.checklist || [];
   const [checklist, setChecklist] = useState<string[]>(initialChecklist);
   const [completedChecklist, setCompletedChecklist] = useState<boolean[]>(
-    list.Details?.completedChecklist || initialChecklist.map(() => false)
+    initialChecklist.map(() => false)
   );
 
   // Ensure completedChecklist state matches the initial checklist
   useEffect(() => {
     setCompletedChecklist(
-      list.Details?.completedChecklist || initialChecklist.map(() => false)
+      initialChecklist.map((_, index) => completedChecklist[index] || false)
     );
-  }, [initialChecklist, list.Details?.completedChecklist]);
+  }, [initialChecklist]);
 
   // Handle input change for details
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -83,19 +82,135 @@ const Details = React.memo(({ list }: { list: Task }) => {
     dispatch(
       modifyTaskfromCard({
         ...list,
-        Details: { ...details, checklist, completedChecklist }, // Include checklist and completedChecklist in Details
+        Details: { ...details, checklist }, // Include checklist in Details
       })
     );
-    // Close the
+    // Close the details view
+    dispatch(toggle());
+  };
+
+  // Handle click to close details
+  const handleDetailClick = () => {
+    // Update the task's details and checklist, including completedChecklist
+    dispatch(
+      modifyTaskfromCard({
+        ...list,
+        detailOpen: !list.detailOpen,
+        Details: { ...details, checklist }, // Include checklist in Details
+      })
+    );
+    // Toggle the details view
+    dispatch(toggle());
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        {/* Render your form inputs and checklist here */}
+    <div className="fixed bg-white border-[#0079d3] border-2 shadow-lg shadow-gray-400 w-[450px]  top-60 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 p-4 rounded-lg">
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="flex justify-between items-center">
+          <h2 className="text-2xl font-semibold text-black">Details</h2>
+          <Close className="cursor-pointer" onClick={handleDetailClick} />
+        </div>
+        <div className="space-y-4">
+          <div>
+            <h3 className="text-lg font-medium text-black">Description</h3>
+            <input
+              className="border border-gray-300 rounded-lg px-3 py-2 w-full text-black"
+              type="text"
+              name="description"
+              value={details.description}
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <h3 className="text-lg font-medium text-black">Due Date</h3>
+            <input
+              className="border border-gray-300 rounded-lg px-3 py-2 w-full text-black"
+              type="text"
+              name="DueDate"
+              value={details.DueDate}
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <h3 className="text-lg font-medium text-black">Priority</h3>
+            <input
+              className="border border-gray-300 rounded-lg px-3 py-2 w-full text-black"
+              type="text"
+              name="Priority"
+              value={details.Priority}
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <h3 className="text-lg font-medium text-black">Status</h3>
+            <input
+              className="border border-gray-300 rounded-lg px-3 py-2 w-full text-black"
+              type="text"
+              name="status"
+              value={details.status}
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <h3 className="text-lg font-medium text-black">Checklist</h3>
+            <div className="space-y-2">
+              {checklist.map((item, index) => (
+                <div key={index} className="flex items-center space-x-4">
+                  <input
+                    type="checkbox"
+                    checked={completedChecklist[index]}
+                    onChange={() => toggleChecklistItem(index)}
+                    className="rounded border-gray-300 text-[#0079d3] focus:ring-2 focus:ring-[#0079d3] focus:outline-none"
+                  />
+                  <input
+                    type="text"
+                    value={item}
+                    onChange={(e) =>
+                      handleChecklistChange(index, e.target.value)
+                    }
+                    className={`border border-gray-300 rounded-lg px-3 py-2 w-full text-black ${
+                      completedChecklist[index] ? "line-through" : ""
+                    }`}
+                  />
+                  <button
+                    className="text-[#0079d3] hover:underline"
+                    type="button"
+                    onClick={() => handleRemoveChecklistItem(index)}
+                  >
+                    Remove
+                  </button>
+                </div>
+              ))}
+              <button
+                className="text-[#0079d3] hover:underline"
+                type="button"
+                onClick={handleAddChecklistItem}
+              >
+                Add Item
+              </button>
+            </div>
+          </div>
+        </div>
+        <div className="flex justify-end space-x-4">
+          <button
+            className="text-[#0079d3] hover:underline"
+            type="button"
+            onClick={handleDetailClick}
+          >
+            Cancel
+          </button>
+          <button
+            className="text-white bg-[#0079d3] hover:bg-blue-600 py-2 px-4 rounded-lg"
+            type="submit"
+          >
+            Save
+          </button>
+        </div>
       </form>
     </div>
   );
 });
+
 Details.displayName = "Details";
+
 export default Details;
