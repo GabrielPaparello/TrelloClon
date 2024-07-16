@@ -19,7 +19,6 @@ export interface Task {
     DueDate: string;
     Priority: string;
     status: string;
-    checklist?: [];
   };
 }
 interface CardState {
@@ -115,7 +114,6 @@ const createCardSlice = createSlice({
             DueDate: "",
             Priority: "",
             status: "",
-            checklist: [],
           },
         });
       }

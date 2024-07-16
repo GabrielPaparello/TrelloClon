@@ -1,29 +1,17 @@
-import React, { useState, useEffect } from "react";
 import { Close } from "@mui/icons-material";
+import React, { useState } from "react";
 import { useAppDispatch } from "../lib/store";
 import { Task, modifyTaskfromCard } from "../lib/StatesReducers/createCard";
 import { toggle } from "../lib/StatesReducers/openDetails";
 
-const Details = React.memo(({ list }: { list: Task }) => {
+const Details = ({ list }: { list: Task }) => {
   const dispatch = useAppDispatch();
-
-  // Initialize details state
   const [details, setDetails] = useState({
     description: list.Details?.description || "",
     DueDate: list.Details?.DueDate || "",
     Priority: list.Details?.Priority || "",
     status: list.Details?.status || "",
   });
-
-  // Update details state if list.Details change
-  useEffect(() => {
-    setDetails({
-      description: list.Details?.description || "",
-      DueDate: list.Details?.DueDate || "",
-      Priority: list.Details?.Priority || "",
-      status: list.Details?.status || "",
-    });
-  }, [list.Details]);
 
   const handleDetailClick = () => {
     dispatch(
@@ -90,6 +78,6 @@ const Details = React.memo(({ list }: { list: Task }) => {
       />
     </div>
   );
-});
+};
 
 export default Details;
