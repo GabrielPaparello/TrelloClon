@@ -1,19 +1,29 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import { Close } from "@mui/icons-material";
 import { useAppDispatch } from "../lib/store";
 import { Task, modifyTaskfromCard } from "../lib/StatesReducers/createCard";
 import { toggle } from "../lib/StatesReducers/openDetails";
 
-const Details = ({ list }: { list: Task }) => {
+const Details = React.memo(({ list }: { list: Task }) => {
   const dispatch = useAppDispatch();
 
-  // Memoize the details state to optimize re-renders
-  const [details, setDetails] = useState(() => ({
+  // Initialize details state
+  const [details, setDetails] = useState({
     description: list.Details?.description || "",
     DueDate: list.Details?.DueDate || "",
     Priority: list.Details?.Priority || "",
     status: list.Details?.status || "",
-  }));
+  });
+
+  // Update details state if list.Details change
+  useEffect(() => {
+    setDetails({
+      description: list.Details?.description || "",
+      DueDate: list.Details?.DueDate || "",
+      Priority: list.Details?.Priority || "",
+      status: list.Details?.status || "",
+    });
+  }, [list.Details]);
 
   const handleDetailClick = () => {
     dispatch(
@@ -40,9 +50,6 @@ const Details = ({ list }: { list: Task }) => {
     handleDetailClick();
   };
 
-  // Memoize the memoizedDetails to prevent unnecessary re-renders
-  const memoizedDetails = useMemo(() => details, [details]);
-
   return (
     <div className="fixed bg-white top-60 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 p-4">
       <form onSubmit={handleSubmit}>
@@ -51,28 +58,28 @@ const Details = ({ list }: { list: Task }) => {
         <input
           type="text"
           name="description"
-          value={memoizedDetails.description}
+          value={details.description}
           onChange={handleChange}
         />
         <h3>Due Date</h3>
         <input
           type="text"
           name="DueDate"
-          value={memoizedDetails.DueDate}
+          value={details.DueDate}
           onChange={handleChange}
         />
         <h3>Priority</h3>
         <input
           type="text"
           name="Priority"
-          value={memoizedDetails.Priority}
+          value={details.Priority}
           onChange={handleChange}
         />
         <h3>Status</h3>
         <input
           type="text"
           name="status"
-          value={memoizedDetails.status}
+          value={details.status}
           onChange={handleChange}
         />
         <button type="submit">Save</button>
@@ -83,6 +90,6 @@ const Details = ({ list }: { list: Task }) => {
       />
     </div>
   );
-};
+});
 
 export default Details;
