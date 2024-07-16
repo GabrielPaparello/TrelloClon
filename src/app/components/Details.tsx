@@ -86,7 +86,7 @@ const Details = React.memo(({ list }: { list: Task }) => {
       })
     );
     // Close the details view
-    dispatch(toggle());
+    handleDetailClick();
   };
 
   // Handle click to close details
@@ -108,7 +108,10 @@ const Details = React.memo(({ list }: { list: Task }) => {
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="flex justify-between items-center">
           <h2 className="text-2xl font-semibold text-black">Details</h2>
-          <Close className="cursor-pointer" onClick={handleDetailClick} />
+          <Close
+            className="cursor-pointer text-black"
+            onClick={handleDetailClick}
+          />
         </div>
         <div className="space-y-4">
           <div>
