@@ -1,8 +1,8 @@
-import { Close } from "@mui/icons-material";
 import React, { useState } from "react";
 import { useAppDispatch } from "../lib/store";
 import { Task, modifyTaskfromCard } from "../lib/StatesReducers/createCard";
 import { toggle } from "../lib/StatesReducers/openDetails";
+import { Close } from "@mui/icons-material";
 
 const Details = React.memo(({ list }: { list: Task }) => {
   const dispatch = useAppDispatch();
@@ -47,6 +47,17 @@ const Details = React.memo(({ list }: { list: Task }) => {
     setChecklist((prevChecklist) => {
       const newChecklist = [...prevChecklist];
       newChecklist.splice(index, 1);
+      return newChecklist;
+    });
+  };
+
+  // Toggle checklist item completion
+  const toggleChecklistItem = (index: number) => {
+    setChecklist((prevChecklist) => {
+      const newChecklist = [...prevChecklist];
+      newChecklist[index] = newChecklist[index].startsWith("~")
+        ? newChecklist[index].substr(1)
+        : "~" + newChecklist[index];
       return newChecklist;
     });
   };
@@ -122,8 +133,13 @@ const Details = React.memo(({ list }: { list: Task }) => {
               <input
                 className="border-black border bg-gray-200 rounded-lg min-w-[350px] text-black"
                 type="text"
-                value={item}
-                onChange={(e) => handleChecklistChange(index, e.target.value)}
+                value={item.startsWith("~") ? item.substr(1) : item}
+                onChange={(e) =>
+                  handleChecklistChange(
+                    index,
+                    (item.startsWith("~") ? "~" : "") + e.target.value
+                  )
+                }
               />
               <button
                 className="text-[#0079d3]"
@@ -131,6 +147,13 @@ const Details = React.memo(({ list }: { list: Task }) => {
                 onClick={() => handleRemoveChecklistItem(index)}
               >
                 Remove
+              </button>
+              <button
+                className="text-[#0079d3]"
+                type="button"
+                onClick={() => toggleChecklistItem(index)}
+              >
+                {item.startsWith("~") ? "Unstrike" : "Strike"}
               </button>
             </div>
           ))}
