@@ -25,9 +25,9 @@ const page = () => {
           <section className="flex flex-col  p-5 gap-10 fira  mt-20 text-center  ">
             {/*video explanation */}
             <p className=" fira md:text-lg max-w-[400px] self-start  ">
-              We got to start like everything with the basics. A Kanban board is
-              an agile project management tool designed to help visualize work,
-              limit work in progress, and maximize efficiency (or flow).
+              We got too start like everything with the basics. A Kanban board
+              is an agile project management tool designed to help visualize
+              work, limit work in progress, and maximize efficiency (or flow).
             </p>
             <br></br>
             <p className=" fira md:text-lg max-w-[400px] self-start  ">
