@@ -65,8 +65,8 @@ const page = () => {
             the mobile app for Android and iOS platforms.
           </p>
           <aside className="flex  justify-center -mt-5 space-x-5  ">
-            <AndroidIcon className="text-5xl hover:text-[#3DDC84] transition-all duration-300" />
-            <AppleIcon className="text-5xl  stroke-black text-white  hover:text-black hover:stroke-white" />
+            <AndroidIcon className="text-5xl hover:text-[#3DDC84] transition-all duration-300 " />
+            <AppleIcon className="text-5xl  stroke-black text-white  hover:text-black hover:stroke-white transition-all duration-300 " />
           </aside>
         </section>
       </main>
