@@ -32,7 +32,7 @@ const Blog = () => {
 
       {/* Right Section - Text Content */}
       <article className="mt-5 flex flex-col text-left">
-        <h2 className="text-[#f4f3f0] text-3xl md:text-5xl font-bold mb-4">
+        <h2 className="text-[#f4f3f0] text-2xl md:text-5xl font-bold mb-4">
           Currently Working on the Mobile App
         </h2>
         <h3 className="text-[#bab9cb] text-lg md:text-2xl mb-6">

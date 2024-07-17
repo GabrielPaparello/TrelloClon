@@ -42,10 +42,10 @@ const Feature = () => {
               />
             </div>
             <div className="flex flex-col justify-center ml-0 md:ml-5 mt-3 md:mt-0">
-              <h2 className="text-2xl md:text-4xl text-[#6ee2f5] font-bold mb-2">
+              <h2 className="text-2xl md:text-3xl text-[#6ee2f5] font-bold mb-2">
                 {feature.h2}
               </h2>
-              <h3 className="text-lg md:text-2xl text-white">
+              <h3 className="text-lg md:text-xl text-white">
                 {feature.h3}
                 <span className="text-gray-400 pl-5">Coming soon...</span>
               </h3>
