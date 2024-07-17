@@ -15,15 +15,17 @@ const Hero = () => {
           task management platform.
         </h3>
         <div className="flex flex-col md:flex-row gap-4 mt-8">
-          <Link href="/projects">
-            <a className="w-full md:w-auto bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded transition duration-300 text-center">
-              Get Started
-            </a>
+          <Link
+            className="w-full md:w-auto bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded transition duration-300 text-center"
+            href="/projects"
+          >
+            Get Started
           </Link>
-          <Link href="/learnBoardStack">
-            <a className="w-full md:w-auto border border-blue-500 text-blue-500 font-bold py-3 px-6 rounded hover:bg-blue-100 transition duration-300 text-center mt-2 md:mt-0">
-              Learn More
-            </a>
+          <Link
+            className="w-full md:w-auto border border-blue-500 text-blue-500 font-bold py-3 px-6 rounded hover:bg-blue-100 transition duration-300 text-center mt-2 md:mt-0"
+            href="/learnBoardStack"
+          >
+            Learn More
           </Link>
         </div>
       </section>
