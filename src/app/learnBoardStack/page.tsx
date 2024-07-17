@@ -9,35 +9,46 @@ import AppleIcon from "@mui/icons-material/Apple";
 const page = () => {
   return (
     <>
-      <header className=" mb-[60px] ">
+      <header className=" mb-[40px] ">
         <nav>
           <Homenav />
         </nav>
       </header>
-      <main>
-        <h1 className="text-white text-center text-3xl mb-[40px] fira">
+      <main className="flex justify-center flex-col items-center">
+        <h1 className="text-white text-center text-3xl mb-[150px] fira">
           Current ways on BoardStack
         </h1>
-        <section className="flex flex-col p-5 gap-10 fira ">
-          {/*video explanation */}
-          <h2 className="text-xl raleway">What is a Kanban Board</h2>
-          <p className=" fira ">
-            We got to start like everything with the basics. A Kanban board is
-            an agile project management tool designed to help visualize work,
-            limit work in progress, and maximize efficiency (or flow). It can
-            assist both agile teams and DevOps teams in defining the order of
-            their daily tasks.
-          </p>
-          <Image
-            src="/assets/blog/kanbanExample.png"
-            width={400}
-            height={311}
-            alt="kanBan elements example"
-            className="self-center ring-[#6ee2f5]/50 shadow-lg shadow-[#6ee2f5] ring-1 ring-offset-2 ring-offset-current hover:scale-[1.35] transition-all duration-300 "
-          />
-        </section>
+        <div className="flex flex-col items-center">
+          <h2 className="text-xl md:text-2xl raleway ">
+            What is a Kanban Board
+          </h2>
+          <section className="flex flex-col  p-5 gap-10 fira  mt-20 text-center  ">
+            {/*video explanation */}
+            <p className=" fira md:text-lg max-w-[400px] self-start  ">
+              We got too start like everything with the basics. A Kanban board
+              is an agile project management tool designed to help visualize
+              work, limit work in progress, and maximize efficiency (or flow).
+            </p>
+            <br></br>
+            <p className=" fira md:text-lg max-w-[400px] self-start  ">
+              {" "}
+              It can assist both agile teams and DevOps teams in defining the
+              order of their daily tasks.
+            </p>
+
+            <Image
+              src="/assets/blog/kanbanExample.png"
+              width={400}
+              height={311}
+              alt="kanBan elements example"
+              className="self-center ring-[#6ee2f5]/50 shadow-lg shadow-[#6ee2f5] ring-1 ring-offset-2 ring-offset-current hover:scale-[1.35] transition-all duration-300 "
+            />
+          </section>
+        </div>
         <section className="flex flex-col gap-10 mt-20 p-5">
-          <h2 className="raleway text-xl">What BoardStack offers</h2>
+          <h2 className="raleway text-xl text-center">
+            What BoardStack offers
+          </h2>
           <ol className="list-disc p-2">
             <li>Create Cards</li>
             <li>Organize Tasks in each card</li>
