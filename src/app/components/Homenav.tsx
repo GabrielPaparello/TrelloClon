@@ -9,7 +9,7 @@ const Homenav = () => {
   return (
     <>
       {/* Desktop Navigation */}
-      <nav className="justify-between bg-[#191552] md:flex hidden">
+      <nav className="justify-between bg-[#191552]  md:flex hidden">
         <div className="flex items-center space-x-2">
           <Image
             src="/assets/logo.png"
@@ -18,7 +18,9 @@ const Homenav = () => {
             height={59}
             className="rounded-full"
           />
-          <h2 className="text-[#6ee2f5] text-2xl font-bold">BoardStack</h2>
+          <h2 className="text-[#6ee2f5] text-transparent bg-clip-text bg-gradient-to-r from-[#6ee2f5] via-purple-500 to-[#6ee2f5] text-2xl font-bold">
+            BoardStack
+          </h2>
         </div>
         <ul className="flex space-x-6">
           <li>

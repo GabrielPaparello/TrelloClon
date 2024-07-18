@@ -8,9 +8,9 @@ import {
   Card,
 } from "../lib/StatesReducers/createCard";
 import ListsAdder from "./ListsAdder";
-import Draggable from "react-draggable";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { v4 as uuid } from "uuid";
+import { DndContext } from "@dnd-kit/core";
 
 const Cards = ({ card }: { card: Card }) => {
   const { user } = useUser();
@@ -24,7 +24,7 @@ const Cards = ({ card }: { card: Card }) => {
   return (
     <div className="w-full md:w-auto">
       {!isMobile ? (
-        <Draggable>
+        <DndContext>
           <div className="flex flex-col shadow-xl bg-gray-100 w-full md:w-72">
             <div className="p-4 text-center">
               {card.editable ? (
@@ -74,7 +74,7 @@ const Cards = ({ card }: { card: Card }) => {
                   addTaskToCard({
                     PARENT_ID: card.PARENT_ID,
                     TASK_NAME: "",
-                  })
+                  }),
                 )
               }
               className="text-[#0079d3] font-bold pb-2 px-6 rounded"
@@ -82,7 +82,7 @@ const Cards = ({ card }: { card: Card }) => {
               + Add List
             </button>
           </div>
-        </Draggable>
+        </DndContext>
       ) : (
         <div className="flex flex-col shadow-xl bg-gray-100 w-full md:w-72">
           <div className="p-4 text-center">
@@ -131,7 +131,7 @@ const Cards = ({ card }: { card: Card }) => {
                 addTaskToCard({
                   PARENT_ID: card.PARENT_ID,
                   TASK_NAME: "",
-                })
+                }),
               )
             }
             className="text-[#0079d3] font-bold pb-2 px-6 rounded"
