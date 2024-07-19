@@ -20,9 +20,9 @@ const page = () => {
         </h1>
         <div className="flex flex-col  items-center">
           <h2 className="text-xl md:text-2xl raleway "></h2>
-          <section className="flex md:flex-row flex-col  p-5 gap-10 md:space-x-[130px] fira  mt-20 text-center  ">
+          <section className="flex md:flex-row flex-col  p-10  gap-2 fira  mt-20 text-center bg-white/10 rounded-md shadow-black shadow-md   ">
             {/*video explanation */}
-            <p className=" fira md:text-xl max-w-[600px] min-w-[400px] self-center text-start bg-white/10 rounded-md shadow-black shadow-md p-2 first-letter:font-bold first-letter:text-[#6ee2f5] font-thin text-pretty leading-relax">
+            <p className=" fira md:text-xl max-w-[600px] min-w-[400px] self-center text-start first-letter:font-bold first-letter:text-[#6ee2f5] font-thin text-pretty leading-relax">
               We got too start like everything with the basics.
               <br /> <br />A Kanban board is an agile project management tool
               designed to help visualize work, limit work in progress, and
@@ -35,7 +35,7 @@ const page = () => {
               width={400}
               height={311}
               alt="kanBan elements example"
-              className="self-center ring-[#6ee2f5]/50 shadow-lg shadow-[#6ee2f5] ring-1 ring-offset-2 ring-offset-current hover:scale-[1.35] transition-all duration-300 "
+              className="self-center ring-[#6ee2f5]/50 shadow-md shadow-[#6ee2f5] ring-1 ring-offset-2 ring-offset-current hover:scale-[1.35] transition-all duration-300 "
             />
           </section>
         </div>
