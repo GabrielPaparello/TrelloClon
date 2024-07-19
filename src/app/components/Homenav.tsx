@@ -9,7 +9,7 @@ const Homenav = () => {
   return (
     <>
       {/* Desktop Navigation */}
-      <nav className="justify-between bg-[#191552]  md:flex hidden">
+      <nav className="justify-between bg-[#191552] relative z-10  md:flex hidden">
         <div className="flex items-center space-x-2">
           <Image
             src="/assets/logo.png"
@@ -40,6 +40,7 @@ const Homenav = () => {
             </a>
           </li>
         </ul>
+        <aside className="absolute inset-1 -z-10 border-b-[50px] border-[#6ee2f5] p-7   animate-glow  "></aside>
       </nav>
 
       {/* Mobile Navigation */}

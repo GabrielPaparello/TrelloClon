@@ -14,13 +14,13 @@ const page = () => {
           <Homenav />
         </nav>
       </header>
-      <main className="flex justify-center flex-col items-center ">
-        <h1 className="text-white text-center md:text-4xl text-xl p-2 antialiased  fira md:p-10 bg-[#6ee2f5]/20 ring-[#6ee2f5]/50 shadow-[#6ee2f5]/50 rounded-lg shadow-2xl ring-2 ">
+      <main className="flex justify-center flex-col items-center m-4 text-white ">
+        <h1 className="text-white text-center md:text-4xl text-2xl p-2 antialiased tracking-wide  raleway md:p-10  ">
           What is a Kanban Board{" "}
         </h1>
         <div className="flex flex-col  items-center">
           <h2 className="text-xl md:text-2xl raleway "></h2>
-          <section className="flex md:flex-row flex-col  p-10  gap-2 fira  mt-20 text-center bg-white/10 rounded-md shadow-black shadow-md   ">
+          <section className="flex md:flex-row flex-col  p-10  gap-2 fira  mt-5 text-center bg-white/10 rounded-md shadow-black shadow-md   ">
             {/*video explanation */}
             <p className=" fira md:text-xl max-w-[600px] min-w-[400px] self-center text-start first-letter:font-bold first-letter:text-[#6ee2f5] font-thin text-pretty leading-relax">
               We got too start like everything with the basics.
@@ -92,6 +92,10 @@ const page = () => {
                   However, you can save and reload your current project whenever
                   needed. Currently available on the web, we are actively
                   developing the mobile app for Android and iOS platforms.
+                  <br />
+                  <br />
+                  <AndroidIcon className="text-5xl text-[#3ddc84] ml-[250px] " />
+                  <AppleIcon className="text-5xl  stroke-black text-white  " />
                 </span>
               </p>
               <Image
@@ -106,13 +110,12 @@ const page = () => {
                 needed. Currently available on the web, we are actively
                 developing the mobile app for Android and iOS platforms.
               </p>
+              <aside className="flex md:hidden  justify-center mt-2 space-x-5  ">
+                <AndroidIcon className="text-5xl text-[#3ddc84]   " />
+                <AppleIcon className="text-5xl  stroke-black text-white    " />
+              </aside>
             </article>
           </section>
-
-          <aside className="flex  justify-center -mt-5 space-x-5  ">
-            <AndroidIcon className="text-5xl text-[#3ddc84]   " />
-            <AppleIcon className="text-5xl  stroke-black text-white    " />
-          </aside>
         </section>
       </main>
     </>
