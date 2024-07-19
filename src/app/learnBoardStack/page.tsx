@@ -15,7 +15,7 @@ const page = () => {
         </nav>
       </header>
       <main className="flex justify-center flex-col items-center ">
-        <h1 className="text-white text-center text-4xl antialiased  fira p-10 bg-[#6ee2f5]/20 ring-[#6ee2f5]/50 shadow-[#6ee2f5]/50 rounded-lg shadow-2xl ring-2 ">
+        <h1 className="text-white text-center md:text-4xl text-xl p-2 antialiased  fira md:p-10 bg-[#6ee2f5]/20 ring-[#6ee2f5]/50 shadow-[#6ee2f5]/50 rounded-lg shadow-2xl ring-2 ">
           What is a Kanban Board{" "}
         </h1>
         <div className="flex flex-col  items-center">
