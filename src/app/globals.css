@@ -46,11 +46,3 @@ h1 {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-.float2 {
-  float: right;
-}
-
-.writ {
-  shape-outside: url(/assets/blog/kanbanExample.png);
-}

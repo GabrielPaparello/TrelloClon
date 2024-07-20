@@ -42,10 +42,7 @@ const Project = () => {
           </button>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 w-full">
-            {cards &&
-              cards.map((card) => {
-                return <Cards key={uuid()} card={card} />;
-              })}
+            {cards && cards.map((card) => <Cards key={uuid()} card={card} />)}
           </div>
         </div>
       </main>

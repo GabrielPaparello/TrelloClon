@@ -14,15 +14,15 @@ const page = () => {
           <Homenav />
         </nav>
       </header>
-      <main className="flex justify-center flex-col items-center m-4 text-white ">
+      <main className="flex flex-col  items-center justify-center text-white m-5 ">
         <h1 className="text-white text-center md:text-4xl text-2xl p-2 antialiased tracking-wide  raleway md:p-10  ">
           What is a Kanban Board{" "}
         </h1>
         <div className="flex flex-col  items-center">
           <h2 className="text-xl md:text-2xl raleway "></h2>
-          <section className="flex md:flex-row flex-col  p-10  gap-2 fira  mt-5 text-center bg-white/10 rounded-md shadow-black shadow-md   ">
+          <section className="flex md:flex-row flex-col  md:p-10 p-8  gap-2 fira  mt-5 text-center bg-white/10 rounded-md shadow-black shadow-md   ">
             {/*video explanation */}
-            <p className=" fira md:text-xl max-w-[600px] min-w-[400px] self-center text-start first-letter:font-bold first-letter:text-[#6ee2f5] font-thin text-pretty leading-relax">
+            <p className=" fira md:text-xl max-w-[600px] md:min-w-[400px] self-center text-start first-letter:font-bold first-letter:text-[#6ee2f5] font-thin text-pretty leading-relax">
               We got too start like everything with the basics.
               <br /> <br />A Kanban board is an agile project management tool
               designed to help visualize work, limit work in progress, and
@@ -35,17 +35,17 @@ const page = () => {
               width={400}
               height={311}
               alt="kanBan elements example"
-              className="self-center ring-[#6ee2f5]/50 shadow-md shadow-[#6ee2f5] ring-1 ring-offset-2 ring-offset-current hover:scale-[1.35] transition-all duration-300 "
+              className="self-center ring-[#6ee2f5]/50 shadow-md shadow-[#6ee2f5] ring-1 ring-offset-2 ring-offset-current md:hover:scale-[1.35] md:hover:-translate-x-10  transition-all duration-300 "
             />
           </section>
         </div>
-        <section className="flex flex-col gap-20 mt-20 p-5 items-center justify-center">
+        <section className="flex flex-col gap-20 mt-20 md:p-5 items-center justify-center">
           <h2 className="relative text-center text-3xl antialiased  fira  z-10 text-[#6ee2f5] text-transparent bg-clip-text bg-gradient-to-r from-purple-500 p-2 to-[#6ee2f5] font-bold bg-[#6ee2f5]/20 ">
             What BoardStack offers{" "}
             <span className=" -z-10 absolute inset-0 ring-[#6ee2f5]/50  shadow-purple-500/50   rounded-lg shadow-lg ring-2 animate-pulse"></span>
           </h2>
-          <article className="flex items-center justify-center gap-10">
-            <ol className="list-disc p-2 md:text-xl text-md fira ">
+          <article className="flex md:flex-row flex-col items-center justify-center mx-4 md:space-x-5">
+            <ol className="list-disc p-2 md:text-xl text-md fira text-wrap  pl-2">
               <li>
                 <button>Create Cards</button>
               </li>

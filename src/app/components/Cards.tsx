@@ -10,7 +10,7 @@ import {
 import ListsAdder from "./ListsAdder";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { v4 as uuid } from "uuid";
-
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 const Cards = ({ card }: { card: Card }) => {
   const { user } = useUser();
   const dispatch = useAppDispatch();

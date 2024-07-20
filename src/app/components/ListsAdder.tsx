@@ -15,7 +15,7 @@ const ListsAdder = ({ card }: { card: Card }) => {
 
   const handleDelete = (PARENT_ID: string, TASK_ID: string) => {
     console.log(
-      `Dispatching delete for task ${TASK_ID} from card ${PARENT_ID}`
+      `Dispatching delete for task ${TASK_ID} from card ${PARENT_ID}`,
     );
     dispatch(deleteTaskfromCard({ PARENT_ID, TASK_ID }));
   };
@@ -45,7 +45,7 @@ const ListsAdder = ({ card }: { card: Card }) => {
                     modifyTaskfromCard({
                       ...list,
                       TASK_NAME: e.target.value,
-                    })
+                    }),
                   )
                 }
                 onBlur={() =>

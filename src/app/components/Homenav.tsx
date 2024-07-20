@@ -40,7 +40,7 @@ const Homenav = () => {
             </a>
           </li>
         </ul>
-        <aside className="absolute inset-1 -z-10 border-b-[50px] border-[#6ee2f5] p-7   animate-glow  "></aside>
+        <aside className="absolute inset-1 -z-10 animate-pulse border-[#6ee2f5]/20 border-offset-2 border-b-2   "></aside>
       </nav>
 
       {/* Mobile Navigation */}
