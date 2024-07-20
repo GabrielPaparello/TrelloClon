@@ -2,9 +2,30 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { Menu } from "@mui/icons-material";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const Homenav = () => {
   const [open, setOpen] = useState(false);
+  const path = usePathname();
+
+  const links = [
+    {
+      id: "home",
+      name: "home",
+      path: "/",
+    },
+    {
+      id: "learn",
+      name: "Learn",
+      path: "/learnBoardStack",
+    },
+    {
+      id: "projects",
+      name: "Get Started",
+      path: "/projects",
+    },
+  ];
 
   return (
     <>
@@ -22,23 +43,27 @@ const Homenav = () => {
             BoardStack
           </h2>
         </div>
-        <ul className="flex space-x-6">
-          <li>
-            <a
-              href="#"
-              className="text-white hover:text-[#6ee2f5] transition duration-300"
-            >
-              Link 1
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="text-white hover:text-[#6ee2f5] transition duration-300"
-            >
-              Link 2
-            </a>
-          </li>
+        <ul className="flex items-center justify-center space-x-6 m-4">
+          {links.map((link) => {
+            return (
+              <>
+                <li className="fira font-medium tracking-wider">
+                  {path === link.path ? (
+                    <h3 className={`text-gray-600 cursor-none  `}>
+                      {link.name}
+                    </h3>
+                  ) : (
+                    <Link
+                      href={link.path}
+                      className={`text-white hover:text-[#6ee2f5] transition duration-300`}
+                    >
+                      {link.name}
+                    </Link>
+                  )}
+                </li>
+              </>
+            );
+          })}
         </ul>
         <aside className="absolute inset-1 -z-10 animate-pulse border-[#6ee2f5]/20 border-offset-2 border-b-2   "></aside>
       </nav>
@@ -63,22 +88,26 @@ const Homenav = () => {
               <h2 className="text-[#6ee2f5] text-2xl font-bold">BoardStack</h2>
             </div>
             <ul className="flex flex-col gap-2 text-white">
-              <li>
-                <a
-                  href="#"
-                  className="hover:text-[#6ee2f5] transition duration-300"
-                >
-                  Link 1
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="hover:text-[#6ee2f5] transition duration-300"
-                >
-                  Link 2
-                </a>
-              </li>
+              {links.map((link) => {
+                return (
+                  <>
+                    <li className="fira font-medium tracking-wider">
+                      {path === link.path ? (
+                        <h3 className={`text-gray-600 cursor-none `}>
+                          {link.name}
+                        </h3>
+                      ) : (
+                        <Link
+                          href={link.path}
+                          className={`text-white hover:text-[#6ee2f5] transition duration-300`}
+                        >
+                          {link.name}
+                        </Link>
+                      )}
+                    </li>
+                  </>
+                );
+              })}
             </ul>
           </aside>
         )}
