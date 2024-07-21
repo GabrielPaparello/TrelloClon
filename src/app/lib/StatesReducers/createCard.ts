@@ -22,6 +22,7 @@ export interface Task {
     checklist?: string[];
   };
 }
+
 interface CardState {
   cards: Card[];
 }
@@ -49,7 +50,7 @@ export const saveData = createAsyncThunk(
     if (!response.ok) {
       throw new Error("Failed to save data");
     }
-  }
+  },
 );
 
 export const loadData = createAsyncThunk(
@@ -66,7 +67,7 @@ export const loadData = createAsyncThunk(
     }
     const data = await response.json();
     return data;
-  }
+  },
 );
 
 const createCardSlice = createSlice({
@@ -85,23 +86,22 @@ const createCardSlice = createSlice({
 
     deleteCard: (state, action: PayloadAction<string>) => {
       state.cards = state.cards.filter(
-        (card) => card.PARENT_ID !== action.payload
+        (card) => card.PARENT_ID !== action.payload,
       );
     },
+
     modifyCard: (state, action: PayloadAction<Card>) => {
-      state.cards = state.cards.map((card) => {
-        if (card.PARENT_ID === action.payload.PARENT_ID) {
-          return action.payload;
-        }
-        return card;
-      });
+      state.cards = state.cards.map((card) =>
+        card.PARENT_ID === action.payload.PARENT_ID ? action.payload : card,
+      );
     },
+
     addTaskToCard: (
       state,
-      action: PayloadAction<{ PARENT_ID: string; TASK_NAME: string }>
+      action: PayloadAction<{ PARENT_ID: string; TASK_NAME: string }>,
     ) => {
       const card = state.cards.find(
-        (card) => card.PARENT_ID === action.payload.PARENT_ID
+        (card) => card.PARENT_ID === action.payload.PARENT_ID,
       );
       if (card) {
         card.tasks?.push({
@@ -123,46 +123,58 @@ const createCardSlice = createSlice({
 
     modifyTaskfromCard: (state, action: PayloadAction<Task>) => {
       const card = state.cards.find(
-        (card) => card.PARENT_ID === action.payload.PARENT_ID
+        (card) => card.PARENT_ID === action.payload.PARENT_ID,
       );
       if (card && card.tasks) {
-        card.tasks = card.tasks.map((task) => {
-          if (task.TASK_ID === action.payload.TASK_ID) {
-            return action.payload;
-          }
-          return task;
-        });
-      }
-    },
-    deleteTaskfromCard: (
-      state,
-      action: PayloadAction<{ PARENT_ID: string; TASK_ID: string }>
-    ) => {
-      const card = state.cards.find(
-        (card) => card.PARENT_ID === action.payload.PARENT_ID
-      );
-      if (card && card.tasks) {
-        card.tasks = card.tasks.filter(
-          (task) => task.TASK_ID !== action.payload.TASK_ID
+        card.tasks = card.tasks.map((task) =>
+          task.TASK_ID === action.payload.TASK_ID ? action.payload : task,
         );
       }
     },
-    openDetails: (state, action: PayloadAction<{ TASK_ID: String }>) => {
+
+    deleteTaskfromCard: (
+      state,
+      action: PayloadAction<{ PARENT_ID: string; TASK_ID: string }>,
+    ) => {
+      const card = state.cards.find(
+        (card) => card.PARENT_ID === action.payload.PARENT_ID,
+      );
+      if (card && card.tasks) {
+        card.tasks = card.tasks.filter(
+          (task) => task.TASK_ID !== action.payload.TASK_ID,
+        );
+      }
+    },
+
+    openDetails: (state, action: PayloadAction<{ TASK_ID: string }>) => {
       const card = state.cards.find(
         (card) =>
           card.tasks &&
-          card.tasks.find((task) => task.TASK_ID === action.payload.TASK_ID)
+          card.tasks.find((task) => task.TASK_ID === action.payload.TASK_ID),
       );
       if (card && card.tasks) {
-        card.tasks = card.tasks.map((task) => {
-          if (task.TASK_ID === action.payload.TASK_ID) {
-            return {
-              ...task,
-              detailOpen: !task.detailOpen,
-            };
-          }
-          return task;
-        });
+        card.tasks = card.tasks.map((task) =>
+          task.TASK_ID === action.payload.TASK_ID
+            ? { ...task, detailOpen: !task.detailOpen }
+            : task,
+        );
+      }
+    },
+
+    reorderTasksInCard: (
+      state,
+      action: PayloadAction<{
+        PARENT_ID: string;
+        startIndex: number;
+        endIndex: number;
+      }>,
+    ) => {
+      const card = state.cards.find(
+        (card) => card.PARENT_ID === action.payload.PARENT_ID,
+      );
+      if (card && card.tasks) {
+        const [removedTask] = card.tasks.splice(action.payload.startIndex, 1);
+        card.tasks.splice(action.payload.endIndex, 0, removedTask);
       }
     },
   },
@@ -181,5 +193,7 @@ export const {
   modifyTaskfromCard,
   deleteTaskfromCard,
   openDetails,
+  reorderTasksInCard,
 } = createCardSlice.actions;
+
 export default createCardSlice.reducer;
