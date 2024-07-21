@@ -9,6 +9,8 @@ import {
   Card,
 } from "../lib/StatesReducers/createCard";
 import ListsAdder from "./ListsAdder";
+import type { DropResult } from 'react-beautiful-dnd';import type { DropResult } from "react-beautiful-dnd";
+import type { DropResult } from "react-beautiful-dnd";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { v4 as uuid } from "uuid";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
