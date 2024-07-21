@@ -16,7 +16,7 @@ const Cards = ({ card }: { card: Card }) => {
   const { user } = useUser();
   const dispatch = useAppDispatch();
 
-  const onDragEnd = (result) => {
+  const onDragEnd = (result: DropResult) => {
     const { source, destination } = result;
 
     // If dropped outside the list
