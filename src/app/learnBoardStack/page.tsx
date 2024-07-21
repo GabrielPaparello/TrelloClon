@@ -22,7 +22,7 @@ const page = () => {
           <h2 className="text-xl md:text-2xl raleway "></h2>
           <section className="flex md:flex-row flex-col  md:p-10 p-8  gap-2 fira  mt-5 text-center bg-white/10 rounded-md shadow-black shadow-md   ">
             {/*video explanation */}
-            <p className=" fira md:text-xl max-w-[600px] md:min-w-[400px] self-center text-start first-letter:font-bold first-letter:text-[#6ee2f5] font-thin text-pretty leading-relax">
+            <p className=" fira md:text-xl max-w-[600px] md:min-w-[400px] self-center text-start first-letter:text-4xl first-letter:font-bold first-letter:text-[#6ee2f5]  text-pretty leading-relax">
               We got too start like everything with the basics.
               <br /> <br />A Kanban board is an agile project management tool
               designed to help visualize work, limit work in progress, and
@@ -95,7 +95,7 @@ const page = () => {
                   <br />
                   <br />
                   <AndroidIcon className="text-5xl text-[#3ddc84] ml-[250px] " />
-                  <AppleIcon className="text-5xl  stroke-black text-white  " />
+                  <AppleIcon className="text-5xl   text-white  " />
                 </span>
               </p>
               <Image

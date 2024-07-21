@@ -9,6 +9,7 @@ import { useAppDispatch } from "../lib/store";
 import { useSelector } from "react-redux";
 import { cardEdit } from "../lib/ReducersSelector/selector";
 import { loadData, saveData, Card } from "../lib/StatesReducers/createCard";
+import { setToast } from "../lib/StatesReducers/toast";
 
 const Nav = () => {
   const dispatch = useAppDispatch();
@@ -30,7 +31,7 @@ const Nav = () => {
 
   const handleSave = (user_id: string | undefined, cards: Card[]) => {
     dispatch(saveData({ user_id, cards }));
-    alert("Saved!");
+    dispatch(setToast(true));
   };
 
   return (
@@ -41,8 +42,8 @@ const Nav = () => {
     >
       <div className="flex-grow mt-10">
         <img
-          className="border h-[105px] w-[105px] ml-[40px] border-gray-400 rounded-full"
-          src={user?.picture || "/default-profile.jpg"} // Provide a default profile image path
+          className="border h-[105px] w-[105px] ml-[40px]   border-gray-400 rounded-full"
+          src={user?.picture || "/assets/placeholders/profilePlaceholder.jpg"} // Provide a default profile image path
           alt="Profile"
           width={100}
           height={100}
@@ -53,7 +54,7 @@ const Nav = () => {
         </h2>
       </div>
 
-      {user && (
+      {!user && (
         <div className="border-[#0079d3] border-b p-4">
           <button
             className="text-[#004f8c] font-bold rounded px-4 py-1 mr-2"

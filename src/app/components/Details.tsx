@@ -104,7 +104,7 @@ const Details = React.memo(({ list }: { list: Task }) => {
   };
 
   return (
-    <div className="fixed bg-white border-[#0079d3] border-2 shadow-lg shadow-gray-400 w-[450px]  top-60 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 p-4 rounded-lg">
+    <div className="fixed bg-white border-[#0079d3] border-2 shadow-lg shadow-gray-400 w-[450px]  top-50 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 p-4 rounded-lg">
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="flex justify-between items-center">
           <h2 className="text-2xl font-semibold text-black">Details</h2>

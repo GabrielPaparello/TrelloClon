@@ -9,10 +9,14 @@ import {
   saveData,
   Card,
 } from "../lib/StatesReducers/createCard";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useSelector } from "react-redux";
 import { cardEdit } from "../lib/ReducersSelector/selector";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { v4 as uuid } from "uuid";
+import { ToastContainer } from "react-toastify";
+import { setToast } from "../lib/StatesReducers/toast";
 
 const Project = () => {
   const { user } = useUser();
@@ -24,12 +28,18 @@ const Project = () => {
   }, [user_id, dispatch]);
 
   const cards = useSelector(cardEdit);
-
+  const toastState = useSelector((state: any) => state.toastState.toast);
   const handleSave = (user_id: string | undefined, cards: Card[]) => {
     dispatch(saveData({ user_id, cards }));
     alert("saved");
   };
-
+  useEffect(() => {
+    if (toastState === true) {
+      console.log("toastState", toastState);
+      toast("Project Saved");
+      dispatch(setToast(false));
+    }
+  }, [toastState]);
   return (
     <>
       <main>
@@ -45,6 +55,18 @@ const Project = () => {
             {cards && cards.map((card) => <Cards key={uuid()} card={card} />)}
           </div>
         </div>
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
       </main>
     </>
   );

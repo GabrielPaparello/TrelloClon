@@ -4,7 +4,7 @@ import React from "react";
 
 const Hero = () => {
   return (
-    <main className="flex flex-col md:flex-row items-start gap-10 p-10 md:space-x-28 md:mb-40 mb-30 md:pt-52 pt-20 md:order-1 pb-40 justify-center">
+    <main className="flex flex-col md:flex-row items-start gap-10 p-10 md:space-x-28 md:mb-00 mb-30 md:pt-52 pt-20 md:order-1 pb-40 justify-center">
       {/* Left Section */}
       <section className="order-2 flex flex-col text-center md:text-start">
         <h1 className="text-4xl md:text-6xl text-white font-bold max-w-[500px] leading-tight mb-4">
