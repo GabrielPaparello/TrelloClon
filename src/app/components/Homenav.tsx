@@ -5,27 +5,26 @@ import { Menu } from "@mui/icons-material";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+export const links = [
+  {
+    id: "home",
+    name: "home",
+    path: "/",
+  },
+  {
+    id: "learn",
+    name: "Learn",
+    path: "/learnBoardStack",
+  },
+  {
+    id: "projects",
+    name: "Get Started",
+    path: "/projects",
+  },
+];
 const Homenav = () => {
   const [open, setOpen] = useState(false);
   const path = usePathname();
-
-  const links = [
-    {
-      id: "home",
-      name: "home",
-      path: "/",
-    },
-    {
-      id: "learn",
-      name: "Learn",
-      path: "/learnBoardStack",
-    },
-    {
-      id: "projects",
-      name: "Get Started",
-      path: "/projects",
-    },
-  ];
 
   return (
     <>

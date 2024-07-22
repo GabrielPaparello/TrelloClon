@@ -10,7 +10,6 @@ import { useSelector } from "react-redux";
 import { cardEdit } from "../lib/ReducersSelector/selector";
 import { loadData, saveData, Card } from "../lib/StatesReducers/createCard";
 import { setToast } from "../lib/StatesReducers/toast";
-
 const Nav = () => {
   const dispatch = useAppDispatch();
   const cards = useSelector(cardEdit);
@@ -38,11 +37,11 @@ const Nav = () => {
     <nav
       className={`${
         !toggleNav ? "translate-x-0" : "-translate-x-[200px] absolute"
-      } flex flex-col duration-300 max-w-[230px] justify-center items-center left-0 h-[100vh] shadow-xl`}
+      } flex flex-col duration-300 max-w-[230px] min-w-[230px] justify-center items-center left-0 top-0 h-screen shadow-xl shadow-gray-500 ring-1 ring-[#0079d3] bg-[#0079d3]   `}
     >
-      <div className="flex-grow mt-10">
+      <div className="flex-grow mt-10 relative">
         <img
-          className="border h-[105px] w-[105px] ml-[40px]   border-gray-400 rounded-full"
+          className="border h-[105px] w-[105px] shadow-xl  border-gray-400 rounded-full"
           src={user?.picture || "/assets/placeholders/profilePlaceholder.jpg"} // Provide a default profile image path
           alt="Profile"
           width={100}
@@ -54,7 +53,7 @@ const Nav = () => {
         </h2>
       </div>
 
-      {!user && (
+      {user && (
         <div className="border-[#0079d3] border-b p-4">
           <button
             className="text-[#004f8c] font-bold rounded px-4 py-1 mr-2"
@@ -89,7 +88,7 @@ const Nav = () => {
         )}
       </div>
 
-      <div className="relative">
+      <div className="">
         <button
           className="absolute top-[50%] left-[193px] bg-gray-200 rounded-full border border-gray-200"
           onClick={() => setToggleNav(!toggleNav)}
@@ -100,38 +99,6 @@ const Nav = () => {
             <ChevronLeftIcon className="text-4xl" />
           )}
         </button>
-
-        <ul className="flex flex-col border-t border-gray-300 items-center space-y-4 mb-5 w-[230px]">
-          <li className="p-2">
-            <Link href="/" className="text-gray-400 hover:text-gray-600">
-              Home
-            </Link>
-          </li>
-          <li className="p-2">
-            <Link
-              href="/create-project"
-              className="text-gray-400 hover:text-gray-600"
-            >
-              New Project
-            </Link>
-          </li>
-          <li className="p-2">
-            <Link
-              href="/current-projects"
-              className="text-gray-400 hover:text-gray-600"
-            >
-              Current Projects
-            </Link>
-          </li>
-          <li className="p-2">
-            <Link
-              href="/completed-projects"
-              className="text-gray-400 hover:text-gray-600"
-            >
-              Completed Projects
-            </Link>
-          </li>
-        </ul>
       </div>
     </nav>
   );
