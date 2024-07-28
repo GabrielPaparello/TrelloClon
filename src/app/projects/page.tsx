@@ -23,8 +23,13 @@ const Project = () => {
   const user_id = user?.sub?.split("|")[1];
   const dispatch = useAppDispatch();
 
+  // useEffect(() => {
+  //   dispatch(loadData(user_id));
+  // }, [user_id, dispatch]);
   useEffect(() => {
-    dispatch(loadData(user_id));
+    if (user_id) {
+      dispatch(loadData(user_id));
+    }
   }, [user_id, dispatch]);
 
   const cards = useSelector(cardEdit);
