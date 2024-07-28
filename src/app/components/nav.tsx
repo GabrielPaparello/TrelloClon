@@ -42,7 +42,7 @@ const Nav = () => {
       <div className="flex-grow mt-10 relative">
         <img
           className="border h-[105px] w-[105px] shadow-xl  border-gray-400 rounded-full"
-          src={user?.picture || "/assets/placeholders/profilePlaceholder.jpg"} // Provide a default profile image path
+          src={user?.picture || "/assets/placeholders/profilePlaceholder.jpg"}
           alt="Profile"
           width={100}
           height={100}
