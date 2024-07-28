@@ -42,7 +42,7 @@ const Project = () => {
   }, [toastState]);
   return (
     <>
-      <main>
+      <main className="">
         <div className="flex flex-wrap gap-4 p-4">
           <button
             onClick={() => dispatch(addCard())}

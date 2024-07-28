@@ -36,8 +36,8 @@ const Nav = () => {
   return (
     <nav
       className={`${
-        !toggleNav ? "translate-x-0" : "-translate-x-[200px] absolute"
-      } flex flex-col duration-300 max-w-[230px] min-w-[230px] justify-center items-center left-0 top-0 h-screen shadow-xl shadow-gray-500 ring-1 ring-[#0079d3] bg-[#0079d3]   `}
+        !toggleNav ? "translate-x-0" : "-translate-x-[200px] h-[88vh] absolute"
+      } flex flex-col duration-300 max-w-[230px] min-w-[230px] justify-center items-center left-0  h-screen shadow-xl shadow-gray-500 ring-1 ring-[#0079d3] bg-[#0079d3]   `}
     >
       <div className="flex-grow mt-10 relative">
         <img
@@ -70,7 +70,7 @@ const Nav = () => {
         </div>
       )}
 
-      <div className="flex flex-col space-y-10">
+      <div className="flex flex-col space-y-10 flex-grow">
         {!user ? (
           <a
             className="bg-blue-500 mt-10 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded"

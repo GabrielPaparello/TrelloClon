@@ -10,17 +10,20 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const toggle = useSelector(openDetail);
 
   return (
-    <>
-      <nav>
+    <div className="flex flex-col h-screen">
+      <nav className="flex-shrink-0">
         <Homenav />
       </nav>
-      <div className={`flex `}>
-        <div className={`${toggle ? "blur-sm bg-black/65" : ""} bg-white `}>
+      <div className="flex flex-1 overflow-hidden">
+        <div
+          className={`flex-shrink-0 ${toggle ? "blur-sm bg-black/65" : ""} bg-white`}
+        >
           <Nav />
         </div>
-
-        <div className={` p-6  md:p-12 bg-white  flex-1`}>{children}</div>
+        <main className="flex-1 p-6 md:p-12 bg-white overflow-auto">
+          {children}
+        </main>
       </div>
-    </>
+    </div>
   );
 }
