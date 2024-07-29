@@ -1,8 +1,10 @@
 "use client";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { Close } from "@mui/icons-material";
 import { useDispatch } from "react-redux";
-import { addProject } from "../lib/StatesReducers/createProject";
+import { addProject, Project } from "../lib/StatesReducers/createProject";
+import { useSelector } from "react-redux";
+import { projectState } from "../lib/ReducersSelector/selector";
 const Testproject = () => {
   const [clicked, setClicked] = useState<boolean>(false);
   const [formValues, setFormValues] = useState({
@@ -11,7 +13,9 @@ const Testproject = () => {
     members: "",
     category: "",
   });
-
+  const projectState = useSelector(
+    (state: any) => state.createProject.projects,
+  );
   const dispatch = useDispatch();
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -25,6 +29,11 @@ const Testproject = () => {
     event.preventDefault();
     dispatch(addProject(formValues));
   };
+  const router = useRouter();
+  const handleClick = () => {};
+  useEffect(() => {
+    setClicked(false);
+  }, [projectState]);
   return (
     <div className="flex">
       <section className="text-black text-2xl p-5">
@@ -89,6 +98,14 @@ const Testproject = () => {
           </article>
         </div>
       )}
+
+      <div className="bg-blue-500">
+        {projectState.map((element: Project) => (
+          <button onClick={handleClick} key={element.projectId}>
+            {element.projectName}
+          </button>
+        ))}
+      </div>
     </div>
   );
 };
