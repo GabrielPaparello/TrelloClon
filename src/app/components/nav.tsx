@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import { cardEdit } from "../lib/ReducersSelector/selector";
 import { loadData, saveData, Card } from "../lib/StatesReducers/createCard";
 import { setToast } from "../lib/StatesReducers/toast";
+import { useParams } from "next/navigation";
 const Nav = () => {
   const dispatch = useAppDispatch();
   const cards = useSelector(cardEdit);
@@ -17,9 +18,11 @@ const Nav = () => {
   const user_id = user?.sub?.split("|")[1];
   const [toggleNav, setToggleNav] = useState(false);
   const path = usePathname();
+  const { projectd } = useParams<{ projectd?: string }>(); // Type the params accordingly
+  const projectId = projectd ? projectd.toString() : "";
 
   useEffect(() => {
-    dispatch(loadData(user_id));
+    dispatch(loadData({ user_id, projectId }));
   }, [user_id, dispatch]);
 
   useEffect(() => {
@@ -28,8 +31,12 @@ const Nav = () => {
     }
   }, [path]);
 
-  const handleSave = (user_id: string | undefined, cards: Card[]) => {
-    dispatch(saveData({ user_id, cards }));
+  const handleSave = (
+    user_id: string | undefined,
+    projectId: string,
+    cards: Card[]
+  ) => {
+    dispatch(saveData({ user_id, cards, projectId }));
     dispatch(setToast(true));
   };
 

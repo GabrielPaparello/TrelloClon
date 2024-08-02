@@ -5,16 +5,32 @@ import { useDispatch } from "react-redux";
 import { addProject, Project } from "../lib/StatesReducers/createProject";
 import { useSelector } from "react-redux";
 import { projectState } from "../lib/ReducersSelector/selector";
+import { useRouter } from "next/navigation";
+import { useUser } from "@auth0/nextjs-auth0/client";
 const Testproject = () => {
+  const { user } = useUser();
+  // const userID = user?.sub?.split("|")[1];
+  const router = useRouter();
   const [clicked, setClicked] = useState<boolean>(false);
+  const userID = "string";
+  useEffect(() => {
+    if (userID) {
+      setFormValues((prevValues) => ({
+        ...prevValues,
+        userID,
+      }));
+    }
+  }, [userID]);
+
   const [formValues, setFormValues] = useState({
     projectName: "",
     description: "",
     members: "",
     category: "",
+    userID: "",
   });
   const projectState = useSelector(
-    (state: any) => state.createProject.projects,
+    (state: any) => state.createProject.projects
   );
   const dispatch = useDispatch();
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -25,12 +41,20 @@ const Testproject = () => {
     }));
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     dispatch(addProject(formValues));
   };
-  const router = useRouter();
-  const handleClick = () => {};
+  const handleClick = (element: Project) => {
+    router.push(
+      `/projects/${element.userID}/${element.projectId}?userID=${element.userID}&projectId=${element.projectId}`
+    );
+  };
+  // const handleClick = (element: Project) => {
+  //   router.push(
+  //     `/projects?userID=/${element.userID}&projectId=/${element.projectId}`
+  //   );
+  // };
   useEffect(() => {
     setClicked(false);
   }, [projectState]);
@@ -50,7 +74,10 @@ const Testproject = () => {
             />
           </span>
           <article>
-            <form className="text-black gap-2 p-5 flex flex-col">
+            <form
+              onSubmit={handleSubmit}
+              className="text-black gap-2 p-5 flex flex-col"
+            >
               <label htmlFor="projectName">Project Name</label>
               <input
                 required
@@ -91,7 +118,7 @@ const Testproject = () => {
                 onChange={handleChange}
                 value={formValues.category}
               />
-              <button onClick={handleSubmit} className="text-white bg-blue-500">
+              <button type="submit" className="text-white bg-blue-500">
                 Submit
               </button>
             </form>
@@ -101,7 +128,7 @@ const Testproject = () => {
 
       <div className="bg-blue-500">
         {projectState.map((element: Project) => (
-          <button onClick={handleClick} key={element.projectId}>
+          <button onClick={() => handleClick(element)} key={element.projectId}>
             {element.projectName}
           </button>
         ))}

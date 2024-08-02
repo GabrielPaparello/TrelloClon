@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
 
 export interface Card {
+  projectId: string;
   PARENT_ID: string;
   editable: boolean;
   CARD_NAME: string;
@@ -35,8 +36,10 @@ export const saveData = createAsyncThunk(
   "app/saveData",
   async ({
     user_id,
+    projectId,
     cards,
   }: {
+    projectId: string;
     user_id: string | undefined;
     cards: Card[];
   }) => {
@@ -45,37 +48,65 @@ export const saveData = createAsyncThunk(
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ user_id, data: cards }),
+      body: JSON.stringify({ user_id, projectId, data: cards }),
     });
     if (!response.ok) {
       throw new Error("Failed to save data");
     }
-  },
+  }
 );
+interface LoadDataArgs {
+  user_id: string | undefined;
+  projectId: string;
+}
 
-export const loadData = createAsyncThunk(
+// Define the response type based on your API response
+interface LoadDataResponse {
+  // Add properties based on the API response
+}
+export const loadData = createAsyncThunk<LoadDataResponse, LoadDataArgs>(
   "app/loadData",
-  async (user_id: string | undefined) => {
+  async ({ user_id, projectId }) => {
     const response = await fetch("/api/load", {
       method: "GET",
       headers: {
         user_id: user_id || "",
+        projectId: projectId || "",
       },
     });
     if (!response.ok) {
       throw new Error("Failed to load data");
     }
-    const data = await response.json();
+    const data: LoadDataResponse = await response.json();
     return data;
-  },
+  }
 );
+
+// export const loadData = createAsyncThunk(
+//   "app/loadData",
+//   async (user_id: string | undefined, projectId: string | undefined) => {
+//     const response = await fetch("/api/load", {
+//       method: "GET",
+//       headers: {
+//         user_id: user_id || "",
+//         projectId: projectId || "",
+//       },
+//     });
+//     if (!response.ok) {
+//       throw new Error("Failed to load data");
+//     }
+//     const data = await response.json();
+//     return data;
+//   }
+// );
 
 const createCardSlice = createSlice({
   name: "createCard",
   initialState,
   reducers: {
-    addCard: (state) => {
+    addCard: (state, action: PayloadAction<string | string>) => {
       const newCard: Card = {
+        projectId: action.payload,
         PARENT_ID: uuidv4(),
         editable: true,
         CARD_NAME: "",
@@ -86,22 +117,22 @@ const createCardSlice = createSlice({
 
     deleteCard: (state, action: PayloadAction<string>) => {
       state.cards = state.cards.filter(
-        (card) => card.PARENT_ID !== action.payload,
+        (card) => card.PARENT_ID !== action.payload
       );
     },
 
     modifyCard: (state, action: PayloadAction<Card>) => {
       state.cards = state.cards.map((card) =>
-        card.PARENT_ID === action.payload.PARENT_ID ? action.payload : card,
+        card.PARENT_ID === action.payload.PARENT_ID ? action.payload : card
       );
     },
 
     addTaskToCard: (
       state,
-      action: PayloadAction<{ PARENT_ID: string; TASK_NAME: string }>,
+      action: PayloadAction<{ PARENT_ID: string; TASK_NAME: string }>
     ) => {
       const card = state.cards.find(
-        (card) => card.PARENT_ID === action.payload.PARENT_ID,
+        (card) => card.PARENT_ID === action.payload.PARENT_ID
       );
       if (card) {
         card.tasks?.push({
@@ -123,25 +154,25 @@ const createCardSlice = createSlice({
 
     modifyTaskfromCard: (state, action: PayloadAction<Task>) => {
       const card = state.cards.find(
-        (card) => card.PARENT_ID === action.payload.PARENT_ID,
+        (card) => card.PARENT_ID === action.payload.PARENT_ID
       );
       if (card && card.tasks) {
         card.tasks = card.tasks.map((task) =>
-          task.TASK_ID === action.payload.TASK_ID ? action.payload : task,
+          task.TASK_ID === action.payload.TASK_ID ? action.payload : task
         );
       }
     },
 
     deleteTaskfromCard: (
       state,
-      action: PayloadAction<{ PARENT_ID: string; TASK_ID: string }>,
+      action: PayloadAction<{ PARENT_ID: string; TASK_ID: string }>
     ) => {
       const card = state.cards.find(
-        (card) => card.PARENT_ID === action.payload.PARENT_ID,
+        (card) => card.PARENT_ID === action.payload.PARENT_ID
       );
       if (card && card.tasks) {
         card.tasks = card.tasks.filter(
-          (task) => task.TASK_ID !== action.payload.TASK_ID,
+          (task) => task.TASK_ID !== action.payload.TASK_ID
         );
       }
     },
@@ -150,13 +181,13 @@ const createCardSlice = createSlice({
       const card = state.cards.find(
         (card) =>
           card.tasks &&
-          card.tasks.find((task) => task.TASK_ID === action.payload.TASK_ID),
+          card.tasks.find((task) => task.TASK_ID === action.payload.TASK_ID)
       );
       if (card && card.tasks) {
         card.tasks = card.tasks.map((task) =>
           task.TASK_ID === action.payload.TASK_ID
             ? { ...task, detailOpen: !task.detailOpen }
-            : task,
+            : task
         );
       }
     },
@@ -167,10 +198,10 @@ const createCardSlice = createSlice({
         PARENT_ID: string;
         startIndex: number;
         endIndex: number;
-      }>,
+      }>
     ) => {
       const card = state.cards.find(
-        (card) => card.PARENT_ID === action.payload.PARENT_ID,
+        (card) => card.PARENT_ID === action.payload.PARENT_ID
       );
       if (card && card.tasks) {
         const [removedTask] = card.tasks.splice(action.payload.startIndex, 1);

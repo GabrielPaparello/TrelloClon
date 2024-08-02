@@ -23,12 +23,12 @@ export interface Task {
   };
 }
 export interface Project {
+  userID: string;
   projectId: string;
   projectName: string;
   description: string;
   members: string;
   category: string;
-  cards: Card[];
 }
 interface ProjectState {
   projects: Project[];
@@ -55,15 +55,16 @@ const createProjectSlice = createSlice({
         description: string;
         members: string;
         category: string;
-      }>,
+        userID: string;
+      }>
     ) => {
       const newProject: Project = {
+        userID: action.payload.userID,
         projectId: uuidv4(),
         projectName: action.payload.projectName,
         description: action.payload.description,
         members: action.payload.members,
         category: action.payload.category,
-        cards: [],
       };
       state.projects.push(newProject);
     },
