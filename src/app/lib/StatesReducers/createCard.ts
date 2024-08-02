@@ -62,11 +62,11 @@ interface LoadDataArgs {
 
 // Define the response type based on your API response
 interface LoadDataResponse {
-  // Add properties based on the API response
+  cards: Card[];
 }
-export const loadData = createAsyncThunk<LoadDataResponse, LoadDataArgs>(
+export const loadData = createAsyncThunk(
   "app/loadData",
-  async ({ user_id, projectId }) => {
+  async ({ user_id, projectId }: { user_id: string; projectId: string }) => {
     const response = await fetch("/api/load", {
       method: "GET",
       headers: {
@@ -211,7 +211,7 @@ const createCardSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(loadData.fulfilled, (state, action) => {
-      state.cards = action.payload;
+      state.cards = action.payload.cards;
     });
   },
 });
