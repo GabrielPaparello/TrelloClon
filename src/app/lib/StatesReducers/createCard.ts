@@ -66,7 +66,13 @@ interface LoadDataResponse {
 }
 export const loadData = createAsyncThunk(
   "app/loadData",
-  async ({ user_id, projectId }: { user_id: string; projectId: string }) => {
+  async ({
+    user_id,
+    projectId,
+  }: {
+    user_id: string | undefined;
+    projectId: string;
+  }) => {
     const response = await fetch("/api/load", {
       method: "GET",
       headers: {

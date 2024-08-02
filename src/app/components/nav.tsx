@@ -64,13 +64,13 @@ const Nav = () => {
         <div className="border-[#0079d3] border-b p-4">
           <button
             className="text-[#004f8c] font-bold rounded px-4 py-1 mr-2"
-            onClick={() => dispatch(loadData(user_id))}
+            onClick={() => dispatch(loadData({ user_id, projectId }))}
           >
             Load
           </button>
           <button
             className="text-[#004f8c] font-bold rounded px-4 py-1"
-            onClick={() => handleSave(user_id, cards)}
+            onClick={() => handleSave(user_id, projectId, cards)}
           >
             Save
           </button>
