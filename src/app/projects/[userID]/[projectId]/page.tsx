@@ -21,8 +21,14 @@ import { useParams } from "next/navigation";
 // import { useSearchParams } from "next/navigation";
 const Project = () => {
   // const params = useParams();
-  const { projectd } = useParams<{ projectd: string }>(); // Type the params accordingly
-  const projectId = projectd;
+  const [projectId, setprojectId] = useState("");
+  // const projectId = projectd;
+
+  useEffect(() => {
+    const { projectd } = useParams<{ projectd: string }>(); // Type the params accordingly
+    setprojectId(projectd);
+  }, []);
+
   // const userID = params.userID;
   // const projectId = params.projectId;
   // useEffect(() => {
