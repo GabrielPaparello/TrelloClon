@@ -22,7 +22,7 @@ import { useParams } from "next/navigation";
 const Project = () => {
   // const params = useParams();
   const { projectd } = useParams<{ projectd?: string }>(); // Type the params accordingly
-  const projectId = projectd.toString();
+  const projectId = projectd;
   // const userID = params.userID;
   // const projectId = params.projectId;
   // useEffect(() => {
