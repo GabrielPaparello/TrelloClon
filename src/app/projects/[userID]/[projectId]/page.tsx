@@ -21,7 +21,7 @@ import { useParams } from "next/navigation";
 // import { useSearchParams } from "next/navigation";
 const Project = () => {
   // const params = useParams();
-  const { projectd } = useParams<{ projectd?: string }>(); // Type the params accordingly
+  const { projectd } = useParams<{ projectd: string }>(); // Type the params accordingly
   const projectId = projectd;
   // const userID = params.userID;
   // const projectId = params.projectId;
