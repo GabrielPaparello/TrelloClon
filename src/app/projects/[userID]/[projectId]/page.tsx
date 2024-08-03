@@ -23,9 +23,9 @@ const Project = () => {
   // const params = useParams();
   const [projectId, setprojectId] = useState("");
   // const projectId = projectd;
+  const { projectd } = useParams<{ projectd: string }>(); // Type the params accordingly
 
   useEffect(() => {
-    const { projectd } = useParams<{ projectd: string }>(); // Type the params accordingly
     setprojectId(projectd);
   }, []);
 
