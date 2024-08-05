@@ -2,17 +2,25 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { Close } from "@mui/icons-material";
 import { useDispatch } from "react-redux";
-import { addProject, Project } from "../lib/StatesReducers/createProject";
+import {
+  addProject,
+  loadProjects,
+  Project,
+} from "../lib/StatesReducers/createProject";
 import { useSelector } from "react-redux";
 import { projectState } from "../lib/ReducersSelector/selector";
 import { useRouter } from "next/navigation";
 import { useUser } from "@auth0/nextjs-auth0/client";
+import { loadData } from "../lib/StatesReducers/createCard";
+import { AppDispatch } from "../lib/store";
+
 const Testproject = () => {
   const { user } = useUser();
   const userID = user?.sub?.split("|")[1];
   const router = useRouter();
   const [clicked, setClicked] = useState<boolean>(false);
   // const userID = "string";
+
   useEffect(() => {
     if (userID) {
       setFormValues((prevValues) => ({
@@ -32,7 +40,7 @@ const Testproject = () => {
   const projectState = useSelector(
     (state: any) => state.createProject.projects
   );
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setFormValues((prevValues) => ({
@@ -58,6 +66,13 @@ const Testproject = () => {
   useEffect(() => {
     setClicked(false);
   }, [projectState]);
+
+  useEffect(() => {
+    if (userID) {
+      dispatch(loadProjects(userID));
+    }
+  }, [userID, dispatch]);
+
   return (
     <div className="flex">
       <section className="text-black text-2xl p-5">
