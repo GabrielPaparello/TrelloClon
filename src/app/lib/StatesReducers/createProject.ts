@@ -115,24 +115,24 @@ interface LoadProjectsResponse {
 }
 
 // Async thunk to load projects
-export const loadProjects = createAsyncThunk(
-  "App/loadProjects",
-  async (userID: string | undefined) => {
+export const loadProjects = createAsyncThunk<Project[], string | undefined>(
+  "projects/loadProjects",
+  async (user_id, thunkAPI) => {
     try {
       const response = await fetch("/api/loadProjects", {
         method: "GET",
         headers: {
-          userID: userID || "",
+          user_id: user_id || "",
         },
       });
       if (!response.ok) {
         throw new Error("Failed to load projects");
       }
-      const data: LoadProjectsResponse = await response.json();
+      const data = await response.json();
       return data;
     } catch (error) {
       console.error("Error loading projects:", error);
-      return { projects: [] }; // Default to empty array on error
+      return thunkAPI.rejectWithValue([]);
     }
   }
 );
@@ -164,7 +164,7 @@ const createProjectSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(loadProjects.fulfilled, (state, action) => {
-      state.projects = action.payload.projects;
+      state.projects = action.payload;
     });
   },
 });
