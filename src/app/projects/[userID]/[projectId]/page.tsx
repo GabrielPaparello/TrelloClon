@@ -32,7 +32,7 @@ const Project = () => {
   //   dispatch(loadData(user_id));
   // }, [user_id, dispatch]);
   useEffect(() => {
-    if (user_id != undefined) {
+    if (user_id) {
       dispatch(loadData({ user_id, projectId }));
     }
   }, [user_id, dispatch]);
