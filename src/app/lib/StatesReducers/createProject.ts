@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
 
 export interface Card {
@@ -43,6 +43,37 @@ interface ProjectState {
 const initialState: ProjectState = {
   projects: [],
 };
+interface LoadDataResponse {
+  projects: Project[];
+}
+export const loadData = createAsyncThunk(
+  "app/loadData",
+  async ({
+    user_id,
+    projectId,
+  }: {
+    user_id: string | undefined;
+    projectId: string;
+  }) => {
+    try {
+      const response = await fetch("/api/load", {
+        method: "GET",
+        headers: {
+          user_id: user_id || "",
+          projectId: projectId || "",
+        },
+      });
+      if (!response.ok) {
+        throw new Error("Failed to load data");
+      }
+      const data: LoadDataResponse = await response.json();
+      return data;
+    } catch (error) {
+      console.error("Error loading data:", error);
+      return { projects: [] }; // Default to empty array on error
+    }
+  }
+);
 
 const createProjectSlice = createSlice({
   name: "createProject",
@@ -68,6 +99,11 @@ const createProjectSlice = createSlice({
       };
       state.projects.push(newProject);
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(loadData.fulfilled, (state, action) => {
+      state.projects = action.payload.projects;
+    });
   },
 });
 
