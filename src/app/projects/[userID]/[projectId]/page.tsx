@@ -31,11 +31,11 @@ const Project = () => {
   // useEffect(() => {
   //   dispatch(loadData(user_id));
   // }, [user_id, dispatch]);
-  // useEffect(() => {
-  //   if (user_id) {
-  //     dispatch(loadData({ user_id, projectId }));
-  //   }
-  // }, [user_id, dispatch]);
+  useEffect(() => {
+    if (user_id != undefined) {
+      dispatch(loadData({ user_id, projectId }));
+    }
+  }, [user_id, dispatch]);
 
   const cards = useSelector(cardEdit);
   const projectState = useSelector(

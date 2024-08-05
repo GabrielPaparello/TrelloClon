@@ -9,10 +9,10 @@ import { useRouter } from "next/navigation";
 import { useUser } from "@auth0/nextjs-auth0/client";
 const Testproject = () => {
   const { user } = useUser();
-  // const userID = user?.sub?.split("|")[1];
+  const userID = user?.sub?.split("|")[1];
   const router = useRouter();
   const [clicked, setClicked] = useState<boolean>(false);
-  const userID = "string";
+  // const userID = "string";
   useEffect(() => {
     if (userID) {
       setFormValues((prevValues) => ({
@@ -47,7 +47,7 @@ const Testproject = () => {
   };
   const handleClick = (element: Project) => {
     router.push(
-      `/projects/${element.userID}/${element.projectId}?userID=${element.userID}&projectId=${element.projectId}`
+      `/projects/${userID}/${element.projectId}?userID=${element.userID}&projectId=${element.projectId}`
     );
   };
   // const handleClick = (element: Project) => {
