@@ -117,20 +117,20 @@ export async function POST(req: NextRequest) {
     if (checkResult.rows.length > 0) {
       // Update existing record
       const updateQuery =
-        "UPDATE projects SET data = $2 WHERE user_id = $1 AND projectId = $3";
+        "UPDATE projects SET data = $3 WHERE user_id = $1 AND projectId = $2";
       await client.query(updateQuery, [
         user_id,
-        JSON.stringify(data),
         projectId,
+        JSON.stringify(data),
       ]);
     } else {
       // Insert new record
       const insertQuery =
-        "INSERT INTO projects (user_id, data, projectId) VALUES ($1, $2 , $3)";
+        "INSERT INTO projects (user_id, projectId , data) VALUES ($1, $2 , $3)";
       await client.query(insertQuery, [
         user_id,
-        JSON.stringify(data),
         projectId,
+        JSON.stringify(data),
       ]);
     }
 
