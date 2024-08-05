@@ -42,7 +42,11 @@ const Project = () => {
     (state: any) => state.createProject.projects
   );
   const toastState = useSelector((state: any) => state.toastState.toast);
-  const handleSave = (user_id: string | undefined, cards: Card[]) => {
+  const handleSave = (
+    user_id: string | undefined,
+    projectId: string,
+    cards: Card[]
+  ) => {
     dispatch(saveData({ user_id, projectId, cards }));
     alert("saved");
   };
@@ -57,6 +61,20 @@ const Project = () => {
   return (
     <>
       <main className="">
+        <div className="border-[#0079d3] border-b p-4">
+          <button
+            className="text-[#004f8c] font-bold rounded px-4 py-1 mr-2"
+            onClick={() => dispatch(loadData({ user_id, projectId }))}
+          >
+            Load
+          </button>
+          <button
+            className="text-[#004f8c] font-bold rounded px-4 py-1"
+            onClick={() => handleSave(user_id, projectId, cards)}
+          >
+            Save
+          </button>
+        </div>
         <div className="flex flex-wrap gap-4 p-4">
           <button
             onClick={() => dispatch(addCard(projectId))}

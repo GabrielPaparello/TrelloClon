@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 import { cardEdit } from "../lib/ReducersSelector/selector";
 import { loadData, saveData, Card } from "../lib/StatesReducers/createCard";
 import { setToast } from "../lib/StatesReducers/toast";
-import { useParams } from "next/navigation";
+
 const Nav = () => {
   const dispatch = useAppDispatch();
   const cards = useSelector(cardEdit);
@@ -19,14 +19,9 @@ const Nav = () => {
   const [toggleNav, setToggleNav] = useState(false);
   const path = usePathname();
 
-  const params = useParams();
-  const searchParams = useSearchParams();
-
-  const projectId = params.projectId as string;
-
-  useEffect(() => {
-    dispatch(loadData({ user_id, projectId }));
-  }, [user_id, dispatch]);
+  // useEffect(() => {
+  //   dispatch(loadData({ user_id, projectId }));
+  // }, [user_id, dispatch]);
 
   useEffect(() => {
     if (path === "/projects/create-project") {
@@ -65,7 +60,7 @@ const Nav = () => {
 
       {user && (
         <div className="border-[#0079d3] border-b p-4">
-          <button
+          {/* <button
             className="text-[#004f8c] font-bold rounded px-4 py-1 mr-2"
             onClick={() => dispatch(loadData({ user_id, projectId }))}
           >
@@ -76,7 +71,7 @@ const Nav = () => {
             onClick={() => handleSave(user_id, projectId, cards)}
           >
             Save
-          </button>
+          </button> */}
         </div>
       )}
 
