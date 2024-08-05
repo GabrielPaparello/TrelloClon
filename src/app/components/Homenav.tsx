@@ -45,26 +45,21 @@ const Homenav = () => {
         <ul className="flex items-center justify-center space-x-6 m-4">
           {links.map((link) => {
             return (
-              <>
-                <li key={link.name} className="fira font-medium tracking-wider">
-                  {path === link.path ? (
-                    <h3
-                      key={link.name}
-                      className={`text-gray-600 cursor-none  `}
-                    >
-                      {link.name}
-                    </h3>
-                  ) : (
-                    <Link
-                      key={link.path}
-                      href={link.path}
-                      className={`text-white hover:text-[#6ee2f5] transition duration-300`}
-                    >
-                      {link.name}
-                    </Link>
-                  )}
-                </li>
-              </>
+              <li key={link.name} className="fira font-medium tracking-wider">
+                {path === link.path ? (
+                  <h3 key={link.name} className={`text-gray-600 cursor-none  `}>
+                    {link.name}
+                  </h3>
+                ) : (
+                  <Link
+                    key={link.path}
+                    href={link.path}
+                    className={`text-white hover:text-[#6ee2f5] transition duration-300`}
+                  >
+                    {link.name}
+                  </Link>
+                )}
+              </li>
             );
           })}
         </ul>
@@ -93,29 +88,27 @@ const Homenav = () => {
             <ul className="flex flex-col gap-2 text-white">
               {links.map((link) => {
                 return (
-                  <>
-                    <li
-                      key={link.path}
-                      className="fira font-medium tracking-wider"
-                    >
-                      {path === link.path ? (
-                        <h3
-                          key={link.name}
-                          className={`text-gray-600 cursor-none `}
-                        >
-                          {link.name}
-                        </h3>
-                      ) : (
-                        <Link
-                          key={link.path}
-                          href={link.path}
-                          className={`text-white hover:text-[#6ee2f5] transition duration-300`}
-                        >
-                          {link.name}
-                        </Link>
-                      )}
-                    </li>
-                  </>
+                  <li
+                    key={link.path}
+                    className="fira font-medium tracking-wider"
+                  >
+                    {path === link.path ? (
+                      <h3
+                        key={link.name}
+                        className={`text-gray-600 cursor-none `}
+                      >
+                        {link.name}
+                      </h3>
+                    ) : (
+                      <Link
+                        key={link.path}
+                        href={link.path}
+                        className={`text-white hover:text-[#6ee2f5] transition duration-300`}
+                      >
+                        {link.name}
+                      </Link>
+                    )}
+                  </li>
                 );
               })}
             </ul>
