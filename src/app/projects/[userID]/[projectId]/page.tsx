@@ -23,7 +23,7 @@ const Project = () => {
   const searchParams = useSearchParams();
 
   const projectId = params.projectId as string;
-  const userID = searchParams.get("userID");
+  // const userID = searchParams.get("userID");
 
   const { user } = useUser();
   const user_id = user?.sub?.split("|")[1];

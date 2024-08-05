@@ -53,7 +53,7 @@ export async function POST(req: NextRequest) {
   let client;
   try {
     const { user_id, data, projectId } = await req.json();
-
+    console.log(user_id, "iduyser", data, "data", projectId, "projectId");
     client = await db.connect();
 
     // Check if the record exists
