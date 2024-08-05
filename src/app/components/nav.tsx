@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { useAppDispatch } from "../lib/store";
 import { useSelector } from "react-redux";
@@ -18,8 +18,11 @@ const Nav = () => {
   const user_id = user?.sub?.split("|")[1];
   const [toggleNav, setToggleNav] = useState(false);
   const path = usePathname();
-  const { projectd } = useParams<{ projectd?: string }>(); // Type the params accordingly
-  const projectId = projectd ? projectd.toString() : "";
+
+  const params = useParams();
+  const searchParams = useSearchParams();
+
+  const projectId = params.projectId as string;
 
   useEffect(() => {
     dispatch(loadData({ user_id, projectId }));
