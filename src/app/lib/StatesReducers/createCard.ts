@@ -73,18 +73,23 @@ export const loadData = createAsyncThunk(
     user_id: string | undefined;
     projectId: string;
   }) => {
-    const response = await fetch("/api/load", {
-      method: "GET",
-      headers: {
-        user_id: user_id || "",
-        projectId: projectId || "",
-      },
-    });
-    if (!response.ok) {
-      throw new Error("Failed to load data");
+    try {
+      const response = await fetch("/api/load", {
+        method: "GET",
+        headers: {
+          user_id: user_id || "",
+          projectId: projectId || "",
+        },
+      });
+      if (!response.ok) {
+        throw new Error("Failed to load data");
+      }
+      const data: LoadDataResponse = await response.json();
+      return data;
+    } catch (error) {
+      console.error("Error loading data:", error);
+      return { cards: [] }; // Default to empty array on error
     }
-    const data: LoadDataResponse = await response.json();
-    return data;
   }
 );
 
