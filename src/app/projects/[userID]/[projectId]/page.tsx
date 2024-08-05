@@ -31,11 +31,11 @@ const Project = () => {
   // useEffect(() => {
   //   dispatch(loadData(user_id));
   // }, [user_id, dispatch]);
-  useEffect(() => {
-    if (user_id) {
-      dispatch(loadData({ user_id, projectId }));
-    }
-  }, [user_id, dispatch]);
+  // useEffect(() => {
+  //   if (user_id) {
+  //     dispatch(loadData({ user_id, projectId }));
+  //   }
+  // }, [user_id, dispatch]);
 
   const cards = useSelector(cardEdit);
   const projectState = useSelector(
@@ -65,7 +65,8 @@ const Project = () => {
             + Add Card
           </button>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 w-full">
-            {cards && cards.map((card) => <Cards key={uuid()} card={card} />)}
+            {cards &&
+              cards.map((card: Card) => <Cards key={uuid()} card={card} />)}
           </div>
         </div>
         <ToastContainer

@@ -32,61 +32,61 @@ const initialState: CardState = {
   cards: [],
 };
 
-// export const saveData = createAsyncThunk(
-//   "app/saveData",
-//   async ({
-//     user_id,
-//     projectId,
-//     cards,
-//   }: {
-//     projectId: string;
-//     user_id: string | undefined;
-//     cards: Card[];
-//   }) => {
-//     const response = await fetch("/api/save", {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify({ user_id, projectId, data: cards }),
-//     });
-//     if (!response.ok) {
-//       throw new Error("Failed to save data");
-//     }
-//   }
-// );
-// interface LoadDataArgs {
-//   user_id: string | undefined;
-//   projectId: string;
-// }
+export const saveData = createAsyncThunk(
+  "app/saveData",
+  async ({
+    user_id,
+    projectId,
+    cards,
+  }: {
+    projectId: string;
+    user_id: string | undefined;
+    cards: Card[];
+  }) => {
+    const response = await fetch("/api/save", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ user_id, projectId, data: cards }),
+    });
+    if (!response.ok) {
+      throw new Error("Failed to save data");
+    }
+  }
+);
+interface LoadDataArgs {
+  user_id: string | undefined;
+  projectId: string;
+}
 
-// // Define the response type based on your API response
-// interface LoadDataResponse {
-//   cards: Card[];
-// }
-// export const loadData = createAsyncThunk(
-//   "app/loadData",
-//   async ({
-//     user_id,
-//     projectId,
-//   }: {
-//     user_id: string | undefined;
-//     projectId: string;
-//   }) => {
-//     const response = await fetch("/api/load", {
-//       method: "GET",
-//       headers: {
-//         user_id: user_id || "",
-//         projectId: projectId || "",
-//       },
-//     });
-//     if (!response.ok) {
-//       throw new Error("Failed to load data");
-//     }
-//     const data: LoadDataResponse = await response.json();
-//     return data;
-//   }
-// );
+// Define the response type based on your API response
+interface LoadDataResponse {
+  cards: Card[];
+}
+export const loadData = createAsyncThunk(
+  "app/loadData",
+  async ({
+    user_id,
+    projectId,
+  }: {
+    user_id: string | undefined;
+    projectId: string;
+  }) => {
+    const response = await fetch("/api/load", {
+      method: "GET",
+      headers: {
+        user_id: user_id || "",
+        projectId: projectId || "",
+      },
+    });
+    if (!response.ok) {
+      throw new Error("Failed to load data");
+    }
+    const data: LoadDataResponse = await response.json();
+    return data;
+  }
+);
 
 // export const loadData = createAsyncThunk(
 //   "app/loadData",
@@ -215,11 +215,11 @@ const createCardSlice = createSlice({
       }
     },
   },
-  // extraReducers: (builder) => {
-  //   builder.addCase(loadData.fulfilled, (state, action) => {
-  //     state.cards = action.payload.cards;
-  //   });
-  // },
+  extraReducers: (builder) => {
+    builder.addCase(loadData.fulfilled, (state, action) => {
+      state.cards = action.payload.cards;
+    });
+  },
 });
 
 export const {
