@@ -166,11 +166,50 @@ const Testproject = () => {
         </div>
       )}
 
-      <div className="bg-blue-500">
+      <div className="bg-blue-500 flex flex-col text-start rounded-xl shadow-2xl shadow-gray-200/50">
         {projects.map((element: Project) => (
-          <button onClick={() => handleClick(element)} key={element.projectId}>
-            {element.projectName}
-          </button>
+          <>
+            <div
+              key={element.projectId}
+              className="p-5 flex flex-col text-white bg-blue-500 gap-5  min-w-[400px] "
+            >
+              <h2 className="text-xl font-bold relative">
+                Project Name :{" "}
+                <span className="font-bold">{element.projectName}</span>
+                <span className="absolute -bottom-3  right-[50%] translate-x-[50%]   bg-blue-200/50 rounded-xl shadow-2xl  w-[370px] h-[3px]">
+                  {" "}
+                </span>
+              </h2>
+
+              <h3 className="relative font-bold">
+                Description :{" "}
+                <span className="font-bold">{element.description}</span>
+                <span className="absolute -bottom-3  right-[50%] translate-x-[50%]   bg-blue-200/50 rounded-xl shadow-2xl  w-[370px] h-[3px]">
+                  {" "}
+                </span>
+              </h3>
+
+              <h3 className="relative font-bold">
+                Members : <span className="font-bold">{element.members}</span>
+                <span className="absolute -bottom-3  right-[50%] translate-x-[50%]   bg-blue-200/50 rounded-xl shadow-2xl  w-[370px] h-[3px]">
+                  {" "}
+                </span>
+              </h3>
+
+              <h3 className="relative font-bold">
+                Category : <span className="font-bold">{element.category}</span>
+                <span className="absolute -bottom-3  right-[50%] translate-x-[50%]   bg-blue-200/50 rounded-xl shadow-2xl  w-[370px] h-[3px]">
+                  {" "}
+                </span>{" "}
+              </h3>
+            </div>
+            <button
+              onClick={() => handleClick(element)}
+              key={element.projectId}
+            >
+              GO TO : {element.projectName}
+            </button>
+          </>
         ))}
       </div>
     </div>
