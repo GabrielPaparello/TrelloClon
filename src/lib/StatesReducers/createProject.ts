@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
-import { v4 as uuidv4 } from "uuid";
 
 export interface Card {
   PARENT_ID: string;
@@ -23,11 +22,11 @@ export interface Task {
   };
 }
 export interface Project {
-  userID: string;
+  user_id: string;
   projectId: string;
   projectName: string;
   description: string;
-  members: string;
+  members: string[];
   category: string;
 }
 interface ProjectState {
@@ -48,7 +47,7 @@ export const loadProjects = createAsyncThunk<Project[], string | undefined>(
   "projects/loadProjects",
   async (user_id, thunkAPI) => {
     try {
-      const response = await fetch("/api/loadProjects", {
+      const response = await fetch("/api/projectLoad", {
         method: "GET",
         headers: {
           user_id: user_id || "",
@@ -66,6 +65,43 @@ export const loadProjects = createAsyncThunk<Project[], string | undefined>(
   }
 );
 
+export const saveProjects = createAsyncThunk(
+  "projects/saveProjects",
+  async ({
+    user_id,
+    projectId,
+    projectName,
+    description,
+    members,
+    category,
+  }: {
+    projectId: string;
+    user_id: string | undefined;
+    projectName: string;
+    description: string;
+    members: string[];
+    category: string;
+  }) => {
+    const response = await fetch("/api/projectSave", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        user_id,
+        projectId,
+        projectName,
+        description,
+        members,
+        category,
+      }),
+    });
+    if (!response.ok) {
+      throw new Error("Failed to save data");
+    }
+  }
+);
+
 const createProjectSlice = createSlice({
   name: "createProject",
   initialState,
@@ -75,14 +111,15 @@ const createProjectSlice = createSlice({
       action: PayloadAction<{
         projectName: string;
         description: string;
-        members: string;
+        members: string[];
         category: string;
-        userID: string;
+        user_id: string;
+        projectId: string;
       }>
     ) => {
       const newProject: Project = {
-        userID: action.payload.userID,
-        projectId: uuidv4(),
+        user_id: action.payload.user_id,
+        projectId: action.payload.projectId,
         projectName: action.payload.projectName,
         description: action.payload.description,
         members: action.payload.members,

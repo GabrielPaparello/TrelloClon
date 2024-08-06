@@ -6,6 +6,7 @@ import {
   addProject,
   loadProjects,
   Project,
+  saveProjects,
 } from "../../lib/StatesReducers/createProject";
 import { useSelector } from "react-redux";
 import { projectState } from "../../lib/ReducersSelector/selector";
@@ -13,29 +14,31 @@ import { useRouter } from "next/navigation";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { loadData } from "../../lib/StatesReducers/createCard";
 import { AppDispatch } from "../../lib/store";
+import { v4 as uuidv4 } from "uuid";
 
 const Testproject = () => {
   const { user } = useUser();
-  const userID = user?.sub?.split("|")[1];
+  const user_id = user?.sub?.split("|")[1];
   const router = useRouter();
   const [clicked, setClicked] = useState<boolean>(false);
   // const userID = "string";
 
   useEffect(() => {
-    if (userID) {
+    if (user_id) {
       setFormValues((prevValues) => ({
         ...prevValues,
-        userID,
+        user_id,
       }));
     }
-  }, [userID]);
+  }, [user_id]);
 
   const [formValues, setFormValues] = useState({
     projectName: "",
     description: "",
-    members: "",
+    members: [],
     category: "",
-    userID: "",
+    user_id: "",
+    projectId: uuidv4(),
   });
   const projectState = useSelector(
     (state: any) => state.createProject.projects
@@ -55,7 +58,7 @@ const Testproject = () => {
   };
   const handleClick = (element: Project) => {
     router.push(
-      `/projects/${userID}/${element.projectId}?userID=${element.userID}&projectId=${element.projectId}`
+      `/projects/${user_id}/${element.projectId}?userID=${element.user_id}&projectId=${element.projectId}`
     );
   };
   // const handleClick = (element: Project) => {
@@ -68,13 +71,36 @@ const Testproject = () => {
   }, [projectState]);
 
   useEffect(() => {
-    if (userID) {
-      dispatch(loadProjects(userID));
-    }
-  }, [userID, dispatch]);
+    dispatch(loadProjects(user_id));
+  }, [dispatch, user_id]);
 
   return (
     <div className="flex">
+      <div className="border-[#0079d3] border-b p-4">
+        <button
+          className="text-[#004f8c] font-bold rounded px-4 py-1 mr-2"
+          onClick={() => dispatch(loadProjects(user_id))}
+        >
+          Load
+        </button>
+        <button
+          className="text-[#004f8c] font-bold rounded px-4 py-1"
+          onClick={() =>
+            dispatch(
+              saveProjects({
+                user_id: formValues.user_id,
+                projectId: formValues.projectId,
+                projectName: formValues.projectName,
+                description: formValues.description,
+                members: formValues.members,
+                category: formValues.category,
+              })
+            )
+          }
+        >
+          Save
+        </button>
+      </div>
       <section className="text-black text-2xl p-5">
         <h1>Create a project</h1>
         <button onClick={() => setClicked(true)}>+ New Project</button>
