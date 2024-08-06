@@ -17,6 +17,7 @@ import { AppDispatch } from "../../lib/store";
 import { v4 as uuidv4 } from "uuid";
 
 const Testproject = () => {
+  const projects: Project[] = useSelector(projectState);
   const { user } = useUser();
   const user_id = user?.sub?.split("|")[1];
   const router = useRouter();
@@ -40,9 +41,7 @@ const Testproject = () => {
     user_id: "",
     projectId: uuidv4(),
   });
-  const projectState = useSelector(
-    (state: any) => state.createProject.projects
-  );
+
   const dispatch: AppDispatch = useDispatch();
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -168,7 +167,7 @@ const Testproject = () => {
       )}
 
       <div className="bg-blue-500">
-        {projectState.map((element: Project) => (
+        {projects.map((element: Project) => (
           <button onClick={() => handleClick(element)} key={element.projectId}>
             {element.projectName}
           </button>
