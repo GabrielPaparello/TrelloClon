@@ -9,13 +9,13 @@ export async function POST(req: NextRequest) {
 
     // Check if the record exists
     const checkQuery =
-      "SELECT id FROM projects WHERE user_id = $1 AND projectId = $2";
+      "SELECT id FROM projectdata WHERE user_id = $1 AND projectId = $2";
     const checkResult = await client.query(checkQuery, [user_id, projectId]);
 
     if (checkResult.rows.length > 0) {
       // Update existing record
       const updateQuery =
-        "UPDATE projects SET data = $3 WHERE user_id = $1 AND projectId = $2";
+        "UPDATE projectdata SET data = $3 WHERE user_id = $1 AND projectId = $2";
       await client.query(updateQuery, [
         user_id,
         projectId,
@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
     } else {
       // Insert new record
       const insertQuery =
-        "INSERT INTO projects (user_id, projectId , data) VALUES ($1, $2 , $3)";
+        "INSERT INTO projectdata (user_id, projectId , data) VALUES ($1, $2 , $3)";
       await client.query(insertQuery, [
         user_id,
         projectId,

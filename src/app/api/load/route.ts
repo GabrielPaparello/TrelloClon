@@ -12,7 +12,6 @@ export async function GET(req: NextRequest) {
     // const { user_id } = await req.json();
 
     // Log the user_id for debugging purposes
-    console.log("user_id:", user_id);
 
     // Ensure user_id is present and valid
     if (!user_id) {
@@ -22,9 +21,16 @@ export async function GET(req: NextRequest) {
       );
     }
 
+    if (!projectId) {
+      return NextResponse.json(
+        { message: "Missing or invalid projectId" },
+        { status: 400 }
+      );
+    }
+
     const client = await db.connect();
     const query =
-      "SELECT data FROM projects WHERE user_id = $1 LIMIT 1 AND projectId = $2";
+      "SELECT data FROM projectdata WHERE user_id = $1  AND projectId = $2";
     const result = await client.query(query, [user_id, projectId]);
 
     client.release();

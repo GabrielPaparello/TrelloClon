@@ -3,11 +3,7 @@ import { db } from "@vercel/postgres";
 
 export async function GET(req: NextRequest) {
   try {
-    // Extract user_id from request headers
     const user_id = req.headers.get("user_id");
-
-    // Log the user_id for debugging purposes
-    console.log("user_id:", user_id);
 
     // Ensure user_id is present and valid
     if (!user_id) {
