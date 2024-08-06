@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useAppDispatch } from "../lib/store";
-import { Task, modifyTaskfromCard } from "../lib/StatesReducers/createCard";
-import { toggle } from "../lib/StatesReducers/openDetails";
+import { useAppDispatch } from "../../lib/store";
+import { Task, modifyTaskfromCard } from "../../lib/StatesReducers/createCard";
+import { toggle } from "../../lib/StatesReducers/openDetails";
 import { Close } from "@mui/icons-material";
 
 const Details = React.memo(({ list }: { list: Task }) => {

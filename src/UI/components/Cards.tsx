@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Delete, Edit } from "@mui/icons-material";
-import { useAppDispatch } from "../lib/store";
+import { useAppDispatch } from "../../lib/store";
 import {
   modifyCard,
   deleteCard,
   addTaskToCard,
   reorderTasksInCard,
   Card,
-} from "../lib/StatesReducers/createCard";
+} from "../../lib/StatesReducers/createCard";
 import ListsAdder from "./ListsAdder";
 import type { DropResult } from "react-beautiful-dnd";
 import { useUser } from "@auth0/nextjs-auth0/client";
@@ -31,7 +31,7 @@ const Cards = ({ card }: { card: Card }) => {
         PARENT_ID: card.PARENT_ID,
         startIndex: source.index,
         endIndex: destination.index,
-      }),
+      })
     );
   };
 
@@ -98,7 +98,7 @@ const Cards = ({ card }: { card: Card }) => {
                 addTaskToCard({
                   PARENT_ID: card.PARENT_ID,
                   TASK_NAME: "",
-                }),
+                })
               )
             }
             className="text-[#0079d3] font-bold pb-2 px-6 rounded"

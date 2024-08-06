@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import Homenav from "../components/Homenav";
+import Homenav from "../../UI/components/Homenav";
 import "../globals.css";
 import AndroidIcon from "@mui/icons-material/Android";
 import AppleIcon from "@mui/icons-material/Apple";

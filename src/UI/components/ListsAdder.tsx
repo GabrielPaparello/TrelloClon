@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Delete, Edit, MoreVert } from "@mui/icons-material";
-import { useAppDispatch } from "../lib/store";
+import { useAppDispatch } from "../../lib/store";
 import {
   modifyTaskfromCard,
   deleteTaskfromCard,
-} from "../lib/StatesReducers/createCard";
-import { toggle } from "../lib/StatesReducers/openDetails";
-import { Card } from "../lib/StatesReducers/createCard";
-import { Task } from "../lib/StatesReducers/createCard";
+} from "../../lib/StatesReducers/createCard";
+import { toggle } from "../../lib/StatesReducers/openDetails";
+import { Card } from "../../lib/StatesReducers/createCard";
+import { Task } from "../../lib/StatesReducers/createCard";
 import Details from "./Details";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
@@ -16,7 +16,7 @@ const ListsAdder = ({ card }: { card: Card }) => {
 
   const handleDelete = (PARENT_ID: string, TASK_ID: string) => {
     console.log(
-      `Dispatching delete for task ${TASK_ID} from card ${PARENT_ID}`,
+      `Dispatching delete for task ${TASK_ID} from card ${PARENT_ID}`
     );
     dispatch(deleteTaskfromCard({ PARENT_ID, TASK_ID }));
   };
@@ -53,7 +53,7 @@ const ListsAdder = ({ card }: { card: Card }) => {
                         modifyTaskfromCard({
                           ...list,
                           TASK_NAME: e.target.value,
-                        }),
+                        })
                       )
                     }
                     onBlur={() =>
@@ -68,14 +68,16 @@ const ListsAdder = ({ card }: { card: Card }) => {
                 ) : (
                   <div className="flex items-center mx-2 space-x-4">
                     <span
-                      className={`flex-grow ${list.TASK_NAME ? "text-black" : "text-gray-400"}`}
+                      className={`flex-grow ${
+                        list.TASK_NAME ? "text-black" : "text-gray-400"
+                      }`}
                     >
                       {list.TASK_NAME ? list.TASK_NAME : "Insert Task Name"}
                     </span>
                     <Edit
                       onClick={() =>
                         dispatch(
-                          modifyTaskfromCard({ ...list, editable: true }),
+                          modifyTaskfromCard({ ...list, editable: true })
                         )
                       }
                       className="cursor-pointer text-gray-400 hover:text-gray-600"

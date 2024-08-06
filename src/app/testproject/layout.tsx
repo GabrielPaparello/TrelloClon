@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
-import Nav from "@/app/components/nav";
+import Nav from "@/UI/components/nav";
 import { useSelector } from "react-redux";
-import { openDetail } from "../lib/ReducersSelector/selector";
-import Homenav from "../components/Homenav";
+import { openDetail } from "../../lib/ReducersSelector/selector";
+import Homenav from "../../UI/components/Homenav";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const toggle = useSelector(openDetail);

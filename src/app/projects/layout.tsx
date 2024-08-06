@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
-import Nav from "@/app/components/nav";
-import WorkingBar from "../components/workingBar";
+import Nav from "@/UI/components/nav";
+import WorkingBar from "../../UI/components/workingBar";
 import { useSelector } from "react-redux";
-import { openDetail } from "../lib/ReducersSelector/selector";
-import Homenav from "../components/Homenav";
+import { openDetail } from "../../lib/ReducersSelector/selector";
+import Homenav from "../../UI/components/Homenav";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const toggle = useSelector(openDetail);
@@ -16,7 +16,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </nav>
       <div className="flex flex-1 overflow-hidden">
         <div
-          className={`flex-shrink-0 ${toggle ? "blur-sm bg-black/65" : ""} bg-white`}
+          className={`flex-shrink-0 ${
+            toggle ? "blur-sm bg-black/65" : ""
+          } bg-white`}
         >
           <Nav />
         </div>

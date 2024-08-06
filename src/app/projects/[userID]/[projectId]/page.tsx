@@ -1,22 +1,25 @@
 "use client";
 
 import React, { useEffect } from "react";
-import Cards from "../../../components/Cards";
-import { useAppDispatch } from "../../../lib/store";
+import Cards from "../../../../UI/components/Cards";
+import { useAppDispatch } from "../../../../lib/store";
 import {
   addCard,
   loadData,
   saveData,
   Card,
-} from "../../../lib/StatesReducers/createCard";
+} from "../../../../lib/StatesReducers/createCard";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useSelector } from "react-redux";
-import { cardEdit, projectState } from "../../../lib/ReducersSelector/selector";
+import {
+  cardEdit,
+  projectState,
+} from "../../../../lib/ReducersSelector/selector";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { v4 as uuid } from "uuid";
 import { ToastContainer } from "react-toastify";
-import { setToast } from "../../../lib/StatesReducers/toast";
+import { setToast } from "../../../../lib/StatesReducers/toast";
 import { useSearchParams, useParams } from "next/navigation";
 const Project = () => {
   const params = useParams();

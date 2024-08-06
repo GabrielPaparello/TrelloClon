@@ -5,11 +5,15 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useUser } from "@auth0/nextjs-auth0/client";
-import { useAppDispatch } from "../lib/store";
+import { useAppDispatch } from "../../lib/store";
 import { useSelector } from "react-redux";
-import { cardEdit } from "../lib/ReducersSelector/selector";
-import { loadData, saveData, Card } from "../lib/StatesReducers/createCard";
-import { setToast } from "../lib/StatesReducers/toast";
+import { cardEdit } from "../../lib/ReducersSelector/selector";
+import {
+  loadData,
+  saveData,
+  Card,
+} from "../../lib/StatesReducers/createCard";
+import { setToast } from "../../lib/StatesReducers/toast";
 
 const Nav = () => {
   const dispatch = useAppDispatch();

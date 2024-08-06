@@ -6,13 +6,13 @@ import {
   addProject,
   loadProjects,
   Project,
-} from "../lib/StatesReducers/createProject";
+} from "../../lib/StatesReducers/createProject";
 import { useSelector } from "react-redux";
-import { projectState } from "../lib/ReducersSelector/selector";
+import { projectState } from "../../lib/ReducersSelector/selector";
 import { useRouter } from "next/navigation";
 import { useUser } from "@auth0/nextjs-auth0/client";
-import { loadData } from "../lib/StatesReducers/createCard";
-import { AppDispatch } from "../lib/store";
+import { loadData } from "../../lib/StatesReducers/createCard";
+import { AppDispatch } from "../../lib/store";
 
 const Testproject = () => {
   const { user } = useUser();
