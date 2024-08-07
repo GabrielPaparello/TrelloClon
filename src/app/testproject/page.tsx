@@ -16,6 +16,12 @@ import { AppDispatch } from "../../lib/store";
 import { v4 as uuidv4 } from "uuid";
 
 const Testproject = () => {
+  const projects: Project[] = useSelector(projectState);
+  const dispatch: AppDispatch = useDispatch();
+  const { user } = useUser();
+  const user_id = user?.sub?.split("|")[1];
+  const router = useRouter();
+  const [clicked, setClicked] = useState<boolean>(false);
   const [formValues, setFormValues] = useState({
     projectName: "",
     description: "",
@@ -24,12 +30,6 @@ const Testproject = () => {
     user_id: "",
     projectId: uuidv4(),
   });
-  const projects: Project[] = useSelector(projectState);
-  const dispatch: AppDispatch = useDispatch();
-  const { user } = useUser();
-  const user_id = user?.sub?.split("|")[1];
-  const router = useRouter();
-  const [clicked, setClicked] = useState<boolean>(false);
 
   useEffect(() => {
     if (user_id) {
@@ -52,7 +52,7 @@ const Testproject = () => {
     event.preventDefault();
     dispatch(addProject(formValues));
   };
-  const handleClick = (element: Project) => {
+  const handleClick = (element: Project, user_id: string | undefined) => {
     router.push(
       `/projects/${user_id}/${element.projectId}?userID=${element.user_id}&projectId=${element.projectId}`
     );
@@ -164,7 +164,7 @@ const Testproject = () => {
           <>
             <div
               key={element.projectId}
-              className="p-5 flex flex-col text-white bg-blue-500 gap-5  min-w-[400px] "
+              className="p-20 flex flex-col text-white bg-blue-500 gap-5  "
             >
               <h2 className="text-xl font-bold relative">
                 Project Name :{" "}
@@ -197,7 +197,7 @@ const Testproject = () => {
               </h3>
             </div>
             <button
-              onClick={() => handleClick(element)}
+              onClick={() => handleClick(element, user_id)}
               key={element.projectId}
             >
               GO TO : {element.projectName}
