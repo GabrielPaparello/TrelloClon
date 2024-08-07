@@ -1,5 +1,5 @@
 "use client";
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { Close } from "@mui/icons-material";
 import { useDispatch } from "react-redux";
 import {
@@ -12,17 +12,24 @@ import { useSelector } from "react-redux";
 import { projectState } from "../../lib/ReducersSelector/selector";
 import { useRouter } from "next/navigation";
 import { useUser } from "@auth0/nextjs-auth0/client";
-import { loadData } from "../../lib/StatesReducers/createCard";
 import { AppDispatch } from "../../lib/store";
 import { v4 as uuidv4 } from "uuid";
 
 const Testproject = () => {
+  const [formValues, setFormValues] = useState({
+    projectName: "",
+    description: "",
+    members: [],
+    category: "",
+    user_id: "",
+    projectId: uuidv4(),
+  });
   const projects: Project[] = useSelector(projectState);
+  const dispatch: AppDispatch = useDispatch();
   const { user } = useUser();
   const user_id = user?.sub?.split("|")[1];
   const router = useRouter();
   const [clicked, setClicked] = useState<boolean>(false);
-  // const userID = "string";
 
   useEffect(() => {
     if (user_id) {
@@ -33,16 +40,6 @@ const Testproject = () => {
     }
   }, [user_id]);
 
-  const [formValues, setFormValues] = useState({
-    projectName: "",
-    description: "",
-    members: [],
-    category: "",
-    user_id: "",
-    projectId: uuidv4(),
-  });
-
-  const dispatch: AppDispatch = useDispatch();
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setFormValues((prevValues) => ({
@@ -60,11 +57,7 @@ const Testproject = () => {
       `/projects/${user_id}/${element.projectId}?userID=${element.user_id}&projectId=${element.projectId}`
     );
   };
-  // const handleClick = (element: Project) => {
-  //   router.push(
-  //     `/projects?userID=/${element.userID}&projectId=/${element.projectId}`
-  //   );
-  // };
+
   useEffect(() => {
     setClicked(false);
   }, [projectState]);

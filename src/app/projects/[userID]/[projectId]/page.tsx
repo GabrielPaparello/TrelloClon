@@ -12,10 +12,7 @@ import {
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useSelector } from "react-redux";
-import {
-  cardEdit,
-  projectState,
-} from "../../../../lib/ReducersSelector/selector";
+import { cardEdit } from "../../../../lib/ReducersSelector/selector";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { v4 as uuid } from "uuid";
 import { ToastContainer } from "react-toastify";
@@ -26,14 +23,11 @@ const Project = () => {
   const searchParams = useSearchParams();
 
   const projectId = params.projectId as string;
-  // const userID = searchParams.get("userID");
 
   const { user } = useUser();
   const user_id = user?.sub?.split("|")[1];
   const dispatch = useAppDispatch();
-  // useEffect(() => {
-  //   dispatch(loadData(user_id));
-  // }, [user_id, dispatch]);
+
   useEffect(() => {
     if (user_id) {
       dispatch(loadData({ user_id, projectId }));
