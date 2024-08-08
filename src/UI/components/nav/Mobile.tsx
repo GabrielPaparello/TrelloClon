@@ -23,7 +23,7 @@ export const MobileNav = ({
       />
 
       <aside
-        className={`absolute ease-in-out left-2 top-14 h-[350px] bg-[#21232B]/[0.99] ring-2 duration-700 ring-[#000000]/20 rounded-lg shadow-md flex items-start p-2 gap-5 justify-start flex-col w-60 ${
+        className={`absolute ease-in-out left-2 top-14 h-[350px] bg-[#191552]/[0.99] ring-2 duration-700 ring-[#000000]/20 rounded-lg shadow-md flex items-start p-2 gap-5 justify-start flex-col w-60 ${
           open ? "" : "left-[-100%]"
         }`}
       >

@@ -13,7 +13,7 @@ const Feature = () => {
     >
       <Slider {...settings}>
         {features.map((feature) => (
-          <div key={feature.id} className="flex px-5">
+          <div key={feature.id} className="flex p-5">
             <div
               className={`w-full
                flex flex-col 
