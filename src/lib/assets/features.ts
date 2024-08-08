@@ -5,7 +5,26 @@ interface Features {
   imgAlt: string;
   id: string;
 }
-
+export const settings = {
+  arrows: false,
+  infinite: true,
+  slidesToShow: 2,
+  slidesToScroll: 2,
+  autoplay: true,
+  autoplaySpeed: 4000,
+  speed: 1000, // Adjusted for smoother transition
+  pauseOnHover: false,
+  centerMode: true,
+  responsive: [
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ],
+};
 const features: Features[] = [
   {
     imgPath: "/assets/feature/f1.jpeg",

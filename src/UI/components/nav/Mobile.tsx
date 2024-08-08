@@ -23,12 +23,14 @@ export const MobileNav = ({
       />
 
       <aside
-        className={`absolute ease-in-out left-2 top-14 h-[350px] bg-[#21232B] ring-1 duration-700 ring-[#21232B]/80 rounded-lg shadow-md flex items-start p-2 gap-5 justify-start flex-col w-60 ${
+        className={`absolute ease-in-out left-2 top-14 h-[350px] bg-[#21232B]/[0.99] ring-2 duration-700 ring-[#000000]/20 rounded-lg shadow-md flex items-start p-2 gap-5 justify-start flex-col w-60 ${
           open ? "" : "left-[-100%]"
         }`}
       >
         <div className="flex items-center ml-1 ">
-          <h2 className="text-[#6ee2f5] fira text-2xl font-bold">BoardStack</h2>
+          <h2 className="text-[#6ee2f5] tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-[#6ee2f5] via-purple-500 to-[#6ee2f5] text-2xl font-bold">
+            BoardStack
+          </h2>{" "}
           <Image
             src="/assets/logo.png"
             alt="logoBrand"
@@ -53,7 +55,7 @@ export const MobileNav = ({
                       }`}
                     />
                     {link.name}
-                    <hr className=" h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-gray-200 to-transparent opacity-25 dark:via-neutral-400" />
+                    <hr className=" h-[2px] w-[200px] border-t-0 bg-transparent bg-gradient-to-r from-transparent via-gray-200 to-transparent opacity-25 dark:via-neutral-400" />
                   </h3>
                 ) : (
                   <>
@@ -70,7 +72,7 @@ export const MobileNav = ({
                         }`}
                       />
                       {link.name}
-                      <hr className=" h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-gray-200 to-transparent opacity-25 dark:via-neutral-400" />
+                      <hr className=" h-[2px] w-[200px] border-t-0 bg-transparent bg-gradient-to-r from-transparent via-gray-200 to-transparent opacity-25 dark:via-neutral-400" />
                     </Link>
                   </>
                 )}

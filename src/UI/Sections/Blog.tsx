@@ -18,12 +18,12 @@ const Blog = () => {
   }, []);
 
   return (
-    <section className="flex flex-col md:flex-row md:gap-10 md:items-start mt-20 p-5 bg-gradient-to-t from-[#bab9cb] to-[#191552]">
+    <section className="flex flex-col md:flex-col  md:gap-10 md:items-center mt-10 p-5 bg-[#191552]">
       {/* Left Section - Image */}
-      <article className="">
+      <article className="md:order-2">
         <Image
           src="/assets/blog/blog1.jpeg"
-          width={width > 500 ? 800 : 300}
+          width={width > 500 ? 600 : 300}
           height={311}
           alt="blog-Img"
           className="rounded-lg"
@@ -31,7 +31,7 @@ const Blog = () => {
       </article>
 
       {/* Right Section - Text Content */}
-      <article className="mt-5 flex flex-col text-left">
+      <article className="mt-5 md:mt-0 md:order-1 flex flex-col text-left">
         <h2 className="text-[#f4f3f0] text-2xl md:text-5xl font-bold mb-4">
           Currently Working on the Mobile App
         </h2>

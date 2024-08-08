@@ -5,22 +5,27 @@
 * {
   box-sizing: border-box;
 }
-
-:root {
+/* PREV COLOR BG BODY #191552 */
+/* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 25, 21, 82;
   --background-end-rgb: 25, 21, 82;
-}
+} */
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
   }
-}
+} */
 
-body {
+/* --background-start-rgb: 25, 21, 82; */
+
+.h {
+  background-color: rgb(85, 80, 179);
+}
+/* body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
@@ -28,7 +33,7 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
-}
+} */
 .raleway {
   font-family: "Raleway", sans-serif;
   font-weight: 700;
