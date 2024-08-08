@@ -3,7 +3,7 @@ import React from "react";
 import Nav from "@/UI/components/nav";
 import { useSelector } from "react-redux";
 import { openDetail } from "../../lib/ReducersSelector/selector";
-import Homenav from "../../UI/components/Homenav";
+import Navbar from "../../UI/components/nav/Nav";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const toggle = useSelector(openDetail);
@@ -11,7 +11,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex flex-col h-screen">
       <nav className="flex-shrink-0">
-        <Homenav />
+        <Navbar />
       </nav>
       <div className="flex flex-1 overflow-hidden">
         <div className={`flex-shrink-0  bg-white`}>
