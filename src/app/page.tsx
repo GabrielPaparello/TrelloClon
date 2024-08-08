@@ -1,5 +1,5 @@
 "use client";
-import Homenav from "../UI/components/Homenav";
+import Nav from "../UI/components/nav/Nav";
 import Feature from "../UI/Sections/Feature";
 import Blog from "../UI/Sections/Blog";
 import Hero from "../UI/Sections/Hero";
@@ -8,7 +8,7 @@ export default function Home() {
     <>
       <header>
         <nav>
-          <Homenav />
+          <Nav />
         </nav>
         <Hero />
       </header>
