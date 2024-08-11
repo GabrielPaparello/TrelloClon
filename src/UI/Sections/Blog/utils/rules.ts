@@ -19,6 +19,12 @@ const blogsPath: blogs[] = [
     imgAlt: "Broadcasing of App",
     link: "/assets/blog/kanbanExample.png",
   },
+  {
+    title: "Now suporting multiple projects/boards",
+    description: "Now you save into multiple boards and load from them.",
+    imgAlt: "Broadcasing of App",
+    link: "/assets/blog/headerLogo.png",
+  },
 ];
 
 export default blogsPath;
