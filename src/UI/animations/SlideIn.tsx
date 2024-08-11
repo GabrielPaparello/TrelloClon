@@ -1,8 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-
-const SlideInSection = ({ children }) => {
+interface SlideInProps {
+  children: React.ReactNode;
+}
+const SlideInSection: React.FC<SlideInProps> = ({ children }) => {
   const { ref, inView } = useInView({
     triggerOnce: true, // Trigger animation only once
     threshold: 0.1, // Adjust visibility threshold if needed
