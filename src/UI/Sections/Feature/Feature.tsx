@@ -15,7 +15,7 @@ const Feature = () => {
 
       <Slider {...settings}>
         {features.map((feature) => (
-          <div key={feature.id} className="flex p-5">
+          <div key={feature.id} className="flex p-2">
             <div
               className={`w-full
                flex flex-col 
@@ -25,7 +25,7 @@ const Feature = () => {
                m-auto md:m-0`}
             >
               <Image
-                className="object-cover rounded-3xl md:w-[120px] md:h-[120px]"
+                className="object-cover rounded-lg md:w-[120px] md:h-[120px]"
                 src={feature.imgPath}
                 alt={feature.imgAlt}
                 width={250}
