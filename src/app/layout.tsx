@@ -5,6 +5,7 @@ import { UserProvider } from "@auth0/nextjs-auth0/client";
 import ReduxProvider from "../lib/ReduxProvider";
 import { Roboto, Raleway, Fira_Sans_Extra_Condensed } from "next/font/google";
 import { Footer } from "@/UI/Sections/Footer/Footer";
+import Nav from "../UI/components/nav/Nav";
 const inter = Inter({ subsets: ["latin"] });
 const raleway = Raleway({ subsets: ["latin"], weight: ["400", "700"] });
 const fira = Fira_Sans_Extra_Condensed({
@@ -30,7 +31,12 @@ export default function RootLayout({
           className={`${roboto.className} ${fira.className} ${raleway.className} bg-[#191552]`}
         >
           <ReduxProvider>
-            {children}
+            <header>
+              <nav>
+                <Nav />
+              </nav>
+            </header>
+            <main>{children}</main>
             <Footer />
           </ReduxProvider>
         </body>

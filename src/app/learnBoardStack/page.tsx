@@ -9,11 +9,11 @@ import AppleIcon from "@mui/icons-material/Apple";
 const page = () => {
   return (
     <>
-      <header className=" mb-[40px] ">
+      {/* <header className=" mb-[40px] ">
         <nav>
           <Homenav />
         </nav>
-      </header>
+      </header> */}
       <main className="flex flex-col  items-center justify-center text-white m-5 ">
         <h1 className="text-white text-center md:text-4xl text-2xl p-2 antialiased tracking-wide  raleway md:p-10  ">
           What is a Kanban Board{" "}

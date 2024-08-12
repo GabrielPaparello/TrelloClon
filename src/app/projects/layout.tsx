@@ -11,9 +11,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="flex flex-col h-screen">
-      <nav className="flex-shrink-0">
+      {/* <nav className="flex-shrink-0">
         <Navbar />
-      </nav>
+      </nav> */}
       <div className="flex flex-1 overflow-hidden">
         <div
           className={`flex-shrink-0 ${
