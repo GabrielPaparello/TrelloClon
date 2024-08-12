@@ -19,7 +19,7 @@ const Blog = () => {
   }, []);
 
   return (
-    <section className="flex flex-col md:flex-row flex-wrap gap-10 text-center mb-5 md:items-center md:justify-center md:gap-16 pt-10 p-5 bg-[#e8e8ee]">
+    <section className="flex flex-col md:flex-row flex-wrap gap-10 text-center pb-10 md:items-center md:justify-center md:gap-16 pt-10 p-5 bg-[#e8e8ee]">
       {data.map((item) => (
         <SlideBot key={item.title}>
           <article key={item.title} className="flex flex-col  ">
