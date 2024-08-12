@@ -7,7 +7,7 @@ export const Footer = () => {
   return (
     <>
       {/* -------logo y links -------*/}
-      <section className="flex justify-around items-center p-4 flex-wrap gap-5">
+      <section className="flex justify-around mt-5 items-center p-4 flex-wrap gap-5">
         {/* paginas about y contact us */}
         <article>
           <ul className="flex flex-row  gap-4">
