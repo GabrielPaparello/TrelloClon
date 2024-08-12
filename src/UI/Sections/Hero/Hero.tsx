@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import "./hero.css";
-import SlideLeft from "../animations/SlideLeft";
+import SlideLeft from "../../animations/SlideLeft";
 const Hero = () => {
   return (
     <main className="flex flex-col bg-[#e8e8ee] md:flex-row items-center gap-6 md:gap-3 p-6 md:space-x-5 md:mb-00 mb-30 md:pt-28 pt-20 md:order-1 pb-40 justify-center">

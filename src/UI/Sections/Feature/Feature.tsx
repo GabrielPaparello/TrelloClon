@@ -1,7 +1,7 @@
 import React from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import features, { settings } from "../../lib/assets/features";
+import features, { settings } from "../../../lib/assets/features";
 import Image from "next/image";
 import Slider from "react-slick";
 import "./feature.css";

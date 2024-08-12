@@ -5,6 +5,7 @@ import { Menu } from "@mui/icons-material";
 import Link from "next/link";
 import links from "./utils/rules";
 import "../../../app/globals.css";
+import { Hr } from "../Hr";
 export const MobileNav = ({
   open,
   setOpen,
@@ -55,7 +56,7 @@ export const MobileNav = ({
                       }`}
                     />
                     {link.name}
-                    <hr className=" h-[2px] w-[200px] border-t-0 bg-transparent bg-gradient-to-r from-transparent via-gray-200 to-transparent opacity-25 dark:via-neutral-400" />
+                    <Hr className=" h-[2px] w-[200px] border-t-0 bg-transparent bg-gradient-to-r from-transparent via-gray-200 to-transparent opacity-25 dark:via-neutral-400" />
                   </h3>
                 ) : (
                   <>

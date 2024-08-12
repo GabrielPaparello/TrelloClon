@@ -28,11 +28,11 @@ export const DesktopNav = ({ path }: { path: string }) => {
             >
               {path === link.path ? (
                 <h3 key={link.name} className={`text-gray-600 cursor-none `}>
-                  <IconComponent
+                  {/* <IconComponent
                     className={` mr-2 mb-2 ${
                       path !== link.path ? "" : "text-gray-600 "
                     }`}
-                  />
+                  /> */}
                   {link.name}
                 </h3>
               ) : (
@@ -42,13 +42,13 @@ export const DesktopNav = ({ path }: { path: string }) => {
                     href={link.path}
                     className={`text-white hover:text-[#6ee2f5] transition duration-700`}
                   >
-                    <IconComponent
+                    {/* <IconComponent
                       className={`mr-2 mb-2 duration-700 hover:text-[#6ee2f5] ${
                         path !== link.path
                           ? "hover:text-[#6ee2f5]"
                           : "text-gray-600 hover:text-none"
                       }`}
-                    />
+                    /> */}
                     {link.name}
                   </Link>
                 </>

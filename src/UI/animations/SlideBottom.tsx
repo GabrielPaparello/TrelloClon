@@ -13,16 +13,18 @@ const SlideBot: React.FC<SlideBotProps> = ({ children }) => {
   });
 
   // FOR ANIMATING RANDOMNLY BEETWEEN RANGES
-  const min = 0.5;
-  const max = 0.99;
-  const randomValue = Math.random() * (max - min) + min;
+  const MIN_TIMING_ANIMATION_RANGE = 0.5;
+  const MAX_TIMING_ANIMATION_RANGE = 0.99;
+  const RANDOM_TIMING =
+    Math.random() * (MAX_TIMING_ANIMATION_RANGE - MIN_TIMING_ANIMATION_RANGE) +
+    MIN_TIMING_ANIMATION_RANGE;
 
   return (
     <motion.div
       ref={ref}
-      initial={{ y: 300 }}
-      animate={{ y: inView ? 0 : 300 }}
-      transition={{ duration: randomValue, ease: "easeIn" }}
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 50 }}
+      transition={{ duration: RANDOM_TIMING, ease: "easeIn" }}
     >
       {children}
     </motion.div>
