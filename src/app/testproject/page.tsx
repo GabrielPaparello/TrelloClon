@@ -198,17 +198,22 @@ const Testproject = () => {
               </h3>
 
               <h3 className="relative font-bold">
-                Category : <span className="font-bold">{element.category}</span>
+                Category :{" "}
+                <span className="font-bold">
+                  {element.category}
+                  {element.projectId}
+                </span>
                 <span className="absolute -bottom-3  right-[50%] translate-x-[50%]   bg-blue-200/50 rounded-xl shadow-2xl  w-[370px] h-[3px]">
                   {" "}
                 </span>{" "}
               </h3>
             </div>
             <button
+              className="text-black"
               onClick={() => handleClick(element.projectId, user_id)}
               key={element.projectId}
             >
-              GO TO : {element.projectName}
+              GO TO : {element.projectName} {element.projectId}
             </button>
           </>
         ))}
