@@ -21,7 +21,17 @@ export async function GET(req: NextRequest) {
     client.release();
 
     if (result.rows.length > 0) {
-      return NextResponse.json(result.rows, { status: 200 });
+      // return NextResponse.json(result.rows, { status: 200 });
+      const projects = result.rows.map((row) => ({
+        user_id: user_id, // Since user_id is a filter parameter, it should be added manually
+        projectId: row.projectid,
+        projectName: row.projectname,
+        description: row.description,
+        members: row.members ? row.members.split(",") : [], // Convert comma-separated string to array
+        category: row.category,
+      }));
+
+      return NextResponse.json(projects, { status: 200 });
     } else {
       return NextResponse.json([], { status: 200 });
     }
