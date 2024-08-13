@@ -23,13 +23,20 @@ export const MobileNav = ({
         onClick={() => setOpen(!open)}
       />
 
+      <Image
+        src="/assets/logo.png"
+        alt="logoBrand"
+        width={50}
+        height={50}
+        className="rounded-full"
+      />
       <aside
-        className={`absolute ease-in-out left-2 top-14 h-[350px] bg-[#191552]/[0.99] ring-2 duration-700 ring-[#000000]/20 rounded-lg shadow-md flex items-start p-2 gap-5 justify-start flex-col w-60 ${
+        className={`absolute ease-in-out left-2 top-16 h-[350px] bg-[#191552]/[0.99] z-10 ring-2 duration-700 ring-[#000000]/20 rounded-lg shadow-md flex items-start p-2 gap-5 justify-start flex-col w-60 ${
           open ? "" : "left-[-100%]"
         }`}
       >
         <div className="flex items-center ml-1 ">
-          <h2 className="text-[#6ee2f5] tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-[#6ee2f5] via-purple-500 to-[#6ee2f5] text-2xl font-bold">
+          <h2 className="text-[#6ee2f5] tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-[#6ee2f5] via-purple-500 to-[#6ee2f5] text-xl font-bold">
             BoardStack
           </h2>{" "}
           <Image
@@ -46,10 +53,10 @@ export const MobileNav = ({
             return (
               <li
                 key={link.path}
-                className="fira flex space-x-2 uppercase font-medium tracking-widest items-center  justify-center"
+                className="fira flex space-x-2 uppercase font-medium tracking-widest items-center text-sm  justify-center"
               >
                 {path === link.path ? (
-                  <h3 key={link.name} className={`text-gray-600 cursor-none `}>
+                  <h3 key={link.name} className={`text-gray-600 cursor-none  `}>
                     <IconComponent
                       className={` mr-2 mb-2 ${
                         path !== link.path ? "" : "text-gray-600 "

@@ -57,6 +57,14 @@
   }
 }
 
+.shape {
+  float: right;
+  width: 400px;
+  height: auto;
+  shape-outside: inset(0px 0px 0px 0px);
+  clip-path: inset(0px 0px 0px 0px);
+}
+
 p,
 h2,
 h3,

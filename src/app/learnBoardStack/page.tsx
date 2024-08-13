@@ -1,51 +1,79 @@
-"use client";
 import React from "react";
 import Image from "next/image";
-import Homenav from "../../UI/components/nav/Nav";
-import "../globals.css";
 import AndroidIcon from "@mui/icons-material/Android";
 import AppleIcon from "@mui/icons-material/Apple";
 
-const page = () => {
+const Page = () => {
   return (
-    <>
-      {/* <header className=" mb-[40px] ">
-        <nav>
-          <Homenav />
-        </nav>
-      </header> */}
-      <main className="flex flex-col  items-center justify-center text-white m-5 ">
-        <h1 className="text-white text-center md:text-4xl text-2xl p-2 antialiased tracking-wide  raleway md:p-10  ">
-          What is a Kanban Board{" "}
+    <div className="bg-white">
+      <header className="bg-teal-200/30 ">
+        <h1 className="md:text-4xl text-gray-600 antialiased text-2xl pt-16 text-center font-semibold">
+          Getting started with BoardStack
         </h1>
-        <div className="flex flex-col  items-center">
-          <h2 className="text-xl md:text-2xl raleway "></h2>
-          <section className="flex md:flex-row flex-col  md:p-10 p-8  gap-2 fira  mt-5 text-center bg-white/10 rounded-md shadow-black shadow-md   ">
-            {/*video explanation */}
-            <p className=" fira md:text-xl max-w-[600px] md:min-w-[400px] self-center text-start first-letter:text-4xl first-letter:font-bold first-letter:text-[#6ee2f5]  text-pretty leading-relax">
-              We got too start like everything with the basics.
-              <br /> <br />A Kanban board is an agile project management tool
-              designed to help visualize work, limit work in progress, and
-              maximize efficiency (or flow). It can assist both agile teams and
-              DevOps teams in defining the order of their daily tasks.
-            </p>
-
-            <Image
-              src="/assets/blog/kanbanExample.png"
-              width={400}
-              height={311}
-              alt="kanBan elements example"
-              className="self-center ring-[#6ee2f5]/50 shadow-md shadow-[#6ee2f5] ring-1 ring-offset-2 ring-offset-current md:hover:scale-[1.35] md:hover:-translate-x-10  transition-all duration-300 "
-            />
-          </section>
-        </div>
-        <section className="flex flex-col gap-20 mt-20 md:p-5 items-center justify-center">
-          <h2 className="relative text-center text-3xl antialiased  fira  z-10 text-[#6ee2f5] text-transparent bg-clip-text bg-gradient-to-r from-purple-500 p-2 to-[#6ee2f5] font-bold bg-[#6ee2f5]/20 ">
-            What BoardStack offers{" "}
-            <span className=" -z-10 absolute inset-0 ring-[#6ee2f5]/50  shadow-purple-500/50   rounded-lg shadow-lg ring-2 animate-pulse"></span>
+        <section className="flex flex-col md:flex-row pt-5 items-center md:items-start justify-center gap-2">
+          <p className="text-gray-600 max-w-[500px] p-5 mx-5 md:mr-10  bg-teal-500/10 shadow-sm rounded-3xl shadow-gray-500 mt-8 text-center md:text-start  tracking-wide ">
+            After going through this tutorial, you will not only be able to
+            effectively use BoardStack but also understand key best practices to
+            optimize your workflow. <br />
+            This page serves as a comprehensive guide to help you get acquainted
+            with BoardStack’s features, from basic setup to advanced usage. You
+            will learn how to create and manage boards
+          </p>
+          <Image
+            src="/assets/Header.png"
+            alt="headerImg"
+            width={400}
+            height={300}
+            className="rounded-3xl h-auto w-[350px]  "
+          />
+        </section>
+      </header>
+      <main className="pt-2">
+        <section>
+          <h2 className="text-center text-xl md:text-3xl my-10">
+            ¿What is a{" "}
+            <span className="underline underline-offset-2 decoration-teal-500/30">
+              Kanban
+            </span>{" "}
+            Board?
           </h2>
-          <article className="flex md:flex-row flex-col items-center justify-center mx-4 md:space-x-5">
-            <ol className="list-disc p-2 md:text-xl text-md fira text-wrap  pl-2">
+          <article className="flex flex-col items-center gap-5">
+            <p className="text-gray-500 text-lg max-w-[700px] mx-5 tracking-wide ">
+              <Image
+                src="/assets/blog/kanbanExample.png"
+                width={400}
+                height={311}
+                alt="kanBan elements example"
+                className="shape pb-5"
+              />
+              <em>A Kanban board</em>&nbsp; is an <strong>Agile</strong> project
+              management tool designed to help visualize work, limit work in
+              progress, and maximize efficiency (or flow). <br /> It originated
+              from the Japanese manufacturing industry and has since been
+              adapted for use in software development and other fields.{" "}
+              <strong>T</strong>he board typically consists of columns
+              representing different stages of a workflow, such as{" "}
+              <strong>'Backlog,' 'To Do,' 'In Progress,' and 'Done.'</strong>{" "}
+              Each task is represented by a card, which moves from left to right
+              across the board as it progresses through these stages. This
+              visual representation helps teams track the status of tasks,
+              identify bottlenecks, and improve overall workflow efficiency.
+            </p>
+          </article>
+        </section>
+        <section className="mt-16 pt-8 pb-8  bg-cyan-200/30">
+          <h3 className="text-center text-xl md:text-3xl">
+            What <strong>BoardStack</strong> offers
+          </h3>
+          <article className="flex pt-7 flex-col md:flex-row items-center mx-4 justify-center">
+            <Image
+              height={400}
+              width={300}
+              src="/assets/blog/kanbanExample.png"
+              alt="img"
+              className="w-[400px] h-auto"
+            />
+            <ol className="list-disc text-gray-700 p-2 mt-4 md:mt-0 md:text-xl text-md fira text-wrap  ml-8">
               <li>
                 <button>Create Cards</button>
               </li>
@@ -58,68 +86,51 @@ const page = () => {
               <li>
                 <button>Positibility to add checklists</button>
               </li>
-              <li>
-                <span className="text-gray-500 ">(currently developing)</span>{" "}
+              <li className="relative mb-3">
+                <span className="text-gray-500/50 text-sm absolute top-6 ">
+                  (currently developing)
+                </span>{" "}
                 other types of files for details
               </li>
-              <li>
-                <span className="text-gray-500">(currently developing)</span> re
-                arrenge tasks beetween cards
+              <li className="relative mb-5">
+                <span className="text-gray-500/50  text-sm absolute top-6">
+                  (currently developing)
+                </span>{" "}
+                re arrenge tasks beetween cards
               </li>
             </ol>
-            <article>
-              <Image
-                height={400}
-                width={300}
-                src="/assets/blog/kanbanExample.png"
-                alt="img"
-              />
-            </article>
           </article>
-          <section className="flex flex-col  items-center justify-center gap-5">
-            <h3 className="z-10  p-2 relative text-center text-3xl antialiased  fira font-bold text-[#6ee2f5] bg-gradient-to-r from-[#6ee2f5]  text-transparent bg-clip-text to-purple-500">
-              What else{" "}
-              <span className=" ring-[#6ee2f5]/50 shadow-[#6ee2f5]/50 rounded-lg shadow-lg ring-2  animate-pulse   -z-10 absolute inset-0 "></span>
-            </h3>
-            <article className="md:flex md:flex-row justify-center flex flex-col items-center bg-gray-500/10 rounded-md shadow-black shadow-md p-10  mt-10 md:flex-wrap">
-              <p className="md:text-xl text-md fira   md:max-w-[600px] mb-5">
-                Our app includes a login feature with convenient options like
-                Google, or you can register manually. Currently, its designed
-                for managing a single project at a time, as it serves primarily
-                as a portfolio piece.
-                <span className="hidden md:block">
-                  <br />
-                  However, you can save and reload your current project whenever
-                  needed. Currently available on the web, we are actively
-                  developing the mobile app for Android and iOS platforms.
-                  <br />
-                  <br />
-                  <AndroidIcon className="text-5xl text-[#3ddc84] ml-[250px] " />
-                  <AppleIcon className="text-5xl   text-white  " />
-                </span>
-              </p>
-              <Image
-                height={400}
-                width={400}
-                src="/assets/blog/kanbanExample.png"
-                alt="img"
-                className="self-center "
-              />
-              <p className="md:text-xl text-md md:hidden fira md:bg-white/10 rounded-md md:shadow-black md:shadow-md p-2 md:max-w-[600px] mt-5">
-                However, you can save and reload your current project whenever
-                needed. Currently available on the web, we are actively
-                developing the mobile app for Android and iOS platforms.
-              </p>
-              <aside className="flex md:hidden  justify-center mt-2 space-x-5  ">
-                <AndroidIcon className="text-5xl text-[#3ddc84]   " />
-                <AppleIcon className="text-5xl  stroke-black text-white    " />
-              </aside>
-            </article>
-          </section>
+        </section>
+        <section className="mt-10 pt-4 pb-8">
+          <h3 className="text-center text-xl md:text-2xl">
+            What more can you do with <strong>BoardStack</strong>
+          </h3>
+          <article className="flex pt-7 mb-4 md:mb-0 flex-col md:flex-row items-center mx-4 justify-center">
+            <p className="max-w-[400px] mr-4 mb-4 md:mb-0 bg-emerald-200/40 shadow-sm shadow-gray-500 rounded-3xl p-5">
+              Our app includes a login feature with convenient options like
+              Google, or you can register manually. Currently, its designed for
+              a very basic kanban experience as it serves primarily as a
+              portfolio piece.
+              <br />
+              However, you can save and reload your current project whenever
+              needed. Currently available on the web, we are actively developing
+              the mobile app for Android and iOS platforms.
+              <br />
+              <br />
+              <AndroidIcon className="text-5xl text-[#3ddc84] md:ml-[250px] " />
+              <AppleIcon className="text-5xl stroke-black stroke-[1px]  text-white  " />
+            </p>
+            <Image
+              height={400}
+              width={400}
+              src="/assets/blog/kanbanExample.png"
+              alt="img"
+              className="shape "
+            />
+          </article>
         </section>
       </main>
-    </>
+    </div>
   );
 };
-
-export default page;
+export default Page;
