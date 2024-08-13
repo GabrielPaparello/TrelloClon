@@ -52,11 +52,19 @@ const Testproject = () => {
     event.preventDefault();
     dispatch(addProject(formValues));
   };
-  const handleClick = (element: Project, user_id: string | undefined) => {
-    router.push(
-      `/projects/${user_id}/${element.projectId}?userID=${element.user_id}&projectId=${element.projectId}`
-    );
+  const handleClick = (projectId: string, user_id: string | undefined) => {
+    // Construct the URL with route parameters and query parameters
+    const url = `/projects/${user_id}/${projectId}?userID=${user_id}&projectId=${projectId}`;
+
+    // Navigate to the constructed URL
+    router.push(url);
   };
+  // const handleClick = (projectId: string, user_id: string | undefined) => {
+  //   router.push({
+  //     pathname: `/projects/${user_id}/${projectId}?userID=${user_id}&projectId=${projectId}`,
+  //     query: { userID: user_id, projectId: projectId },
+  //   });
+  // };
 
   useEffect(() => {
     setClicked(false);
@@ -197,7 +205,7 @@ const Testproject = () => {
               </h3>
             </div>
             <button
-              onClick={() => handleClick(element, user_id)}
+              onClick={() => handleClick(element.projectId, user_id)}
               key={element.projectId}
             >
               GO TO : {element.projectName}

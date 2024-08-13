@@ -17,12 +17,13 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import { v4 as uuid } from "uuid";
 import { ToastContainer } from "react-toastify";
 import { setToast } from "../../../../lib/StatesReducers/toast";
-import { useSearchParams, useParams } from "next/navigation";
+import {  useParams,  } from "next/navigation";
 const Project = () => {
   const params = useParams();
-  const searchParams = useSearchParams();
+  // const userId = params.userId as string 
+  const projectId = params.projectId as string 
 
-  const projectId = params.projectId as string;
+  // const projectId = params.projectId as string;
 
   const { user } = useUser();
   const user_id = user?.sub?.split("|")[1];
@@ -65,6 +66,7 @@ const Project = () => {
           >
             Load
           </button>
+          <h1>{projectId}</h1>
           <button
             className="text-[#004f8c] font-bold rounded px-4 py-1"
             onClick={() => handleSave(user_id, projectId, cards)}
@@ -79,7 +81,7 @@ const Project = () => {
           >
             + Add Card
           </button>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full">
             {cards &&
               cards.map((card: Card) => <Cards key={uuid()} card={card} />)}
           </div>

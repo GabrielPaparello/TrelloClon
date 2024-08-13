@@ -24,7 +24,7 @@ const links: ILink[] = [
   {
     id: "learn",
     name: "Learn",
-    path: "/learnBoardStack",
+    path: "/learn",
     icon: MenuBookIcon,
   },
   {

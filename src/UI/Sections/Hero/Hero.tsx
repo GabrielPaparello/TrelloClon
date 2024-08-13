@@ -29,7 +29,7 @@ const Hero = () => {
             </Link>
             <Link
               className="w-full md:w-auto border border-blue-500 text-blue-500 font-bold py-3 px-6 rounded hover:bg-blue-100 transition duration-300 text-center mt-2 md:mt-0"
-              href="/learnBoardStack"
+              href="/learn"
             >
               Learn More
             </Link>
