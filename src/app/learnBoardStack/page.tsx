@@ -46,14 +46,17 @@ const Page = () => {
                 alt="kanBan elements example"
                 className="shape pb-5"
               />
-              <em>A Kanban board</em>`&apos;` is an <strong>Agile</strong>{" "}
-              project management tool designed to help visualize work, limit
-              work in progress, and maximize efficiency (or flow). <br /> It
-              originated from the Japanese manufacturing industry and has since
-              been adapted for use in software development and other fields.{" "}
+              <em>A Kanban board</em>&nbsp; is an <strong>Agile</strong> project
+              management tool designed to help visualize work, limit work in
+              progress, and maximize efficiency (or flow). <br /> It originated
+              from the Japanese manufacturing industry and has since been
+              adapted for use in software development and other fields.{" "}
               <strong>T</strong>he board typically consists of columns
               representing different stages of a workflow, such as{" "}
-              <strong>'Backlog,' 'To Do,' 'In Progress,' and 'Done.'</strong>{" "}
+              <strong>
+                `&apos;`Backlog,`&apos;` `&apos;`To Do,`&apos;` `&apos;`In
+                Progress,`&apos;` and `&apos;`Done.`&apos;`
+              </strong>{" "}
               Each task is represented by a card, which moves from left to right
               across the board as it progresses through these stages. This
               visual representation helps teams track the status of tasks,
