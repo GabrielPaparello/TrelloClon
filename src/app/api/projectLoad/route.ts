@@ -15,7 +15,7 @@ export async function GET(req: NextRequest) {
 
     const client = await db.connect();
     const query =
-      "SELECT projectId, projectName, description, members, category FROM projects WHERE user_id = $1";
+      "SELECT projectid, projectname, description, members, category FROM projects WHERE user_id = $1";
     const result = await client.query(query, [user_id]);
 
     client.release();
