@@ -22,20 +22,20 @@ const Feature = () => {
               md:flex-row 
               md:max-w-[250px]
                md:w-[250px] 
-               m-auto md:m-0`}
+               m-auto md:m-0 mx-2 md:mx-0`}
             >
               <Image
-                className="object-cover rounded-lg md:w-[120px] md:h-[120px]"
+                className="object-cover rounded-lg w-[100px] h-auto md:w-[120px] md:h-[120px]"
                 src={feature.imgPath}
                 alt={feature.imgAlt}
                 width={250}
                 height={250}
               />
               <div className="flex flex-col justify-center ml-0 md:ml-5 mt-3 md:mt-0">
-                <h1 className="text-2xl md:text-xl md:min-w-[300px] text-blue-300 font-bold mb-2">
+                <h1 className="text-xl md:text-xl md:min-w-[300px] text-blue-300 font-bold mb-2">
                   {feature.h2}
                 </h1>
-                <h2 className="text-lg md:text-lg text-white/80">
+                <h2 className="text-base md:text-lg text-white/80">
                   {feature.h3}
                   <span className="text-gray-400 pl-5">Coming soon...</span>
                 </h2>
