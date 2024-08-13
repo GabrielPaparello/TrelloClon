@@ -86,7 +86,7 @@ const Page = () => {
               <li>
                 <button>Positibility to add checklists</button>
               </li>
-              <li className="relative mb-3">
+              <li className="relative mb-5 md:mb-3">
                 <span className="text-gray-500/50 text-sm absolute top-6 ">
                   (currently developing)
                 </span>{" "}
