@@ -28,7 +28,7 @@ export const MobileNav = ({
         alt="logoBrand"
         width={50}
         height={50}
-        className="rounded-full"
+        className="rounded-full w-[40px] h-auto"
       />
       <aside
         className={`absolute ease-in-out left-2 top-16 h-[350px] bg-[#191552]/[0.99] z-10 ring-2 duration-700 ring-[#000000]/20 rounded-lg shadow-md flex items-start p-2 gap-5 justify-start flex-col w-60 ${
