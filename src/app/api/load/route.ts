@@ -37,8 +37,9 @@ export async function GET(req: NextRequest) {
 
     if (result.rows.length > 0) {
       return NextResponse.json(result.rows[0].data, { status: 200 });
-    } else {
-      return NextResponse.json({ Cards: [] }, { status: 200 });
+      // } else {
+      //   return NextResponse.json([], { status: 200 });
+      // }
     }
   } catch (error) {
     console.error("Error loading data:", error);
