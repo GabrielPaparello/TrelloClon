@@ -64,34 +64,57 @@ interface LoadDataArgs {
 interface LoadDataResponse {
   cards: Card[];
 }
-export const loadData = createAsyncThunk(
-  "app/loadData",
-  async ({
-    user_id,
-    projectId,
-  }: {
-    user_id: string | undefined;
-    projectId: string;
-  }) => {
-    try {
-      const response = await fetch("/api/load", {
-        method: "GET",
-        headers: {
-          user_id: user_id || "",
-          projectId: projectId || "",
-        },
-      });
-      if (!response.ok) {
-        throw new Error("Failed to load data");
-      }
-      const data: LoadDataResponse = await response.json();
-      return data;
-    } catch (error) {
-      console.error("Error loading data:", error);
-      return { cards: [] }; // Default to empty array on error
+export const loadData = createAsyncThunk<
+  Card[],
+  { user_id: string | undefined; projectId: string }
+>("app/loadData", async ({ user_id, projectId }) => {
+  try {
+    const response = await fetch("/api/load", {
+      method: "GET",
+      headers: {
+        user_id: user_id || "",
+        projectId: projectId || "",
+      },
+    });
+    if (!response.ok) {
+      throw new Error("Failed to load data");
     }
+    const data: Card[] = await response.json(); // Adjust type to Card[]
+    return data;
+  } catch (error) {
+    console.error("Error loading data:", error);
+    return []; // Return an empty array on error
   }
-);
+});
+
+// export const loadData = createAsyncThunk(
+//   "app/loadData",
+//   async ({
+//     user_id,
+//     projectId,
+//   }: {
+//     user_id: string | undefined;
+//     projectId: string;
+//   }) => {
+//     try {
+//       const response = await fetch("/api/load", {
+//         method: "GET",
+//         headers: {
+//           user_id: user_id || "",
+//           projectId: projectId || "",
+//         },
+//       });
+//       if (!response.ok) {
+//         throw new Error("Failed to load data");
+//       }
+//       const data: LoadDataResponse = await response.json();
+//       return data;
+//     } catch (error) {
+//       console.error("Error loading data:", error);
+//       return { cards: [] }; // Default to empty array on error
+//     }
+//   }
+// );
 
 // export const loadData = createAsyncThunk(
 //   "app/loadData",
@@ -222,7 +245,7 @@ const createCardSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(loadData.fulfilled, (state, action) => {
-      state.cards = action.payload.cards;
+      state.cards = action.payload;
     });
   },
 });
