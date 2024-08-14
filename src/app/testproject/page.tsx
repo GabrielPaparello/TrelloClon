@@ -14,6 +14,7 @@ import { useRouter } from "next/navigation";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { AppDispatch } from "../../lib/store";
 import { v4 as uuidv4 } from "uuid";
+import { Projects } from "@/UI/Sections/CreateProject/Projects";
 
 const Testproject = () => {
   const projects: Project[] = useSelector(projectState);
@@ -51,20 +52,13 @@ const Testproject = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     dispatch(addProject(formValues));
+    setClicked(false);
   };
   const handleClick = (projectId: string, user_id: string | undefined) => {
-    // Construct the URL with route parameters and query parameters
     const url = `/projects/${user_id}/${projectId}?userID=${user_id}&projectId=${projectId}`;
 
-    // Navigate to the constructed URL
     router.push(url);
   };
-  // const handleClick = (projectId: string, user_id: string | undefined) => {
-  //   router.push({
-  //     pathname: `/projects/${user_id}/${projectId}?userID=${user_id}&projectId=${projectId}`,
-  //     query: { userID: user_id, projectId: projectId },
-  //   });
-  // };
 
   useEffect(() => {
     setClicked(false);
@@ -75,7 +69,7 @@ const Testproject = () => {
   }, [dispatch, user_id]);
 
   return (
-    <div className="flex">
+    <div className="flex flex-wrap">
       <div className="border-[#0079d3] border-b p-4">
         <button
           className="text-[#004f8c] font-bold rounded px-4 py-1 mr-2"
@@ -115,6 +109,9 @@ const Testproject = () => {
             />
           </span>
           <article>
+            <h3 className="text-center font-bold text-lg mt-3">
+              Complete your project information
+            </h3>
             <form
               onSubmit={handleSubmit}
               className="text-black gap-2 p-5 flex flex-col"
@@ -122,7 +119,7 @@ const Testproject = () => {
               <label htmlFor="projectName">Project Name</label>
               <input
                 required
-                className="ring-2 ring-black "
+                className="ring-1 ring-gray-500 rounded-md "
                 type="text"
                 name="projectName"
                 id="projectName"
@@ -132,7 +129,7 @@ const Testproject = () => {
               <label htmlFor="description">Description</label>
               <input
                 required
-                className="ring-2 ring-black"
+                className="ring-1 ring-gray-500 rounded-md"
                 type="text"
                 name="description"
                 id="description"
@@ -143,23 +140,26 @@ const Testproject = () => {
               <input
                 required
                 type="text"
-                className="ring-2 ring-black"
+                className="ring-1 ring-gray-500 rounded-md"
                 id="members"
                 name="members"
                 onChange={handleChange}
                 value={formValues.members}
               />
-              <label htmlFor="category">Pick categorie</label>
+              <label htmlFor="category">Pick category</label>
               <input
                 required
                 type="text"
-                className="ring-2 ring-black"
+                className="ring-1 ring-gray-500 rounded-md"
                 name="category"
                 id="category"
                 onChange={handleChange}
                 value={formValues.category}
               />
-              <button type="submit" className="text-white bg-blue-500">
+              <button
+                type="submit"
+                className="text-white bg-blue-400 hover:bg-blue-500 rounded mt-3 p-2"
+              >
                 Submit
               </button>
             </form>
@@ -167,57 +167,11 @@ const Testproject = () => {
         </div>
       )}
 
-      <div className="bg-blue-500 flex flex-col text-start rounded-xl shadow-2xl shadow-gray-200/50">
+      {/* <div className="bg-blue-500 flex flex-col text-start rounded-xl shadow-2xl shadow-gray-200/50"> */}
         {projects.map((element: Project) => (
-          <>
-            <div
-              key={element.projectId}
-              className="p-20 flex flex-col text-white bg-blue-500 gap-5  "
-            >
-              <h2 className="text-xl font-bold relative">
-                Project Name :{" "}
-                <span className="font-bold">{element.projectName}</span>
-                <span className="absolute -bottom-3  right-[50%] translate-x-[50%]   bg-blue-200/50 rounded-xl shadow-2xl  w-[370px] h-[3px]">
-                  {" "}
-                </span>
-              </h2>
-
-              <h3 className="relative font-bold">
-                Description :{" "}
-                <span className="font-bold">{element.description}</span>
-                <span className="absolute -bottom-3  right-[50%] translate-x-[50%]   bg-blue-200/50 rounded-xl shadow-2xl  w-[370px] h-[3px]">
-                  {" "}
-                </span>
-              </h3>
-
-              <h3 className="relative font-bold">
-                Members : <span className="font-bold">{element.members}</span>
-                <span className="absolute -bottom-3  right-[50%] translate-x-[50%]   bg-blue-200/50 rounded-xl shadow-2xl  w-[370px] h-[3px]">
-                  {" "}
-                </span>
-              </h3>
-
-              <h3 className="relative font-bold">
-                Category :{" "}
-                <span className="font-bold">
-                  {element.category}
-                  {element.projectId}
-                </span>
-                <span className="absolute -bottom-3  right-[50%] translate-x-[50%]   bg-blue-200/50 rounded-xl shadow-2xl  w-[370px] h-[3px]">
-                  {" "}
-                </span>{" "}
-              </h3>
-            </div>
-            <button
-              className="text-black"
-              onClick={() => handleClick(element.projectId, user_id)}
-              key={element.projectId}
-            >
-              GO TO : {element.projectName} {element.projectId}
-            </button>
-          </>
+          <Projects key={element.projectId} element={element} />
         ))}
-      </div>
+      {/* </div> */}
     </div>
   );
 };

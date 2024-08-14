@@ -8,11 +8,7 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import { useAppDispatch } from "../../lib/store";
 import { useSelector } from "react-redux";
 import { cardEdit } from "../../lib/ReducersSelector/selector";
-import {
-  loadData,
-  saveData,
-  Card,
-} from "../../lib/StatesReducers/createCard";
+import { loadData, saveData, Card } from "../../lib/StatesReducers/createCard";
 import { setToast } from "../../lib/StatesReducers/toast";
 
 const Nav = () => {
@@ -45,8 +41,8 @@ const Nav = () => {
   return (
     <nav
       className={`${
-        !toggleNav ? "translate-x-0" : "-translate-x-[200px] h-[88vh] absolute"
-      } flex flex-col duration-300 max-w-[230px] min-w-[230px] justify-center items-center left-0  h-[88vh] shadow-xl shadow-gray-500 ring-1 ring-[#0079d3] bg-[#0079d3]   `}
+        !toggleNav ? "translate-x-0" : "-translate-x-[200px] "
+      } flex flex-col duration-300 max-w-[230px] min-w-[230px] justify-center items-center left-0  h-full absolute shadow-sm shadow-black ring-1 ring-[#0079d3] bg-[#0079d3]   `}
     >
       <div className="flex-grow mt-10 relative">
         <img
@@ -99,7 +95,7 @@ const Nav = () => {
 
       <div className="">
         <button
-          className="absolute top-[50%] left-[193px] bg-gray-200 rounded-full border border-gray-200"
+          className="absolute top-[50%] left-[193px] "
           onClick={() => setToggleNav(!toggleNav)}
         >
           {toggleNav ? (
