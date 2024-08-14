@@ -15,12 +15,8 @@ export async function POST(req: NextRequest) {
     if (checkResult.rows.length > 0) {
       // Update existing record
       const updateQuery =
-        "UPDATE projectdata SET data = $3 WHERE user_id = $1 AND projectId = $2";
-      await client.query(updateQuery, [
-        user_id,
-        projectId,
-        JSON.stringify(data),
-      ]);
+        "UPDATE projectdata SET data = $3 WHERE projectId = $1";
+      await client.query(updateQuery, [projectId, JSON.stringify(data)]);
     } else {
       // Insert new record
       const insertQuery =
