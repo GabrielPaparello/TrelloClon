@@ -37,13 +37,9 @@ export const Form: React.FC<Props> = ({
         value={formValues.projectName}
       />
       <label
-        onMouseEnter={() => setStyle(!style)}
         className={`absolute duration-500 text-sm  rounded-md 
-         ${
-           style
-             ? `focus:-translate-y-2/4   focus:bg-gray-200/90 focus:px-1`
-             : ``
-         }`}
+         hover:-translate-y-2/4   hover:bg-gray-200/90 hover:px-1 active:bg-red-500
+         `}
         htmlFor="projectName"
       >
         Project Name
