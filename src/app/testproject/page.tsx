@@ -15,7 +15,7 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import { AppDispatch } from "../../lib/store";
 import { v4 as uuidv4 } from "uuid";
 import { Projects } from "@/UI/Sections/CreateProject/Projects";
-
+import { Form } from "@/UI/components/common/FormC";
 const Testproject = () => {
   const projects: Project[] = useSelector(projectState);
   const dispatch: AppDispatch = useDispatch();
@@ -53,15 +53,6 @@ const Testproject = () => {
     event.preventDefault();
     dispatch(addProject(formValues));
     setClicked(false);
-    dinamicSave();
-  };
-  const handleClick = (projectId: string, user_id: string | undefined) => {
-    const url = `/projects/${user_id}/${projectId}?userID=${user_id}&projectId=${projectId}`;
-
-    router.push(url);
-  };
-
-  const dinamicSave = () => {
     dispatch(
       saveProjects({
         user_id: formValues.user_id,
@@ -73,6 +64,19 @@ const Testproject = () => {
       })
     );
   };
+
+  // const dinamicSave = () => {
+  //   dispatch(
+  //     saveProjects({
+  //       user_id: formValues.user_id,
+  //       projectId: formValues.projectId,
+  //       projectName: formValues.projectName,
+  //       description: formValues.description,
+  //       members: formValues.members,
+  //       category: formValues.category,
+  //     })
+  //   );
+  // };
 
   useEffect(() => {
     setClicked(false);
@@ -110,7 +114,6 @@ const Testproject = () => {
         </button>
       </div> */}
       <section className="text-black text-2xl p-5">
-        <h1>Create a project</h1>
         <button onClick={() => setClicked(true)}>+ New Project</button>
       </section>
 
@@ -126,57 +129,11 @@ const Testproject = () => {
             <h3 className="text-center font-bold text-lg mt-3">
               Complete your project information
             </h3>
-            <form
-              onSubmit={handleSubmit}
-              className="text-black gap-2 p-5 flex flex-col"
-            >
-              <label htmlFor="projectName">Project Name</label>
-              <input
-                required
-                className="ring-1 ring-gray-500 rounded-md "
-                type="text"
-                name="projectName"
-                id="projectName"
-                onChange={handleChange}
-                value={formValues.projectName}
-              />
-              <label htmlFor="description">Description</label>
-              <input
-                required
-                className="ring-1 ring-gray-500 rounded-md"
-                type="text"
-                name="description"
-                id="description"
-                onChange={handleChange}
-                value={formValues.description}
-              />
-              <label htmlFor="members">Add members</label>
-              <input
-                required
-                type="text"
-                className="ring-1 ring-gray-500 rounded-md"
-                id="members"
-                name="members"
-                onChange={handleChange}
-                value={formValues.members}
-              />
-              <label htmlFor="category">Pick category</label>
-              <input
-                required
-                type="text"
-                className="ring-1 ring-gray-500 rounded-md"
-                name="category"
-                id="category"
-                onChange={handleChange}
-                value={formValues.category}
-              />
-              <button
-                type="submit"
-                className="text-white bg-blue-400 hover:bg-blue-500 rounded mt-3 p-2"
-              >
-                Submit
-              </button>
-            </form>
+            <Form
+              formValues={formValues}
+              handleChange={handleChange}
+              handleSubmit={handleSubmit}
+            />
           </article>
         </div>
       )}
