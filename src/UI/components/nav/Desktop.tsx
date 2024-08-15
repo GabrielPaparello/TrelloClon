@@ -3,7 +3,13 @@ import Image from "next/image";
 import Link from "next/link";
 import links from "./utils/rules";
 import "../../../app/globals.css";
-export const DesktopNav = ({ path }: { path: string }) => {
+export const DesktopNav = ({
+  path,
+  title,
+}: {
+  path: string;
+  title: string;
+}) => {
   return (
     <nav className="justify-between px-2 bg-[#191552] relative z-10  md:flex hidden">
       <div className="flex items-center  space-x-2">
@@ -18,6 +24,9 @@ export const DesktopNav = ({ path }: { path: string }) => {
           BoardStack
         </h1>
       </div>
+      {title !== "null" && (
+        <h2 className="self-center m-auto text-white text-center">{title}</h2>
+      )}
       <ul className="flex text-base items-center justify-center space-x-6 m-4">
         {links.map((link) => {
           const IconComponent = link.icon;
