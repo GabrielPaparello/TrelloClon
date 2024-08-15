@@ -37,22 +37,22 @@ const Nav = () => {
     dispatch(saveData({ user_id, cards, projectId }));
     dispatch(setToast(true));
   };
-
+  // ring-[#0079d3]
   return (
     <nav
       className={`${
-        !toggleNav ? "translate-x-0" : "-translate-x-[200px] "
-      } flex flex-col duration-300 max-w-[230px] min-w-[230px] justify-center items-center left-0  h-full absolute shadow-sm shadow-black ring-1 ring-[#0079d3] bg-[#0079d3]   `}
+        !toggleNav ? "translate-x-0" : "-translate-x-[230px] "
+      } flex flex-col duration-500 max-w-[230px] min-w-[230px] justify-center items-center left-0  h-full absolute shadow-md shadow-black ring-1  bg-gray-200 ring-gray-400 border-l-3xl  `}
     >
-      <div className="flex-grow mt-10 relative">
+      <div className="flex-grow mt-3 mb-4 relative">
         <img
-          className="border h-[105px] w-[105px] shadow-xl  border-gray-400 rounded-full"
+          className="border h-[105px] w-[105px] shadow-md shadow-black  border-gray-400 rounded-full"
           src={user?.picture || "/assets/placeholders/profilePlaceholder.jpg"}
           alt="Profile"
           width={100}
           height={100}
         />
-        <h2 className="max-w-[190px] text-center text-white">
+        <h2 className="max-w-[190px] text-center text-gray-500">
           Welcome back! <br />
           {user?.name}
         </h2>
@@ -95,13 +95,17 @@ const Nav = () => {
 
       <div className="">
         <button
-          className="absolute top-[50%] left-[193px] "
+          className={`absolute top-[50%] ${
+            toggleNav
+              ? "left-[224px] bg-gray-400/20 rounded-r-3xl ring-1 ring-gray-700 shadow-md shadow-black"
+              : "left-[197px] bg-gray-400/20 rounded-full  ring-1 ring-gray-700 shadow-md shadow-black"
+          } `}
           onClick={() => setToggleNav(!toggleNav)}
         >
           {toggleNav ? (
-            <ChevronRightIcon className="text-4xl" />
+            <ChevronRightIcon className="text-3xl " />
           ) : (
-            <ChevronLeftIcon className="text-4xl" />
+            <ChevronLeftIcon className="text-3xl  " />
           )}
         </button>
       </div>

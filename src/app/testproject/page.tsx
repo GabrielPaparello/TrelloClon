@@ -113,8 +113,13 @@ const Testproject = () => {
           Save
         </button>
       </div> */}
-      <section className="text-black text-2xl p-5">
-        <button onClick={() => setClicked(true)}>+ New Project</button>
+      <section className="p-2">
+        <button
+          className="bg-lime-500 border-1 border-lime-600 hover:bg-lime-600 shadow-lg shadow-gray-200/50 p-1 rounded-md text-white"
+          onClick={() => setClicked(true)}
+        >
+          + New Project
+        </button>
       </section>
 
       {clicked && (
