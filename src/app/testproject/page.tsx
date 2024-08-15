@@ -53,11 +53,25 @@ const Testproject = () => {
     event.preventDefault();
     dispatch(addProject(formValues));
     setClicked(false);
+    dinamicSave();
   };
   const handleClick = (projectId: string, user_id: string | undefined) => {
     const url = `/projects/${user_id}/${projectId}?userID=${user_id}&projectId=${projectId}`;
 
     router.push(url);
+  };
+
+  const dinamicSave = () => {
+    dispatch(
+      saveProjects({
+        user_id: formValues.user_id,
+        projectId: formValues.projectId,
+        projectName: formValues.projectName,
+        description: formValues.description,
+        members: formValues.members,
+        category: formValues.category,
+      })
+    );
   };
 
   useEffect(() => {
@@ -70,7 +84,7 @@ const Testproject = () => {
 
   return (
     <div className="flex flex-wrap">
-      <div className="border-[#0079d3] border-b p-4">
+      {/* <div className="border-[#0079d3] border-b p-4">
         <button
           className="text-[#004f8c] font-bold rounded px-4 py-1 mr-2"
           onClick={() => dispatch(loadProjects(user_id))}
@@ -94,7 +108,7 @@ const Testproject = () => {
         >
           Save
         </button>
-      </div>
+      </div> */}
       <section className="text-black text-2xl p-5">
         <h1>Create a project</h1>
         <button onClick={() => setClicked(true)}>+ New Project</button>
@@ -168,9 +182,9 @@ const Testproject = () => {
       )}
 
       {/* <div className="bg-blue-500 flex flex-col text-start rounded-xl shadow-2xl shadow-gray-200/50"> */}
-        {projects.map((element: Project) => (
-          <Projects key={element.projectId} element={element} />
-        ))}
+      {projects.map((element: Project) => (
+        <Projects key={element.projectId} element={element} />
+      ))}
       {/* </div> */}
     </div>
   );
