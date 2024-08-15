@@ -15,14 +15,14 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import { AppDispatch } from "../../lib/store";
 import { v4 as uuidv4 } from "uuid";
 import { Projects } from "@/UI/Sections/CreateProject/Projects";
-import { Form } from "@/UI/components/common/FormC";
+import { Form } from "@/UI/components/common/Form";
 const Testproject = () => {
   const projects: Project[] = useSelector(projectState);
   const dispatch: AppDispatch = useDispatch();
   const { user } = useUser();
   const user_id = user?.sub?.split("|")[1];
   const router = useRouter();
-  const [clicked, setClicked] = useState<boolean>(false);
+  const [clicked, setClicked] = useState<boolean>(true);
   const [formValues, setFormValues] = useState({
     projectName: "",
     description: "",
@@ -115,7 +115,7 @@ const Testproject = () => {
       </div> */}
       <section className="p-2">
         <button
-          className="bg-lime-500 border-1 border-lime-600 hover:bg-lime-600 shadow-lg shadow-gray-200/50 p-1 rounded-md text-white"
+          className="bg-indigo-100 border-1 border-gray-600 hover:bg-indigo-200 shadow-sm shadow-gray-600/50 p-1 rounded-md text-gray-700/80"
           onClick={() => setClicked(true)}
         >
           + New Project
