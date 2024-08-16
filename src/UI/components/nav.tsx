@@ -97,8 +97,8 @@ const Nav = () => {
         <button
           className={`absolute top-[50%] transition-all duration-500 ${
             toggleNav
-              ? "left-[220px]  bg-gray-400/20 rounded-r-3xl ring-1 ring-gray-700 shadow-md shadow-black"
-              : "left-[197px] bg-gray-400/20 rounded-full  ring-1 ring-gray-700 shadow-md shadow-black"
+              ? "left-[220px]  bg-gray-400/20 rounded-r-3xl ring-1 ring-gray-500 shadow-sm shadow-black"
+              : "left-[197px] bg-gray-400/20 rounded-full  ring-1 ring-gray-500 shadow-sm shadow-black"
           } `}
           onClick={() => setToggleNav(!toggleNav)}
         >
