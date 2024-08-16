@@ -22,7 +22,7 @@ const Testproject = () => {
   const { user } = useUser();
   const user_id = user?.sub?.split("|")[1];
   const router = useRouter();
-  const [clicked, setClicked] = useState<boolean>(true);
+  const [clicked, setClicked] = useState<boolean>(false);
   const [formValues, setFormValues] = useState({
     projectName: "",
     description: "",
@@ -115,7 +115,7 @@ const Testproject = () => {
       </div> */}
       <section className="p-2">
         <button
-          className="bg-indigo-100 border-1 border-gray-600 hover:bg-indigo-200 shadow-sm shadow-gray-600/50 p-1 rounded-md text-gray-700/80"
+          className="bg-indigo-100 border-1 font-bold border-gray-600 hover:bg-indigo-200 shadow-sm shadow-gray-600/50 p-1 rounded-md text-gray-500/80 hover:text-gray-800"
           onClick={() => setClicked(true)}
         >
           + New Project
@@ -126,7 +126,7 @@ const Testproject = () => {
         <div className="absolute top-[100px]  left-[50vw] min-w-[400px] -translate-x-52  bg-white ring-2 ring-black ring-opacity-20 rounded-xl shadow-2xl">
           <span className="absolute top-2 right-2  bg-gray-200/50 rounded-xl shadow-2xl">
             <Close
-              className="text-gray-400 z-10 hover:text-black   "
+              className="text-gray-500 z-10 hover:text-black cursor-pointer shadow-lg shadow-gray-200/50 rounded-xl"
               onClick={() => setClicked(!clicked)}
             />
           </span>
