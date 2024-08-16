@@ -42,7 +42,7 @@ const Nav = () => {
     <nav
       className={`${
         !toggleNav ? "translate-x-0" : "-translate-x-[230px] "
-      } flex flex-col duration-500 max-w-[230px] min-w-[230px] justify-center items-center left-0  h-full absolute shadow-md shadow-black ring-1  bg-gray-200 ring-gray-400 border-l-3xl  `}
+      } flex flex-col z-50 duration-500 max-w-[230px] min-w-[230px] justify-center items-center left-0  h-full absolute shadow-md shadow-black ring-1  bg-gray-200 ring-gray-400 border-l-3xl  `}
     >
       <div className="flex-grow mt-3 relative">
         <img
