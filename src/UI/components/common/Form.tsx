@@ -3,7 +3,7 @@ import React, { ChangeEvent, useState } from "react";
 interface FormValues {
   projectName: string;
   description: string;
-  members: never[];
+  members: string[];
   category: string;
   user_id: string;
   projectId: string;
@@ -25,7 +25,7 @@ export const Form: React.FC<Props> = ({
   return (
     <form
       onSubmit={handleSubmit}
-      className="text-black gap-6 p-5  flex flex-col m-3 border-1 border-gray-500 bg-gray-300/40 rounded-xl"
+      className="text-black gap-6 p-5   flex flex-col m-3 border-1 border-gray-500 bg-gray-300/40 rounded-xl"
     >
       <div className="relative">
         <input
@@ -38,9 +38,11 @@ export const Form: React.FC<Props> = ({
           value={formValues.projectName}
         />
         <label
-          className={`absolute top-3 left-2 text-md text-gray-400 duration-200 transform -translate-y-1/2
+          className={`absolute top-3 left-2 text-md text-gray-400  duration-200 transform -translate-y-1/2
       peer-placeholder-shown:top-1/2 peer-placeholder-shown:left-2 peer-placeholder-shown:text-gray-400
-      peer-focus:-translate-y-7  cursor-pointer peer-focus:left-1 peer-focus:font-bold peer-focus:bg-gray-200/90 peer-focus:px-1 peer-focus:text-blue-500/50 peer-focus:text-sm`}
+      peer-focus:-translate-y-7  cursor-pointer peer-focus:left-1 peer-focus:font-bold peer-focus:bg-gray-200/90 peer-focus:px-1 peer-focus:text-blue-500/50 peer-focus:text-sm ${
+        formValues.projectName ? "text-transparent" : ""
+      }`}
           htmlFor="projectName"
         >
           Project Name
@@ -61,7 +63,9 @@ export const Form: React.FC<Props> = ({
           htmlFor="description"
           className={`absolute top-3 left-2 text-md text-gray-400 duration-200 transform -translate-y-1/2
       peer-placeholder-shown:top-1/2  cursor-pointer peer-placeholder-shown:left-2 peer-placeholder-shown:text-gray-400
-      peer-focus:-translate-y-7 peer-focus:left-1  peer-focus:bg-gray-200/90 peer-focus:px-1 peer-focus:text-blue-500/50 peer-focus:text-sm`}
+      peer-focus:-translate-y-7 peer-focus:left-1  peer-focus:bg-gray-200/90 peer-focus:px-1 peer-focus:text-blue-500/50 peer-focus:text-sm ${
+        formValues.description ? "text-transparent" : ""
+      }`}
         >
           Description
         </label>
@@ -79,8 +83,9 @@ export const Form: React.FC<Props> = ({
         <label
           htmlFor="members"
           className={`absolute  cursor-pointer top-3 left-2 text-md text-gray-400 duration-200 transform -translate-y-1/2
-      peer-placeholder-shown:top-1/2 peer-placeholder-shown:left-2 peer-placeholder-shown:text-gray-400
-      peer-focus:-translate-y-7 peer-focus:left-1  peer-focus:bg-gray-200/90 peer-focus:px-1 peer-focus:text-blue-500/50 peer-focus:text-sm`}
+          peer-placeholder-shown:top-1/2 peer-placeholder-shown:left-2 peer-placeholder-shown:text-gray-400
+          peer-focus:-translate-y-7 peer-focus:left-1  peer-focus:bg-gray-200/90 peer-focus:px-1 peer-focus:text-blue-500/50 z-10 peer-focus:text-sm
+          ${formValues.members[0] ? "text-transparent" : ""}`}
         >
           Add members
         </label>
@@ -100,7 +105,8 @@ export const Form: React.FC<Props> = ({
           htmlFor="category"
           className={`absolute  cursor-pointer top-3 left-2 text-md text-gray-400 duration-200 transform -translate-y-1/2
       peer-placeholder-shown:top-1/2 peer-placeholder-shown:left-2 peer-placeholder-shown:text-gray-400
-      peer-focus:-translate-y-7 peer-focus:left-1  peer-focus:bg-gray-200/90 peer-focus:px-1 peer-focus:text-blue-500/50 peer-focus:text-sm`}
+      peer-focus:-translate-y-7 peer-focus:left-1  peer-focus:bg-gray-200/90 peer-focus:px-1 peer-focus:text-blue-500/50 peer-focus:text-sm
+      ${formValues.category ? "text-transparent" : ""}`}
         >
           Pick category
         </label>
