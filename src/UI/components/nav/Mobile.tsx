@@ -10,10 +10,12 @@ export const MobileNav = ({
   open,
   setOpen,
   path,
+  title,
 }: {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   path: string;
+  title: string;
 }) => {
   return (
     <nav className="p-2 bg-[#191552] md:hidden flex items-center justify-between">
@@ -23,6 +25,7 @@ export const MobileNav = ({
         onClick={() => setOpen(!open)}
       />
 
+      {title !== "null" && <h2 className="text-white text-center">{title}</h2>}
       <Image
         src="/assets/logo.png"
         alt="logoBrand"
