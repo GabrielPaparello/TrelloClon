@@ -17,11 +17,11 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import { v4 as uuid } from "uuid";
 import { ToastContainer } from "react-toastify";
 import { setToast } from "../../../../lib/StatesReducers/toast";
-import {  useParams,  } from "next/navigation";
+import { useParams } from "next/navigation";
 const Project = () => {
   const params = useParams();
-  // const userId = params.userId as string 
-  const projectId = params.projectId as string 
+  // const userId = params.userId as string
+  const projectId = params.projectId as string;
 
   // const projectId = params.projectId as string;
 
@@ -56,10 +56,14 @@ const Project = () => {
     }
   }, [toastState]);
 
+  useEffect(() => {
+    dispatch(saveData({ user_id, projectId, cards }));
+  }, [cards]);
+
   return (
     <>
       <main className="">
-        <div className="border-[#0079d3] border-b p-4">
+        {/* <div className="border-[#0079d3] border-b p-4   ">
           <button
             className="text-[#004f8c] font-bold rounded px-4 py-1 mr-2"
             onClick={() => dispatch(loadData({ user_id, projectId }))}
@@ -73,11 +77,11 @@ const Project = () => {
           >
             Save
           </button>
-        </div>
+        </div> */}
         <div className="flex flex-wrap gap-4 p-4">
           <button
             onClick={() => dispatch(addCard(projectId))}
-            className="text-[#0079d3] font-bold pb-2 px-6 rounded"
+            className="bg-indigo-100 border-1 font-bold border-gray-600 hover:bg-indigo-200 shadow-sm mx-2 shadow-gray-600/50 p-1 rounded-md text-gray-500/80 hover:text-gray-800"
           >
             + Add Card
           </button>

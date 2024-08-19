@@ -12,10 +12,14 @@ import ListsAdder from "./ListsAdder";
 import type { DropResult } from "react-beautiful-dnd";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { v4 as uuid } from "uuid";
+import { useParams } from "next/navigation";
+
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 const Cards = ({ card }: { card: Card }) => {
   const { user } = useUser();
   const dispatch = useAppDispatch();
+  const params = useParams();
+  const projectId = params.projectId as string;
 
   const onDragEnd = (result: DropResult) => {
     const { source, destination } = result;
@@ -34,6 +38,10 @@ const Cards = ({ card }: { card: Card }) => {
       })
     );
   };
+
+  // useEffect(() => {
+  //   dispatch(saveData({ user_id, projectId, cards }));
+  // }, [dispatch]);
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
