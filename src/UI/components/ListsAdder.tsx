@@ -39,7 +39,7 @@ const ListsAdder = ({ card }: { card: Card }) => {
                 ref={provided.innerRef}
                 {...provided.draggableProps}
                 {...provided.dragHandleProps}
-                className="flex items-center justify-between mb-4 px-4 mx-2 py-2 rounded-lg shadow-md bg-white border border-gray-200"
+                className="flex items-center justify-between mb-2 px-4 mx-2 py-2 rounded-lg shadow-md bg-white border border-gray-200"
               >
                 {list.editable ? (
                   <input

@@ -104,20 +104,25 @@ const Details = React.memo(({ list }: { list: Task }) => {
   };
 
   return (
-    <div className="fixed bg-white border-[#0079d3] border-2 shadow-lg shadow-gray-400 w-[450px]  top-50 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 p-4 rounded-lg">
-      <form onSubmit={handleSubmit} className="space-y-4">
+    <div className="absolute bg-white border-gray-400 border-2 shadow-sm shadow-gray-400   top-0 left-1/2 transform -translate-x-1/2  z-50 p-3 rounded-lg">
+      <form
+        onSubmit={handleSubmit}
+        className="gap-4 bg-gray-200/85 rounded-lg p-3"
+      >
         <div className="flex justify-between items-center">
-          <h2 className="text-2xl font-semibold text-black">Details</h2>
+          <h2 className="text-xl text-center font-semibold text-black">
+            Details
+          </h2>
           <Close
             className="cursor-pointer text-black"
             onClick={handleDetailClick}
           />
         </div>
-        <div className="space-y-4">
+        <div className="flex flex-col items-center justify-center">
           <div>
-            <h3 className="text-lg font-medium text-black">Description</h3>
+            <h3 className="text-md font-medium text-black">Description</h3>
             <input
-              className="border border-gray-300 rounded-lg px-3 py-2 w-full text-black"
+              className="border border-gray-300 rounded-lg px-3 py-1 min-w-[300px] text-black"
               type="text"
               name="description"
               value={details.description}
@@ -125,9 +130,9 @@ const Details = React.memo(({ list }: { list: Task }) => {
             />
           </div>
           <div>
-            <h3 className="text-lg font-medium text-black">Due Date</h3>
+            <h3 className="text-md font-medium text-black">Due Date</h3>
             <input
-              className="border border-gray-300 rounded-lg px-3 py-2 w-full text-black"
+              className="border border-gray-300 rounded-lg px-3 py-1 min-w-[300px] text-black"
               type="text"
               name="DueDate"
               value={details.DueDate}
@@ -135,9 +140,9 @@ const Details = React.memo(({ list }: { list: Task }) => {
             />
           </div>
           <div>
-            <h3 className="text-lg font-medium text-black">Priority</h3>
+            <h3 className="text-md font-medium text-black">Priority</h3>
             <input
-              className="border border-gray-300 rounded-lg px-3 py-2 w-full text-black"
+              className="border border-gray-300 rounded-lg px-3 py-1 min-w-[300px] text-black"
               type="text"
               name="Priority"
               value={details.Priority}
@@ -145,9 +150,9 @@ const Details = React.memo(({ list }: { list: Task }) => {
             />
           </div>
           <div>
-            <h3 className="text-lg font-medium text-black">Status</h3>
+            <h3 className="text-md font-medium text-black">Status</h3>
             <input
-              className="border border-gray-300 rounded-lg px-3 py-2 w-full text-black"
+              className="border border-gray-300 rounded-lg px-3 py-1 min-w-[300px] text-black"
               type="text"
               name="status"
               value={details.status}
@@ -155,7 +160,7 @@ const Details = React.memo(({ list }: { list: Task }) => {
             />
           </div>
           <div>
-            <h3 className="text-lg font-medium text-black">Checklist</h3>
+            <h3 className="text-md font-medium text-black">Checklist</h3>
             <div className="space-y-2">
               {checklist.map((item, index) => (
                 <div key={index} className="flex items-center space-x-4">
@@ -171,7 +176,7 @@ const Details = React.memo(({ list }: { list: Task }) => {
                     onChange={(e) =>
                       handleChecklistChange(index, e.target.value)
                     }
-                    className={`border border-gray-300 rounded-lg px-3 py-2 w-full text-black ${
+                    className={`border border-gray-300 rounded-lg px-3 py-1 w-full text-black ${
                       completedChecklist[index] ? "line-through" : ""
                     }`}
                   />

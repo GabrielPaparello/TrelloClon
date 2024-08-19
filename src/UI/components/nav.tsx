@@ -42,11 +42,11 @@ const Nav = () => {
     <nav
       className={`${
         !toggleNav ? "translate-x-0" : "-translate-x-[230px] "
-      } flex flex-col z-50 duration-500 max-w-[230px] min-w-[230px] justify-center items-center left-0  h-full absolute shadow-md shadow-black ring-1  bg-gray-200 ring-gray-400 border-l-3xl  `}
+      } flex flex-col z-50 duration-500 max-w-[230px] min-w-[230px] justify-center items-center left-0   absolute shadow-md shadow-black ring-1 min-h-[100vh] bg-gray-200 ring-gray-400 border-l-3xl  `}
     >
       <div className="flex-grow mt-3 relative">
         <img
-          className="border h-[105px] w-[105px] shadow-md shadow-black  border-gray-400 rounded-full"
+          className="border h-[105px] w-[105px]  shadow-sm shadow-black  border-gray-400 rounded-full"
           src={user?.picture || "/assets/placeholders/profilePlaceholder.jpg"}
           alt="Profile"
           width={100}
@@ -57,23 +57,6 @@ const Nav = () => {
           {user?.name}
         </h2>
       </div>
-
-      {user && (
-        <div className="border-[#0079d3] border-b p-4">
-          {/* <button
-            className="text-[#004f8c] font-bold rounded px-4 py-1 mr-2"
-            onClick={() => dispatch(loadData({ user_id, projectId }))}
-          >
-            Load
-          </button>
-          <button
-            className="text-[#004f8c] font-bold rounded px-4 py-1"
-            onClick={() => handleSave(user_id, projectId, cards)}
-          >
-            Save
-          </button> */}
-        </div>
-      )}
 
       <div className="flex flex-col space-y-10 flex-grow">
         {!user ? (
