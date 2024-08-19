@@ -85,7 +85,7 @@ const Testproject = () => {
       </section>
 
       {clicked && (
-        <div className="absolute top-[100px] z-50  left-[50vw] min-w-[400px] -translate-x-52  bg-white ring-2 ring-black ring-opacity-20 rounded-xl shadow-2xl">
+        <div className="absolute top-4 z-50  left-[50vw] min-w-[400px] -translate-x-52  bg-white ring-2 ring-black ring-opacity-20 rounded-xl shadow-2xl">
           <span className="absolute top-2 right-2  bg-gray-200/50 rounded-xl shadow-2xl">
             <Close
               className="text-gray-500 z-10 hover:text-black cursor-pointer shadow-lg shadow-gray-200/50 rounded-xl"

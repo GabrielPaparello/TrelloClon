@@ -39,9 +39,10 @@ const Cards = ({ card }: { card: Card }) => {
     );
   };
 
-  useEffect(() => {
-    dispatch(saveData({ user_id, projectId, cards }));
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(saveData({ user_id, projectId, cards }));
+  // }, [dispatch]);
+
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <div className="w-full md:w-auto">
