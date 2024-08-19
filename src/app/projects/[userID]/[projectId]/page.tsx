@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useEffect } from "react";
 import Cards from "../../../../UI/components/Cards";
 import { useAppDispatch } from "../../../../lib/store";
@@ -17,14 +16,10 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import { v4 as uuid } from "uuid";
 import { ToastContainer } from "react-toastify";
 import { setToast } from "../../../../lib/StatesReducers/toast";
-import {  useParams,  } from "next/navigation";
+import { useParams } from "next/navigation";
 const Project = () => {
   const params = useParams();
-  // const userId = params.userId as string 
-  const projectId = params.projectId as string 
-
-  // const projectId = params.projectId as string;
-
+  const projectId = params.projectId as string;
   const { user } = useUser();
   const user_id = user?.sub?.split("|")[1];
   const dispatch = useAppDispatch();
@@ -40,14 +35,7 @@ const Project = () => {
     (state: any) => state.createProject.projects
   );
   const toastState = useSelector((state: any) => state.toastState.toast);
-  const handleSave = (
-    user_id: string | undefined,
-    projectId: string,
-    cards: Card[]
-  ) => {
-    dispatch(saveData({ user_id, projectId, cards }));
-    alert("saved");
-  };
+
   useEffect(() => {
     if (toastState === true) {
       console.log("toastState", toastState);
@@ -56,32 +44,21 @@ const Project = () => {
     }
   }, [toastState]);
 
+  useEffect(() => {
+    dispatch(saveData({ user_id, projectId, cards }));
+  }, [cards]);
+
   return (
     <>
       <main className="">
-        <div className="border-[#0079d3] border-b p-4">
-          <button
-            className="text-[#004f8c] font-bold rounded px-4 py-1 mr-2"
-            onClick={() => dispatch(loadData({ user_id, projectId }))}
-          >
-            Load
-          </button>
-          <h1>{projectId}</h1>
-          <button
-            className="text-[#004f8c] font-bold rounded px-4 py-1"
-            onClick={() => handleSave(user_id, projectId, cards)}
-          >
-            Save
-          </button>
-        </div>
-        <div className="flex flex-wrap gap-4 p-4">
+        <div className="pt-1">
           <button
             onClick={() => dispatch(addCard(projectId))}
-            className="text-[#0079d3] font-bold pb-2 px-6 rounded"
+            className="bg-indigo-100 border-1 font-bold border-gray-600 hover:bg-indigo-200 shadow-sm mx-2 shadow-gray-600/50 p-1 my-4 block  rounded-md text-gray-500/80 hover:text-gray-800"
           >
             + Add Card
           </button>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full">
+          <div className="flex flex-wrap gap-4 items-center justify-evenly">
             {cards &&
               cards.map((card: Card) => <Cards key={uuid()} card={card} />)}
           </div>

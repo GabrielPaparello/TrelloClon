@@ -17,26 +17,39 @@ export const Projects = ({ element }: { element: Project }) => {
     <>
       <div
         key={element.projectId}
-        className="p-5 flex flex-col text-white bg-blue-500 gap-5  "
+        className="p-2 flex flex-col  items-center justify-center text-gray-800/80 bg-gray-200/30 shadow-black shadow-sm  rounded-lg   "
       >
-        <h2 className="text-xl font-bold relative bg-gray-600/30 rounded-lg p-2">
-          Project Name :{" "}
-          <span className="font-bold">{element.projectName}</span>
-        </h2>
+        <div className="flex flex-col gap-3 items-start justify-center p-5 bg-blue-300/30 ring-blue-400/40 ring-1 rounded-lg">
+          <h1 className="text-lg font-bold relative text-center  ">
+            Project Name :{" "}
+            <span className=" bg-blue-200/30 text-blue-500/70 font-light p-1 ring-1 rounded ring-blue-200/80">
+              {element.projectName}
+            </span>
+          </h1>
 
-        <h3 className="relative font-bold text-xl   bg-gray-600/30 rounded-lg p-2">
-          Description : <span className="font-bold">{element.description}</span>
-        </h3>
+          <h2 className="relative font-bold text-md     ">
+            Description :{" "}
+            <span className=" text-start bg-blue-200/30 text-blue-500/70 font-light p-1 ring-1 rounded ring-blue-200/80">
+              {element.description}
+            </span>
+          </h2>
 
-        <h3 className="relative text-xl font-bold  bg-gray-600/30 rounded-lg p-2">
-          Members : <span className="font-bold">{element.members}</span>
-        </h3>
+          <h3 className="relative text-md font-bold    ">
+            Members :{" "}
+            <span className=" bg-blue-200/30 text-blue-500/70 font-light p-1 ring-1 rounded ring-blue-200/80">
+              {element.members}
+            </span>
+          </h3>
 
-        <h3 className="text-xl font-bold relative bg-gray-600/30 rounded-lg p-2">
-          Category : <span className="font-bold">{element.category}</span>
-        </h3>
+          <h3 className="text-md font-bold relative   ">
+            Category :{" "}
+            <span className=" bg-blue-200/30 text-blue-500/70 font-light p-1 ring-1 rounded ring-blue-200/80">
+              {element.category}
+            </span>
+          </h3>
+        </div>
         <button
-          className="text-black"
+          className="  text-blue-500/70 font-semibold p-1 w-fit mt-3  ring-1 underline-blue-300/80 underline-offset-2 underline rounded ring-blue-300/80 hover:no-underline hover:bg-blue-300/80 hover:text-blue-600/70"
           onClick={() => handleClick(element.projectId, user_id)}
           key={element.projectId}
         >

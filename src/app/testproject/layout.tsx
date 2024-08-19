@@ -17,7 +17,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <div className={`flex-shrink-0  bg-white`}>
           <Nav />
         </div>
-        <main className="flex-1 p-6 md:p-12 bg-white overflow-auto">
+        <main className="flex-1 p-6 md:p-6 bg-white overflow-auto">
           {children}
         </main>
       </div>

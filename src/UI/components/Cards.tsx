@@ -12,10 +12,14 @@ import ListsAdder from "./ListsAdder";
 import type { DropResult } from "react-beautiful-dnd";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { v4 as uuid } from "uuid";
+import { useParams } from "next/navigation";
+
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 const Cards = ({ card }: { card: Card }) => {
   const { user } = useUser();
   const dispatch = useAppDispatch();
+  const params = useParams();
+  const projectId = params.projectId as string;
 
   const onDragEnd = (result: DropResult) => {
     const { source, destination } = result;
@@ -34,17 +38,20 @@ const Cards = ({ card }: { card: Card }) => {
       })
     );
   };
+  // useEffect(() => {
+  //   dispatch(saveData({ user_id, projectId, cards }));
+  // }, [dispatch]);
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      <div className="w-full md:w-auto">
-        <div className="flex flex-col shadow-xl bg-gray-100 w-full md:w-72">
-          <div className="p-4 text-center">
+      <div className="">
+        <div className="flex flex-col shadow-sm rounded-md bg-gray-300/60 ring-1 ring-gray-500/80 p-2 shadow-gray-500 ">
+          <div className="p-2 text-center">
             {card.editable ? (
               <input
                 placeholder="Project Name/List"
                 required
-                className="shadow-xl bg-transparent focus:outline-none p-2 text-black"
+                className=" ring-1 rounded-md ring-gray-500/80 bg-white shadow-sm shadow-white focus:outline-none p-2 text-black"
                 type="text"
                 value={card.CARD_NAME}
                 onChange={(e) =>
@@ -66,20 +73,20 @@ const Cards = ({ card }: { card: Card }) => {
                 </span>
                 <div className="flex items-center">
                   <Edit
-                    className="cursor-pointer ml-1 opacity-50 text-gray-400"
+                    className="cursor-pointer ml-1 opacity-50 text-gray-400 hover:text-blue-500"
                     onClick={() =>
                       dispatch(modifyCard({ ...card, editable: true }))
                     }
                   />
                   <button onClick={() => dispatch(deleteCard(card.PARENT_ID))}>
-                    <Delete className="cursor-pointer ml-1 opacity-50 text-gray-400" />
+                    <Delete className="cursor-pointer ml-1 opacity-50 text-gray-400 hover:text-red-500" />
                   </button>
                 </div>
               </div>
             )}
           </div>
 
-          <Droppable droppableId={uuid()}>
+          {/* <Droppable droppableId={uuid()}>
             {(provided) => (
               <>
                 {card.tasks && (
@@ -89,6 +96,14 @@ const Cards = ({ card }: { card: Card }) => {
                   </div>
                 )}
               </>
+            )}
+          </Droppable> */}
+          <Droppable droppableId={card.PARENT_ID}>
+            {(provided) => (
+              <div ref={provided.innerRef} {...provided.droppableProps}>
+                <ListsAdder key={uuid()} card={card} />
+                {provided.placeholder}
+              </div>
             )}
           </Droppable>
 
