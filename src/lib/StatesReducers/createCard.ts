@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
 
-export interface Card {
+export interface CardType {
   projectId: string;
   PARENT_ID: string;
   editable: boolean;
@@ -25,7 +25,7 @@ export interface Task {
 }
 
 interface CardState {
-  cards: Card[];
+  cards: CardType[];
 }
 
 const initialState: CardState = {
@@ -41,7 +41,7 @@ export const saveData = createAsyncThunk(
   }: {
     projectId: string;
     user_id: string | undefined;
-    cards: Card[];
+    cards: CardType[];
   }) => {
     const response = await fetch("/api/save", {
       method: "POST",
@@ -55,17 +55,18 @@ export const saveData = createAsyncThunk(
     }
   }
 );
+
 interface LoadDataArgs {
   user_id: string | undefined;
   projectId: string;
 }
 
-// Define the response type based on your API response
 interface LoadDataResponse {
-  cards: Card[];
+  cards: CardType[];
 }
+
 export const loadData = createAsyncThunk<
-  Card[],
+  CardType[],
   { user_id: string | undefined; projectId: string }
 >("app/loadData", async ({ user_id, projectId }) => {
   try {
@@ -79,11 +80,11 @@ export const loadData = createAsyncThunk<
     if (!response.ok) {
       throw new Error("Failed to load data");
     }
-    const data: Card[] = await response.json(); // Adjust type to Card[]
+    const data: CardType[] = await response.json();
     return data;
   } catch (error) {
     console.error("Error loading data:", error);
-    return []; // Return an empty array on error
+    return [];
   }
 });
 
@@ -91,8 +92,8 @@ const createCardSlice = createSlice({
   name: "createCard",
   initialState,
   reducers: {
-    addCard: (state, action: PayloadAction<string | string>) => {
-      const newCard: Card = {
+    addCard: (state, action: PayloadAction<string>) => {
+      const newCard: CardType = {
         projectId: action.payload,
         PARENT_ID: uuidv4(),
         editable: true,
@@ -108,7 +109,7 @@ const createCardSlice = createSlice({
       );
     },
 
-    modifyCard: (state, action: PayloadAction<Card>) => {
+    modifyCard: (state, action: PayloadAction<CardType>) => {
       state.cards = state.cards.map((card) =>
         card.PARENT_ID === action.payload.PARENT_ID ? action.payload : card
       );
@@ -195,6 +196,39 @@ const createCardSlice = createSlice({
         card.tasks.splice(action.payload.endIndex, 0, removedTask);
       }
     },
+
+    moveCardBetweenColumns: (
+      state,
+      action: PayloadAction<{
+        sourceParentId: string;
+        destinationParentId: string;
+        taskId: string;
+        destinationIndex: number;
+      }>
+    ) => {
+      const { sourceParentId, destinationParentId, taskId, destinationIndex } =
+        action.payload;
+
+      const sourceCard = state.cards.find(
+        (card) => card.PARENT_ID === sourceParentId
+      );
+      const destinationCard = state.cards.find(
+        (card) => card.PARENT_ID === destinationParentId
+      );
+
+      if (sourceCard && destinationCard && sourceCard.tasks) {
+        const task = sourceCard.tasks.find((task) => task.TASK_ID === taskId);
+
+        if (task) {
+          // Remover la tarea de la tarjeta de origen
+          sourceCard.tasks = sourceCard.tasks.filter(
+            (task) => task.TASK_ID !== taskId
+          );
+          // Insertar la tarea en la tarjeta de destino
+          destinationCard.tasks?.splice(destinationIndex, 0, task);
+        }
+      }
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(loadData.fulfilled, (state, action) => {
@@ -212,6 +246,7 @@ export const {
   deleteTaskfromCard,
   openDetails,
   reorderTasksInCard,
+  moveCardBetweenColumns,
 } = createCardSlice.actions;
 
 export default createCardSlice.reducer;

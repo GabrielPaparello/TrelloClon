@@ -6,7 +6,7 @@ import {
   addCard,
   loadData,
   saveData,
-  Card,
+  CardType,
 } from "../../../../lib/StatesReducers/createCard";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -17,6 +17,9 @@ import { v4 as uuid } from "uuid";
 import { ToastContainer } from "react-toastify";
 import { setToast } from "../../../../lib/StatesReducers/toast";
 import { useParams } from "next/navigation";
+import { DragDropContext, DropResult } from "react-beautiful-dnd";
+import { moveCardBetweenColumns } from "../../../../lib/StatesReducers/createCard";
+
 const Project = () => {
   const params = useParams();
   const projectId = params.projectId as string;
@@ -48,34 +51,37 @@ const Project = () => {
     dispatch(saveData({ user_id, projectId, cards }));
   }, [cards]);
 
+  const onDragEnd = (result: DropResult) => {
+    const { source, destination, draggableId } = result;
+
+    // Si se suelta fuera de cualquier lista
+    if (!destination) {
+      return;
+    }
+
+    // Si se reordenan las tareas dentro de la misma tarjeta
+    if (source.droppableId === destination.droppableId) {
+      dispatch(
+        moveCardBetweenColumns({
+          sourceParentId: source.droppableId,
+          destinationParentId: destination.droppableId,
+          taskId: draggableId,
+          destinationIndex: destination.index,
+        })
+      );
+    }
+  };
+
+  const handleAddCard = () => {
+    dispatch(addCard(projectId));
+  };
+
   return (
     <>
-      <main className="">
-        <div className="pt-1">
-          <button
-            onClick={() => dispatch(addCard(projectId))}
-            className="bg-indigo-100 border-1 font-bold border-gray-600 hover:bg-indigo-200 shadow-sm mx-2 shadow-gray-600/50 p-1 my-4 block  rounded-md text-gray-500/80 hover:text-gray-800"
-          >
-            + Add Card
-          </button>
-          <div className="flex flex-wrap gap-4 items-center justify-evenly">
-            {cards &&
-              cards.map((card: Card) => <Cards key={uuid()} card={card} />)}
-          </div>
-        </div>
-        <ToastContainer
-          position="top-center"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-        />
-      </main>
+      <ToastContainer />
+      <DragDropContext onDragEnd={onDragEnd}>
+        <Cards onAddCard={handleAddCard} />
+      </DragDropContext>
     </>
   );
 };
