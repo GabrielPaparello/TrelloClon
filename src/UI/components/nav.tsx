@@ -8,7 +8,11 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import { useAppDispatch } from "../../lib/store";
 import { useSelector } from "react-redux";
 import { cardEdit } from "../../lib/ReducersSelector/selector";
-import { loadData, saveData, Card } from "../../lib/StatesReducers/createCard";
+import {
+  loadData,
+  saveData,
+  CardType,
+} from "../../lib/StatesReducers/createCard";
 import { setToast } from "../../lib/StatesReducers/toast";
 
 const Nav = () => {
@@ -32,7 +36,7 @@ const Nav = () => {
   const handleSave = (
     user_id: string | undefined,
     projectId: string,
-    cards: Card[]
+    cards: CardType[]
   ) => {
     dispatch(saveData({ user_id, cards, projectId }));
     dispatch(setToast(true));
